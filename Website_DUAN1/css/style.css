@@ -349,6 +349,8 @@ ol {
 
 .header__top__right__language img {
 	margin-right: 6px;
+	height: 20px;
+	width: 30px;
 }
 
 .header__top__right__language div {
