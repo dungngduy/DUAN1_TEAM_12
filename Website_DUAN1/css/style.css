@@ -349,6 +349,8 @@ ol {
 
 .header__top__right__language img {
 	margin-right: 6px;
+	height: 20px;
+	width: 30px;
 }
 
 .header__top__right__language div {
@@ -633,6 +635,10 @@ ol {
 	display: block;
 }
 
+.hero__categories ul li a:hover {
+	text-decoration: none;
+}
+
 .hero__search {
 	overflow: hidden;
 	margin-bottom: 30px;
@@ -732,25 +738,15 @@ ol {
 	align-items: center;
 	padding-left: 75px;
 }
-
-.hero__text span {
-	font-size: 14px;
-	text-transform: uppercase;
-	font-weight: 700;
-	letter-spacing: 4px;
-	color: #7fad39;
+.banner{
+	margin-top: 20px;
 }
-
-.hero__text h2 {
-	font-size: 46px;
-	color: #252525;
-	line-height: 52px;
-	font-weight: 700;
-	margin: 10px 0;
+.carousel-inner{
+    height: 400px;
 }
-
-.hero__text p {
-	margin-bottom: 35px;
+.carousel-item img{
+    height: 400px;
+    box-sizing: border-box;
 }
 
 /*---------------------
@@ -1126,7 +1122,7 @@ ol {
 
 .price-range-wrap .range-slider .price-input:after {
 	position: absolute;
-	left: 38px;
+	left: 75px;
 	top: 13px;
 	height: 1px;
 	width: 5px;
@@ -1138,7 +1134,7 @@ ol {
 	font-size: 16px;
 	color: #dd2222;
 	font-weight: 700;
-	max-width: 20%;
+	max-width: 32%;
 	border: none;
 	display: inline-block;
 }
@@ -2662,6 +2658,10 @@ ol {
 	color: #1c1c1c;
 	font-size: 14px;
 	line-height: 32px;
+}
+
+.footer__widget ul li a:hover {
+	text-decoration: none;
 }
 
 .footer__widget p {
