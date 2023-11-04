@@ -6,6 +6,9 @@
             case "sanpham":
                 include "view/sanpham.php";
                 break;
+            case "contact":
+                include "view/contact.php";
+                break;
         }
     }else{
         include "view/home.php";
