@@ -10,6 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+<body>
     <div class="container">
         <h2>Sản Phẩm</h2>      
         <table class="table table-striped">
@@ -42,9 +43,6 @@
         <button class="btn btn-primary"><i class="fas fa-edit"></i>Chọn tất cả</button>
         <button class="btn btn-primary"><i class="fas fa-edit"></i>Bỏ chọn tất cả</button>
         <a href=""><button class="btn btn-primary"><i class="fas fa-edit"></i>Thêm sản phẩm</button></a>
-    </div>
-    <div class="jumbotron text-center" style="margin-bottom:0">
-        <p>Footer</p>
     </div>
 </body>
 </html>
