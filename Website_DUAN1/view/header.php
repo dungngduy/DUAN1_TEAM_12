@@ -20,6 +20,26 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        .header__menu ul li a:hover{
+            text-decoration: none;
+        }
+        .hero__categories ul li a:hover{
+            text-decoration: none;
+        }
+        .categories__item h5 a:hover{
+            text-decoration: none;
+        }
+        .featured__item__text h6 a:hover{
+            text-decoration: none;
+        }
+        .latest-product__slider .latest-prdouct__slider__item a:hover{
+            text-decoration: none;
+        }
+        .blog__item .blog__item__text h5 a:hover{
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <!-- Page Preloder -->
@@ -135,7 +155,7 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="./index.html">Trang chủ</a></li>
-                            <li><a href="./shop-grid.html">Sản phẩm</a></li>
+                            <li><a href="index.php?act=dmsanpham">Sản phẩm</a></li>
                             <li><a href="#">Trang</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Chi tiết cửa hàng</a></li>

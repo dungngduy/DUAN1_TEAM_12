@@ -9,6 +9,9 @@
             case "contact":
                 include "view/contact.php";
                 break;
+            case "dmsanpham":
+                include "view/details/shop-grid.php";
+                break;
         }
     }else{
         include "view/home.php";
