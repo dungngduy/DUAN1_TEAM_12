@@ -755,6 +755,21 @@ ol {
 	margin-bottom: 35px;
 }
 
+.banner {
+    height: 400px;
+    width: 100%;
+	margin-top: 10px;
+}
+
+.carousel-inner {
+    height: 400px;
+}
+
+.carousel-item img {
+    height: 400px;
+    box-sizing: border-box;
+}
+
 /*---------------------
   Categories
 -----------------------*/
@@ -1128,7 +1143,7 @@ ol {
 
 .price-range-wrap .range-slider .price-input:after {
 	position: absolute;
-	left: 38px;
+	left: 75px;
 	top: 13px;
 	height: 1px;
 	width: 5px;
@@ -1140,7 +1155,7 @@ ol {
 	font-size: 16px;
 	color: #dd2222;
 	font-weight: 700;
-	max-width: 20%;
+	max-width: 32%;
 	border: none;
 	display: inline-block;
 }
