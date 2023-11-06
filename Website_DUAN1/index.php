@@ -12,6 +12,9 @@
             case "dmsanpham":
                 include "view/details/shop-grid.php";
                 break;
+            case "blog_details":
+                include "view/blog/blog-details.php";
+                break;
         }
     }else{
         include "view/home.php";

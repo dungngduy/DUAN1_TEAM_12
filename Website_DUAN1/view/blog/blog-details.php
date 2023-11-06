@@ -40,7 +40,7 @@
                             </ul>
                         </div>
                         <div class="blog__sidebar__item">
-                            <h4>Tin Tức thời trang gần đây</h4>
+                            <h4>Tin tức thời trang gần đây</h4>
                             <div class="blog__sidebar__recent">
                                 <a href="#" class="blog__sidebar__recent__item">
                                     <div class="blog__sidebar__recent__item__pic">
