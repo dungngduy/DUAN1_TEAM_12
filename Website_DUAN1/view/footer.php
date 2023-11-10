@@ -5,7 +5,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                            <a href=""><img src="img/logo_new.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Địa chỉ: 32 Đường ĐH06, Hoài Đức, Hà Nội</li>

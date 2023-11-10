@@ -39,6 +39,14 @@
         .blog__item .blog__item__text h5 a:hover{
             text-decoration: none;
         }
+        .header__logo a img{
+            width: 120px;
+            height: 80px;
+        }
+        .footer__about__logo a img{
+            width: 120px;
+            height: 80px;
+        }
     </style>
 </head>
 <body>
@@ -51,7 +59,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo.png" alt=""></a>
+            <a href="#"><img src="img/logo_new.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -148,7 +156,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href=""><img src="img/logo_new.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-7">
