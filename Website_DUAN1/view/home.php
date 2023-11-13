@@ -9,7 +9,7 @@
                             <span>Menu sản phẩm</span>
                         </div>
                         <ul>
-                            <li><a href="#">Áo mùa hè</a></li>
+                            <!-- <li><a href="#">Áo mùa hè</a></li>
                             <li><a href="#">Áo dài mùa đông</a></li>
                             <li><a href="#">Áo khoác</a></li>
                             <li><a href="#">Quần áo thể thao</a></li>
@@ -17,7 +17,13 @@
                             <li><a href="#">Quần dài</a></li>
                             <li><a href="#">Áo vest</a></li>
                             <li><a href="#">Quần áo lao động</a></li>
-                            <li><a href="#">Quần áo theo bộ</a></li>
+                            <li><a href="#">Quần áo theo bộ</a></li> -->
+                            <?php
+                                foreach($list_danhmuc as $list){
+                                    extract($list);
+                                    echo "<li><a>$name</a></li>";
+                                }
+                            ?>
                         </ul>
                     </div>
                 </div>

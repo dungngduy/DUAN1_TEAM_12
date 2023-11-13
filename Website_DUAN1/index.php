@@ -1,8 +1,17 @@
 <?php
     include "view/header.php";
+    include "global.php";
+    include "model/pdo.php";
+    include "model/danhmuc.php";
+    $list_danhmuc = list_danhmuc();
+
     if(isset($_GET['act']) && $_GET['act'] != ""){
         $act = $_GET['act'];
         switch($act){
+            // case "danhmuc":
+            //     $list_danhmuc = list_danhmuc();
+            //     include "view/home.php";
+            //     break;
             case "sanpham":
                 include "view/sanpham.php";
                 break;
