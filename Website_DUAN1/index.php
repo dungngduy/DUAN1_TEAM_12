@@ -3,7 +3,9 @@
     include "global.php";
     include "model/pdo.php";
     include "model/danhmuc.php";
+    include "model/sanpham.php";
     $list_danhmuc = list_danhmuc();
+    $list_sanpham = loadall_sanpham();
 
     if(isset($_GET['act']) && $_GET['act'] != ""){
         $act = $_GET['act'];
