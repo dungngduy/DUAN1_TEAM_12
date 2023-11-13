@@ -23,6 +23,9 @@
             case "dmsanpham":
                 include "view/details/shop-grid.php";
                 break;
+            case "ctsanpham":
+                include "view/details/shop-details.php";
+                break;
             case "blog_details":
                 include "view/blog/blog-details.php";
                 break;
