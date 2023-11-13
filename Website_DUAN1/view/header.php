@@ -85,7 +85,7 @@
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active"><a href="">Trang chủ</a></li>
-                <li><a href="./shop-grid.html">Sản phẩm</a></li>
+                <li><a href="index.php?act=dmsanpham">Sản phẩm</a></li>
                 <li><a href="#">Trang</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="./shop-details.html">Chi tiết cửa hàng</a></li>
@@ -166,7 +166,7 @@
                             <li><a href="index.php?act=dmsanpham">Sản phẩm</a></li>
                             <li><a href="#">Trang</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Chi tiết cửa hàng</a></li>
+                                    <li><a href="index.php?act=ctsanpham">Chi tiết cửa hàng</a></li>
                                     <li><a href="./shoping-cart.html">Giỏ hàng</a></li>
                                     <li><a href="./checkout.html">Thanh toán</a></li>
                                     <li><a href="index.php?act=blog_details">Chi tiết blog</a></li>

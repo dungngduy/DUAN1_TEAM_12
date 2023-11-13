@@ -217,7 +217,7 @@
                     echo "
                     <div class='col-lg-4'>
                     <div class='product__discount__item'>
-                    <a href='shop-details.php?product_id=" . $product_id . "'>
+                    
                     <div class='product__discount__item__pic set-bg' data-setbg='" . $img_pro_main . "'>
                     <div class='product__discount__percent'>-20%</div>
                     <ul class='product__item__pic__hover'>
@@ -227,7 +227,7 @@
                     </ul>
                     </div>
                     <div class='product__discount__item__text'>
-                    <h6><a href='shop-details.php?product_id=" . $product_id . "'>" . $name . "</a></h6>
+                    <h6>" . $name . "</a></h6>
                     <h5>" . $price . "</h5>
                 </div>
             </a>
