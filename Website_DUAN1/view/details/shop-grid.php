@@ -6,7 +6,7 @@
                 <div class="breadcrumb__text">
                     <h2>Sản phẩm</h2>
                     <div class="breadcrumb__option">
-                        <a href="./index.html">Trang chủ</a>
+                        <a href="./index.php">Trang chủ</a>
                         <span>Sản phẩm</span>
                     </div>
                 </div>
@@ -120,9 +120,28 @@
                         </div>
                     </div>
                     <div class="sidebar__item">
-                        <div class="latest-product__text">
+                         <div class="latest-product__text">
                             <h4>Sản phẩm mới</h4>
-                            <div class="latest-product__slider owl-carousel">
+                            <div class='latest-product__slider owl-carousel'>
+    <?php
+    foreach($list_sanpham as $list){
+        extract($list);
+        $linksanpham="index.php?act=ctsanpham".$id;
+        $img_pro_main = $img_path . $img;
+        echo "
+        <div class='latest-prdouct__slider__item'>
+            <div class='latest-product__item__pic' data-setbg='".$img_pro_main."'>
+            </div>
+            <div class='latest-product__item__text'>
+                <h6><a href='".$linksanpham."'>".$name."</a></h6>
+                <h5>".$price."</h5>
+            </div>
+        </div>";
+    }
+    ?>
+</div>
+
+                            <!-- <div class="latest-product__slider owl-carousel">
                                 <div class="latest-prdouct__slider__item">
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
@@ -181,8 +200,8 @@
                                         </div>
                                     </a>
                                 </div>
-                            </div>
-                        </div>
+                            </div> -->
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -192,7 +211,36 @@
                         <h2>Giảm giá</h2>
                     </div>
                     <div class="row">
-                        <div class="product__discount__slider owl-carousel">
+                    <?php
+foreach ($list_sanpham as $list) {
+    extract($list);
+    $linksanpham = "index.php?act=ctsanpham&id=" . $id;
+    $img_pro_main = $img_path . $img;
+    echo "
+    <div class='col-lg-4'>
+        <div class='product__discount__item'>
+            <a href='shop-details.php?id=" . $id . "&act=ctsanpham'> <!-- Thêm tham số act=ctsanpham vào URL -->
+                <div class='product__discount__item__pic set-bg' data-setbg='" . $img_pro_main . "'>
+                    <div class='product__discount__percent'>-20%</div>
+                    <ul class='product__item__pic__hover'>
+                        <li><a href='#'><i class='fa fa-heart'></i></a></li>
+                        <li><a href='#'><i class='fa fa-retweet'></i></a></li>
+                        <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>
+                    </ul>
+                </div>
+                <div class='product__discount__item__text'>
+                    <h6><a href='" . $linksanpham . "'>" . $name . "</a></h6> <!-- Đóng thẻ <a> ở đây -->
+                    <h5>" . $price . "</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+    ";
+}
+?>
+
+
+                        <!-- <div class="product__discount__slider owl-carousel">
                             <div class="col-lg-4">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
@@ -302,11 +350,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="filter__item">
                     <div class="row">
-                        <div class="col-lg-4 col-md-5">
+                        
+                        <!-- <div class="col-lg-4 col-md-5">
                             <div class="filter__sort">
                                 <span>Sắp xếp theo</span>
                                 <select>
@@ -508,14 +557,14 @@
                                 <h5>300.000</h5>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="product__pagination">
+                <!-- <div class="product__pagination">
                     <a href="#">1</a>
                     <a href="#">2</a>
                     <a href="#">3</a>
                     <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
