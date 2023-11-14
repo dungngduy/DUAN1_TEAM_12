@@ -47,6 +47,18 @@
             width: 120px;
             height: 80px;
         }
+        .header__top__right__auth a:hover{
+            text-decoration: none;
+        }
+        .header__top__right__auth a:active{
+            text-decoration: none;
+        }
+        .humberger__menu__nav ul li a:active{
+            text-decoration: none;
+        }
+        .humberger__menu__nav ul li a .header__menu__dropdown ul li a:active{
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -145,7 +157,7 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Đăng nhập</a>
+                                <a href=""><i class="fa fa-user"></i> Đăng nhập</a>
                             </div>
                         </div>
                     </div>

@@ -21,7 +21,7 @@
                             <?php
                                 foreach($list_danhmuc as $list){
                                     extract($list);
-                                    echo "<li><a>$name</a></li>";
+                                    echo "<li><a>".$name."</a></li>";
                                 }
                             ?>
                         </ul>
