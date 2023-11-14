@@ -211,23 +211,24 @@
                     </div>
                     <div class="row">
                     <?php
-                    foreach ($list_sanpham as $list) {
-                     extract($list);
-                    $img_pro_main = $img_path . $img;
-                    echo "
-                    <div class='col-lg-4'>
-                    <div class='product__discount__item'>
-                    
-                    <div class='product__discount__item__pic set-bg' data-setbg='" . $img_pro_main . "'>
+foreach ($list_sanpham as $list) {
+    extract($list);
+    $linksanpham = "index.php?act=ctsanpham&id=" . $id;
+    $img_pro_main = $img_path . $img;
+    echo "
+    <div class='col-lg-4'>
+        <div class='product__discount__item'>
+            <a href='shop-details.php?id=" . $id . "&act=ctsanpham'> <!-- Thêm tham số act=ctsanpham vào URL -->
+                <div class='product__discount__item__pic set-bg' data-setbg='" . $img_pro_main . "'>
                     <div class='product__discount__percent'>-20%</div>
                     <ul class='product__item__pic__hover'>
                         <li><a href='#'><i class='fa fa-heart'></i></a></li>
                         <li><a href='#'><i class='fa fa-retweet'></i></a></li>
                         <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>
                     </ul>
-                    </div>
-                    <div class='product__discount__item__text'>
-                    <h6>" . $name . "</a></h6>
+                </div>
+                <div class='product__discount__item__text'>
+                    <h6><a href='" . $linksanpham . "'>" . $name . "</a></h6> <!-- Đóng thẻ <a> ở đây -->
                     <h5>" . $price . "</h5>
                 </div>
             </a>
@@ -236,6 +237,7 @@
     ";
 }
 ?>
+
 
                         <!-- <div class="product__discount__slider owl-carousel">
                             <div class="col-lg-4">
