@@ -9,4 +9,9 @@
         $list_sanpham = pdo_query($sql);
         return $list_sanpham;
     }
+    function loadone_sanpham($id){
+        $sql = "select * from sanpham where id=".$id;
+        $dm = pdo_query_one($sql);
+        return $dm;
+    }
 ?>

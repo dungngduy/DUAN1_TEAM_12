@@ -6,7 +6,7 @@
                 <div class="breadcrumb__text">
                     <h2>Sản phẩm</h2>
                     <div class="breadcrumb__option">
-                        <a href="./index.html">Trang chủ</a>
+                        <a href="./index.php">Trang chủ</a>
                         <span>Sản phẩm</span>
                     </div>
                 </div>
@@ -126,13 +126,14 @@
     <?php
     foreach($list_sanpham as $list){
         extract($list);
+        $linksanpham="index.php?act=ctsanpham".$id;
         $img_pro_main = $img_path . $img;
         echo "
         <div class='latest-prdouct__slider__item'>
             <div class='latest-product__item__pic' data-setbg='".$img_pro_main."'>
             </div>
             <div class='latest-product__item__text'>
-                <h6><a href='#'>".$name."</a></h6>
+                <h6><a href='".$linksanpham."'>".$name."</a></h6>
                 <h5>".$price."</h5>
             </div>
         </div>";
