@@ -191,10 +191,33 @@
                     <div class="section-title product__discount__title">
                         <h2>Giảm giá</h2>
                     </div>
-                    <div class="row">
-                        <div class="product__discount__slider owl-carousel">
-                            <div class="col-lg-4">
-                                <div class="product__discount__item">
+                    <div class="row">  
+                    <?php
+                    echo "<div class='product__discount__slider owl-carousel'>";
+                    foreach ($list_sanpham as $list) {
+                    extract($list);
+                    $img_pro = $img_path . $img;
+                    echo "
+                    <div class='col-lg-4'>
+                    <div class='product__discount__item'>
+                    <div class='product__discount__item__pic set-bg' data-setbg='" . $img_pro . "'>
+                    <div class='product__discount__percent'>-20%</div>
+                    <ul class='product__item__pic__hover'>
+                    <li><a href='#'><i class='fa fa-heart'></i></a></li>
+                    <li><a href='#'><i class='fa fa-retweet'></i></a></li>
+                    <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>
+                    </ul>
+                    </div>
+                    <div class='product__discount__item__text'>
+                    <h5><a href='#'>" . $name . "</a></h5>
+                    <div class='product__item__price'>" . $price . " <span>" . $price_old . "</span></div>
+                    </div> 
+                    </div>
+                    </div>";
+                    }
+                    echo "</div>";
+                    ?>        
+                               <!--  <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
                                         data-setbg="img/product/discount/pd-1.jpg">
                                         <div class="product__discount__percent">-20%</div>
@@ -208,10 +231,10 @@
                                         <span>Áo mùa đông</span>
                                         <h5><a href="#">Áo khoác</a></h5>
                                         <div class="product__item__price">300.000 <span>360.000</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
+                                    </div> -->
+                                <!-- </div>  -->
+                            
+                            <!-- <div class="col-lg-4">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
                                         data-setbg="img/product/discount/pd-2.jpg">
@@ -300,9 +323,7 @@
                                         <div class="product__item__price">300.000 <span>360.000</span></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </div> -->
                 </div>
                 <div class="filter__item">
                     <div class="row">
@@ -329,7 +350,30 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
+                    <?php
+                    foreach($list_sanpham as $list){
+                        extract($list);
+                        $img_pro = $img_path . $img;
+                        echo "
+                        <div class='col-lg-4 col-md-6 col-sm-6'>
+                        <div class='product__item'>
+                            <div class='product__item__pic set-bg' data-setbg='" . $img_pro . "'>
+                                <ul class='product__item__pic__hover'>
+                                    <li><a href='#'><i class='fa fa-heart'></i></a></li>
+                                    <li><a href='#'><i class='fa fa-retweet'></i></a></li>
+                                    <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>
+                                </ul>
+                            </div>
+                            <div class='product__item__text'>
+                                <h6><a href='#'>".$name."</a></h6>
+                                <h5>".$price."</h5>
+                            </div>
+                        </div>
+                    </div>
+                        ";
+                    }
+                    ?>
+                    <!-- <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
                                 <ul class="product__item__pic__hover">
@@ -508,7 +552,7 @@
                                 <h5>300.000</h5>
                             </div>
                         </div>
-                    </div>       
+                    </div>        -->
                 </div>
                 <div class="product__pagination">
                     <a href="#">1</a>
