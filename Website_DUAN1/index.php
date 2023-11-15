@@ -29,7 +29,9 @@
             case "blog_details":
                 include "view/blog/blog-details.php";
                 break;
-                
+            case "login":
+                include "view/login/login.php";
+                break;
         }
     }else{
         include "view/home.php";
