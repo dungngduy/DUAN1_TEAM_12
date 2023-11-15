@@ -209,7 +209,7 @@
                     </ul>
                     </div>
                     <div class='product__discount__item__text'>
-                    <h5><a href='#'>" . $name . "</a></h5>
+                    <h5><a href='index.php?act=ctsanpham'>" . $name . "</a></h5>
                     <div class='product__item__price'>" . $price . " <span>" . $price_old . "</span></div>
                     </div> 
                     </div>

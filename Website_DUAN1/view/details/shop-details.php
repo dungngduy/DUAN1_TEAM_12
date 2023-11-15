@@ -76,6 +76,13 @@
                 ";
                  }
             ?>
+
+             <?php
+                
+                
+            ?> 
+
+
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
