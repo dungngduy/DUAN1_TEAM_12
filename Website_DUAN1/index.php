@@ -17,6 +17,14 @@
             case "sanpham":
                 include "view/sanpham.php";
                 break;
+            case "ctsanpham":
+                if(isset($_GET['idsp']) && $_GET['idsp'] ){
+                    $id = $_GET['idsp'];
+                    $onesp = loadone_sanpham($id);
+                    extract($onesp);
+                    include "view/details/shop-details.php";
+                } 
+                break;
             case "contact":
                 include "view/contact.php";
                 break;

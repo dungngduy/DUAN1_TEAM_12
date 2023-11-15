@@ -353,6 +353,7 @@
                     <?php
                     foreach($list_sanpham as $list){
                         extract($list);
+                        $linksp ="index.php?act=ctsanpham=".$id;
                         $img_pro = $img_path . $img;
                         echo "
                         <div class='col-lg-4 col-md-6 col-sm-6'>
@@ -365,7 +366,7 @@
                                 </ul>
                             </div>
                             <div class='product__item__text'>
-                                <h6><a href='#'>".$name."</a></h6>
+                                <h6><a href='".$linksp."'>".$name."</a></h6>
                                 <h5>".$price."</h5>
                             </div>
                         </div>
