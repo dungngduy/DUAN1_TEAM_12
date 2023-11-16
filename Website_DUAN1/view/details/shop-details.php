@@ -20,12 +20,9 @@
     <section class="product-details spad">
         <div class="container">
             <div class="row">
-            <!-- <?php extract($onesp) ?> -->
+             <?php extract($onesp) ?> 
             <?php
-                 foreach ($list_sanpham as $onesp) {
-                extract($onesp);
-                    $linksp = "index.php?act=ctsanpham=" . $id;
-                    $img_pro = $img_path . $img;
+                $img_pro = $img_path . $img;
                     echo "
                     <div class='col-lg-6 col-md-6'>
                         <div class='product__details__pic'>
@@ -56,7 +53,7 @@
                                 </div>
                             </div><br><br>
                             <a href='#' class='primary-btn'>Mua ngay</a>
-                            <a href='#' class='primary-btn'>Thêm vào giỏ hàng</a>
+                            <a href='index.php?act=giohang' class='primary-btn'>Thêm vào giỏ hàng</a>
                             <ul>
                                 <li><b>Khả dụng</b> <span>Trong kho</span></li>
                                 <li><b>Đang chuyển hàng</b> <span>1 ngày vận chuyển. <samp>Nhận hàng miễn phí ngay hôm nay</samp></span></li>
@@ -65,7 +62,7 @@
                         </div>
                     </div>
                     ";
-                }
+                
             ?>
 
 
@@ -145,12 +142,17 @@
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
                                     <h6>Miêu tả</h6>
-                                    <p>Áo Khoác Jean Drafting All Black Basic là sự kết hợp hoàn hảo giữa phong cách 
+                                    <?php
+                            extract($onesp);
+                            echo "<p>".$mota."</p>
+                            ";
+                            ?>
+                                    <!-- <p>Áo Khoác Jean Drafting All Black Basic là sự kết hợp hoàn hảo giữa phong cách 
                                         đương đại và sự thoải mái. Với thiết kế màu đen đơn giản và tối màu, sản phẩm này 
                                         là lựa chọn hoàn hảo cho những ngày se lạnh hoặc để tạo điểm nhấn cho trang phục của bạn.
                                         Áo khoác jean với cổ cài nút giúp bạn thể hiện phong cách cổ điển và cá nhân hóa, túi hai
                                         bên đựng đồ cá nhân và giữ tay ấm. Thiết kế rã rập đem đến hơi hướng sáng tạo đột phá, 
-                                        không theo lối mòn.</p>
+                                        không theo lối mòn.</p> -->
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
