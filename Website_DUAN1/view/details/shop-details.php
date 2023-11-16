@@ -20,66 +20,57 @@
     <section class="product-details spad">
         <div class="container">
             <div class="row">
-            <?php extract($onesp) ?>
+            <!-- <?php extract($onesp) ?> -->
             <?php
-                 foreach($list_sanpham as $list){
-                    extract($list);
-                    $linksp ="index.php?act=ctsanpham&idsp=".$id;
+                 foreach ($list_sanpham as $onesp) {
+                extract($onesp);
+                    $linksp = "index.php?act=ctsanpham=" . $id;
                     $img_pro = $img_path . $img;
-                echo "
-                <div class='col-lg-6 col-md-6'>
-                    <div class='product__details__pic'>
-                        <div class='product__details__pic__item'>
-                        <div class='product__details__pic__item--large' data-setbg='" . $img_pro . "'>
-                        </div>
-                        // <div class='product__details__pic__slider owl-carousel'>
-                        //     <img data-imgbigurl='img/product/details/product-details-2.jpg'
-                        //         src='img/product/details/thumb-1.jpg' alt=''>
-                        //     <img data-imgbigurl='img/product/details/product-details-3.jpg'
-                        //         src='img/product/details/thumb-2.jpg' alt=''>
-                        //     <img data-imgbigurl='img/product/details/product-details-5.jpg'
-                        //         src='img/product/details/thumb-3.jpg' alt=''>
-                        //     <img data-imgbigurl='img/product/details/product-details-4.jpg'
-                        //         src='img/product/details/thumb-4.jpg' alt=''>
-                        // </div>
-                    </div>
-                </div>
-                <div class='col-lg-6 col-md-6'>
-                    <div class='product__details__text'>
-                        <h3>".$name."</h3>
-                        <div class='product__details__rating'>
-                            <i class='fa fa-star'></i>
-                            <i class='fa fa-star'></i>
-                            <i class='fa fa-star'></i>
-                            <i class='fa fa-star'></i>
-                            <i class='fa fa-star-half-o'></i>
-                            <span>(18k Lượt xem)</span>
-                        </div>
-                        <div class='product__details__price'>".$price."</div>
-                        <p>".$mota."</p>
-                        <div class='product__details__quantity'>
-                            <div class='quantity'>
-                                <div class='pro-qty'>
-                                    <input type='text' value='1'>
+                    echo "
+                    <div class='col-lg-6 col-md-6'>
+                        <div class='product__details__pic'>
+                            <div class='product__details__pic__item'>
+                                <div class='product__details__pic__item--large' data-setbg='" . $img_pro . "'>
                                 </div>
                             </div>
-                        </div><br><br>
-                        <a href='#' class='primary-btn'>Mua ngay</a>
-                        <a href='#' class='primary-btn'>Thêm vào giỏ hàng</a>
-                        <ul>
-                            <li><b>Khả dụng</b> <span>Trong kho</span></li>
-                            <li><b>Đang chuyển hàng</b> <span>1 ngày vận chuyển. <samp>Nhận hàng miễn phí ngay hôm nay</samp></span></li>
-                            <li><b>Cân nặng</b> <span>0.5 kg</span></li>
-                        </ul>
+                        </div>
                     </div>
-                </div>
-                ";
-                 }
+                    <div class='col-lg-6 col-md-6'>
+                        <div class='product__details__text'>
+                            <h3>" . $name . "</h3>
+                            <div class='product__details__rating'>
+                                <i class='fa fa-star'></i>
+                                <i class='fa fa-star'></i>
+                                <i class='fa fa-star'></i>
+                                <i class='fa fa-star'></i>
+                                <i class='fa fa-star-half-o'></i>
+                                <span>(18k Lượt xem)</span>
+                            </div>
+                            <div class='product__details__price'>" . $price . "</div>
+                            <p>" . $mota . "</p>
+                            <div class='product__details__quantity'>
+                                <div class='quantity'>
+                                    <div class='pro-qty'>
+                                        <input type='text' value='1'>
+                                    </div>
+                                </div>
+                            </div><br><br>
+                            <a href='#' class='primary-btn'>Mua ngay</a>
+                            <a href='#' class='primary-btn'>Thêm vào giỏ hàng</a>
+                            <ul>
+                                <li><b>Khả dụng</b> <span>Trong kho</span></li>
+                                <li><b>Đang chuyển hàng</b> <span>1 ngày vận chuyển. <samp>Nhận hàng miễn phí ngay hôm nay</samp></span></li>
+                                <li><b>Cân nặng</b> <span>0.5 kg</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    ";
+                }
             ?>
 
 
 
-                <div class="col-lg-6 col-md-6">
+                <!-- <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
@@ -133,7 +124,7 @@
                             <li><b>Cân nặng</b> <span>0.5 kg</span></li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-lg-12">
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
