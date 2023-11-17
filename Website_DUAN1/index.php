@@ -15,7 +15,19 @@
             //     include "view/home.php";
             //     break;
             case "sanpham":
+                $sanphammoi = loadall_sanpham_top3();
                 include "view/sanpham.php";
+                break;
+            case "ctsanpham":
+                if(isset($_GET['idsp']) && $_GET['idsp'] > 0 ){
+                    $id = $_GET['idsp'];
+                    $onesp = loadone_sanpham($id);
+                    // extract($onesp);
+                    include "view/details/shop-details.php";
+                } 
+                break;
+            case "giohang":
+                include "view/cart/cart.php";
                 break;
             case "contact":
                 include "view/contact.php";

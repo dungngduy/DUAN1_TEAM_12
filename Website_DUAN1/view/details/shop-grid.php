@@ -124,6 +124,51 @@
                             <h4>Sản phẩm mới</h4>
                             <div class="latest-product__slider owl-carousel">
                                 <div class="latest-prdouct__slider__item">
+                                    <?php
+                                         foreach ($list_sanpham as $sanphammoi) {
+                                            extract($sanphammoi);
+                                            $img_pro = $img_path . $img;
+                                            echo"
+                                            <a href='#' class='latest-product__item'>
+                                            <div class='latest-product__item__pic' data-setbg='" . $img_pro . "'>
+                                            </div>
+                                            <div class='latest-product__item__text'>
+                                                <h6><a href='#'>".$name."</h6>
+                                                <span>".$price."</span>
+                                            </div>
+                                        </a>
+                                            ";
+                                         }
+                                    ?>
+                                    <!-- <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="img/latest-product/lp-1.jpg" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Áo khoác</h6>
+                                            <span>300.000</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="img/latest-product/lp-2.jpg" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Áo phông</h6>
+                                            <span>200.000</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="img/latest-product/lp-3.jpg" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Áo vest</h6>
+                                            <span>500.000</span>
+                                        </div>
+                                    </a> -->
+                                </div>
+                                <!-- <div class="latest-prdouct__slider__item">
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
                                             <img src="img/latest-product/lp-1.jpg" alt="">
@@ -151,36 +196,7 @@
                                             <span>500.000</span>
                                         </div>
                                     </a>
-                                </div>
-                                <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-1.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Áo khoác</h6>
-                                            <span>300.000</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-2.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Áo phông</h6>
-                                            <span>200.000</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-3.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Áo vest</h6>
-                                            <span>500.000</span>
-                                        </div>
-                                    </a>
-                                </div>
+                                </div> -->
                             </div>
                         </div> 
                     </div>
@@ -353,6 +369,7 @@
                     <?php
                     foreach($list_sanpham as $list){
                         extract($list);
+                        $linksp ="index.php?act=ctsanpham&idsp=".$id;
                         $img_pro = $img_path . $img;
                         echo "
                         <div class='col-lg-4 col-md-6 col-sm-6'>
@@ -365,7 +382,7 @@
                                 </ul>
                             </div>
                             <div class='product__item__text'>
-                                <h6><a href='#'>".$name."</a></h6>
+                                <h6><a href='".$linksp."'>".$name."</a></h6>
                                 <h5>".$price."</h5>
                             </div>
                         </div>

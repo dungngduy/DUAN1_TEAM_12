@@ -6,7 +6,7 @@
                     <div class="breadcrumb__text">
                         <h2>Giỏ hàng</h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Trang chủ</a>
+                            <a href="./index.php">Trang chủ</a>
                             <span>Giỏ hàng</span>
                         </div>
                     </div>
