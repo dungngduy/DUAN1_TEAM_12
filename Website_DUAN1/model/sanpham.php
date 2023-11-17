@@ -16,5 +16,10 @@
         $dm = pdo_query_one($sql);
         return $dm;
     }
+    function loadall_sanpham_cungloai($id,$iddm){
+        $sql = "select * from san_pham where iddm=".$iddm." AND id <>".$id;
+        $list_sanpham = pdo_query($sql);
+        return $list_sanpham;
+    }
    
 ?>

@@ -21,6 +21,9 @@
                 if(isset($_GET['idsp']) && $_GET['idsp'] > 0 ){
                     $id = $_GET['idsp'];
                     $onesp = loadone_sanpham($id);
+                    extract($onesp);
+
+                    $sanpham_cungloai=loadall_sanpham_cungloai($id,$iddm);
                     // extract($onesp);
                     include "view/details/shop-details.php";
                 } 
