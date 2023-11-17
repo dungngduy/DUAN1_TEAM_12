@@ -10,10 +10,9 @@
     if(isset($_GET['act']) && $_GET['act'] != ""){
         $act = $_GET['act'];
         switch($act){
-            // case "danhmuc":
-            //     $list_danhmuc = list_danhmuc();
-            //     include "view/home.php";
-            //     break;
+            case "dmsanpham":
+                include "view/details/shop-grid.php";
+                break;
             case "sanpham":
                 $sanphammoi = loadall_sanpham_top3();
                 include "view/sanpham.php";
@@ -32,9 +31,6 @@
             case "contact":
                 include "view/contact.php";
                 break;
-            case "dmsanpham":
-                include "view/details/shop-grid.php";
-                break;
             case "ctsanpham":
                 include "view/details/shop-details.php";
                 break;
@@ -43,6 +39,12 @@
                 break;
             case "login":
                 include "view/login/login.php";
+                break;
+            case "forget":
+                include "view/login/forget-pass.php";
+                break;
+            case "register":
+                include "view/login/register.php";
                 break;
         }
     }else{

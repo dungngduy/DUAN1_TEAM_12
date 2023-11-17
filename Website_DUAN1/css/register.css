@@ -2,18 +2,22 @@
     --success-color: #2691d9;
 }
 
-body{
+/* body{
     margin: 0;
     padding: 0;
     background-image: url(../img/anh_register.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
-}
-.container{
-    position: absolute;
+} */
+.register_form{
+    /* position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+    margin: 100px 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 1000px;
     height: 550px;
     border-radius: 5px;
@@ -85,14 +89,7 @@ body{
     padding: 5px 30px;
     border-radius: 30px;
 }
-.forget_and_login{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.forget_and_login a{
-    color: #343a40;
-    font-size: 16px;
-    font-weight: 500;
-    text-decoration: none;
+small{
+    color: #ff0000;
+    font-weight: 600;
 }

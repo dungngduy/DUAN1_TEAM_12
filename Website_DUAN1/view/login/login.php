@@ -33,8 +33,8 @@
                     <a href=""><button type="submit">Đăng nhập</button></a>
                 </div>
                 <div class="forget_and_register">
-                    <a href="">Quên mật khẩu</a>
-                    <a href="">Bạn chưa có tài khoản?</a>
+                    <a href="index.php?act=forget">Quên mật khẩu</a>
+                    <a href="index.php?act=register">Bạn chưa có tài khoản?</a>
                 </div>
             </form>
         </div>

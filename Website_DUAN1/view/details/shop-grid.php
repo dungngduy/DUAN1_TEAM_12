@@ -366,61 +366,38 @@
                     </div>
                 </div>
                 <div class="row">
-                    <?php
-                    foreach($list_sanpham as $list){
-                        extract($list);
+                    <?php 
+                        include "model/offset.php";
+                        $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] :1;
+                        $current_page = !empty($_GET['page']) ? $_GET['page'] :1;
+                        $offset = ($current_page - 1) * $item_per_page;
+                        $sql = mysqli_query($conn, "SELECT * FROM san_pham ORDER BY id ASC LIMIT ".$item_per_page." OFFSET ".$offset."");
+                        $total = mysqli_query($conn, "SELECT * FROM san_pham");
+                        $totalRecords = $total->num_rows;
+                        $totalPages = ceil($totalRecords / $item_per_page);
                         $linksp ="index.php?act=ctsanpham&idsp=".$id;
-                        $img_pro = $img_path . $img;
-                        echo "
-                        <div class='col-lg-4 col-md-6 col-sm-6'>
-                        <div class='product__item'>
-                            <div class='product__item__pic set-bg' data-setbg='" . $img_pro . "'>
-                                <ul class='product__item__pic__hover'>
-                                    <li><a href='#'><i class='fa fa-heart'></i></a></li>
-                                    <li><a href='#'><i class='fa fa-retweet'></i></a></li>
-                                    <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>
-                                </ul>
-                            </div>
-                            <div class='product__item__text'>
-                                <h6><a href='".$linksp."'>".$name."</a></h6>
-                                <h5>".$price."</h5>
-                            </div>
-                        </div>
-                    </div>
-                        ";
-                    }
                     ?>
+                    <?php
+                        while ($row = mysqli_fetch_array($sql)){
+                            $img_pro = $img_path . $row['img'];
+                    ?>  
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="<?=$img_pro; ?>">
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="<?=$linksp; ?>"><?=$row['name']; ?></a></h6>
+                                    <h5><?=$row['price']; ?></h5>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
                     <!-- <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                                <ul class="product__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Áo gió nam</a></h6>
-                                <h5>300.000</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                                <ul class="product__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Bộ quần áo MU</a></h6>
-                                <h5>300.000</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
                                 <ul class="product__item__pic__hover">
@@ -572,10 +549,31 @@
                     </div>        -->
                 </div>
                 <div class="product__pagination">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                    <?php
+                        if($current_page > 1){
+                            $prev_page = $current_page - 1;
+                    ?>      
+                        <a href="?act=dmsanpham&per_page=<?=$item_per_page; ?>&page=<?=$prev_page; ?>"><i class="fa fa-long-arrow-left"></i></a>
+                    <?php } ?>
+                    <?php
+                        for($num = 1; $num <= $totalPages; $num++){
+                    ?>
+                            <?php
+                                if($num != $current_page){
+                            ?>
+                                <?php if($num > $current_page - 2 && $num < $current_page + 2){ ?>
+                                    <a href="?act=dmsanpham&per_page=<?=$item_per_page; ?>&page=<?=$num; ?>"><?=$num; ?></a>
+                                <?php } ?>
+                            <?php }else{ ?>
+                                <a style="background-color: #343a40; color: #fff;" href="?act=dmsanpham&per_page=<?=$item_per_page; ?>&page=<?=$num; ?>"><?=$num; ?></a>
+                            <?php } ?>
+                    <?php } ?>
+                    <?php
+                        if($current_page < $totalPages + 1){
+                            $next_page = $current_page + 1;
+                    ?>      
+                        <a href="?act=dmsanpham&per_page=<?=$item_per_page; ?>&page=<?=$next_page; ?>"><i class="fa fa-long-arrow-right"></i></a>
+                    <?php } ?>
                 </div>
             </div>
         </div>

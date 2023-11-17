@@ -20,15 +20,15 @@
     <section class="product-details spad">
         <div class="container">
             <div class="row">
-             <?php extract($onesp) ?> 
+            <?php extract($onesp) ?> 
             <?php
                 $img_pro = $img_path . $img;
                     echo "
                     <div class='col-lg-6 col-md-6'>
                         <div class='product__details__pic'>
                             <div class='product__details__pic__item'>
-                                <div class='product__details__pic__item--large' data-setbg='" . $img_pro . "'>
-                                </div>
+                            <img class='product__details__pic__item--large'
+                                src='".$img_pro."' alt=''>
                             </div>
                         </div>
                     </div>

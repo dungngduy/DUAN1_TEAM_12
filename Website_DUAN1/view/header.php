@@ -59,6 +59,20 @@
         .humberger__menu__nav ul li a .header__menu__dropdown ul li a:active{
             text-decoration: none;
         }
+        .banner__pic{
+            height: 300px;
+            width: 540px;
+        }
+        .banner__pic img{
+            height: 100%;
+            width: 100%;
+        }
+        .product__discount__item__text a:hover{
+            text-decoration: none;
+        }
+        .sidebar__item a:hover{
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -71,7 +85,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo_new.png" alt=""></a>
+            <a href="index.php"><img src="img/logo_new.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -168,13 +182,13 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href=""><img src="img/logo_new.png" alt=""></a>
+                        <a href="index.php"><img src="img/logo_new.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="">Trang chủ</a></li>
+                            <li class="active"><a href="index.php">Trang chủ</a></li>
                             <li><a href="index.php?act=dmsanpham">Sản phẩm</a></li>
                             <li><a href="#">Trang</a>
                                 <ul class="header__menu__dropdown">

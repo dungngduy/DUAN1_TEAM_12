@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User</title>
-    <link rel="stylesheet" href="../../css/register.css">
+    <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
-    <div class="container">
+    <div class="register_form">
         <div class="img_fix">
-            <img src="../../img/register.jpg" alt="">
+            <img src="img/register.jpg" alt="">
         </div>
         <div class="register_box">
             <h3>ĐĂNG KÍ</h3>
@@ -37,13 +37,9 @@
                 <div class="btn_login">
                     <a href=""><button type="submit">Đăng kí</button></a>
                 </div>
-                <div class="forget_and_login">
-                    <a href="">Quên mật khẩu</a>
-                    <a href="">Đăng nhập</a>
-                </div>
             </form>
         </div>
     </div>
-    <script src="index.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
