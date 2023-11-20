@@ -4,8 +4,10 @@
     include "model/pdo.php";
     include "model/danhmuc.php";
     include "model/sanpham.php";
+    include "model/tintuc.php";
     $list_danhmuc = list_danhmuc();
     $list_sanpham = loadall_sanpham();
+    $list_tintuc = loadall_tintuc();
 
     if(isset($_GET['act']) && $_GET['act'] != ""){
         $act = $_GET['act'];
@@ -27,6 +29,18 @@
                     // extract($onesp);
                     include "view/details/shop-details.php";
                 } 
+                break;
+            // case "blog_details":
+            //     if(isset($_GET['idtt']) && $_GET['idtt'] > 0 ){
+            //         $id = $_GET['idtt'];
+            //         $onett = loadone_tintuc($id);
+            //         extract($onett);
+            //         include "view/details/blog-details.php";
+            //     }
+            //     break;
+            case "tintuc":
+                // $tintucmoi = load_top3_tintuc();
+                include "view/blog/blog.php";
                 break;
             case "giohang":
                 include "view/cart/cart.php";

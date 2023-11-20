@@ -73,6 +73,9 @@
         .sidebar__item a:hover{
             text-decoration: none;
         }
+        .blog__sidebar__recent__item__pic{
+            width: 100px;
+        }
     </style>
 </head>
 <body>
@@ -198,7 +201,7 @@
                                     <li><a href="index.php?act=blog_details">Chi tiết blog</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="index.php?act=tintuc">Blog</a></li>
                             <li><a href="index.php?act=contact">Liên hệ</a></li>
                         </ul>
                     </nav>

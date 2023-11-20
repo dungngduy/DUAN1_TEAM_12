@@ -133,7 +133,7 @@
                                             <div class='latest-product__item__pic' data-setbg='" . $img_pro . "'>
                                             </div>
                                             <div class='latest-product__item__text'>
-                                                <h6><a href='#'>".$name."</h6>
+                                                <h6><a href='index.php?act=ctsanpham'>".$name."</h6>
                                                 <span>".$price."</span>
                                             </div>
                                         </a>
@@ -213,6 +213,7 @@
                     foreach ($list_sanpham as $list) {
                     extract($list);
                     $img_pro = $img_path . $img;
+                    $linksp ="index.php?act=ctsanpham&idsp=".$id;
                     echo "
                     <div class='col-lg-4'>
                     <div class='product__discount__item'>
@@ -225,7 +226,7 @@
                     </ul>
                     </div>
                     <div class='product__discount__item__text'>
-                    <h5><a href='index.php?act=ctsanpham'>" . $name . "</a></h5>
+                    <h5><a href='$linksp'>" . $name . "</a></h5>
                     <div class='product__item__price'>" . $price . " <span>" . $price_old . "</span></div>
                     </div> 
                     </div>
