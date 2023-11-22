@@ -1,41 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Danh mục</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-    <div class="container">
+ <div class="container">
         <div class="mt-4">
         <h2>Danh sách bình luận</h2>
         <table class="table table-striped">
             <thead>
             <tr>
+                <th></th>
                 <th>STT</th>
                 <th>Tên người dùng </th>
                 <th>Nội dung bình luận</th>
                 <th> Ngày bình luận </th>
                 <th>Vai trò </th>
+                <th></th>
 
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>1</td>
-                <td>chihihi</td>
-                <td>09387743222</td>
-                <td>chihi@gamudn.com</td>
-                <td>
-                    <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Xóa</button>
+            <?php
+                        foreach ($listbinhluan as $binhluan){
+                            extract($binhluan);
+                            $xoabinhluan = "index.php?act=xoabinhluan&id=".$id;
+                            echo '<tr>
+                            <td><input type="checkbox" name="" id=""></td>
+                            <td>'.$id.'</td>
+                            <td>'.$noidung.'</td>
+                            <td>'.$id_user.'</td>
+                            <td>'.$id_pro.'</td>
+                            <td>'.$ngaybinhluan.'</td>
+                            <a href="'.$xoabinhluan.'"><input type="button" value="Xóa"></a></td>
+                        </tr>';
+                        }
+                    ?>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-</body>
-</html>
