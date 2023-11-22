@@ -72,11 +72,11 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Trang chủ</a></li>
-                <li><a href="./shop-grid.html">Danh mục</a></li>
-                <li><a href="">Sản phẩm</a></li>
-                <li><a href="./blog.html">Tài khoản</a></li>
-                <li><a href="">Bình luận</a></li>
+                <li class="active"><a href="index.php">Trang chủ</a></li>
+                <li><a href="index.php?act=adddm">Danh mục</a></li>
+                <li><a href="index.php?act=addsp">Sản phẩm</a></li>
+                <li><a href="index.php?act=dskh">Tài khoản</a></li>
+                <li><a href="index.php?act=dsbl">Bình luận</a></li>
                 <li><a href="">Thống kê</a></li>
             </ul>
         </nav>
@@ -144,11 +144,11 @@
                 <div class="col-lg-10">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Trang chủ</a></li>
-                            <li><a href="./shop-grid.html">Danh mục</a></li>
-                            <li><a href="">Sản phẩm</a></li>
-                            <li><a href="./blog.html">Tài khoản</a></li>
-                            <li><a href="">Bình luận</a></li>
+                            <li class="active"><a href="index.php">Trang chủ</a></li>
+                            <li><a href="index.php?act=adddm">Danh mục</a></li>
+                            <li><a href="index.php?act=addsp">Sản phẩm</a></li>
+                            <li><a href="index.php?act=dskh">Tài khoản</a></li>
+                            <li><a href="index.php?act=dsbl">Bình luận</a></li>
                             <li><a href="">Thống kê</a></li>
                         </ul>
                     </nav>

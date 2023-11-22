@@ -21,7 +21,7 @@
                             <?php
                                 foreach($list_danhmuc as $list){
                                     extract($list);
-                                    echo "<li><a>$name</a></li>";
+                                    echo "<li><a>".$name."</a></li>";
                                 }
                             ?>
                         </ul>
@@ -58,13 +58,13 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                <img class="d-block w-100" src="img/banner/banner3.jpeg" alt="First slide">
+                                <img class="d-block w-100" src="img/banner/banner3.png" alt="First slide">
                                 </div>
                                 <div class="carousel-item">
-                                <img class="d-block w-100" src="img/banner/banner4.jpeg" alt="Second slide">
+                                <img class="d-block w-100" src="img/banner/banner4.jpg" alt="Second slide">
                                 </div>
                                 <div class="carousel-item">
-                                <img class="d-block w-100" src="img/banner/banner5.jpeg" alt="Third slide">
+                                <img class="d-block w-100" src="img/banner/banner5.jpg" alt="Third slide">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

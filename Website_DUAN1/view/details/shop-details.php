@@ -1,13 +1,12 @@
-<!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Trang quần áo mùa đông</h2>
+                        <h2>Chi tiết sản phẩm</h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <a href="./index.html">Trang quần áo mùa đông</a>
+                            <a href="./index.php">Home</a>
                             <span>Chi tiết sản phẩm</span>
                         </div>
                     </div>
@@ -21,7 +20,53 @@
     <section class="product-details spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
+            <?php extract($onesp) ?> 
+            <?php
+                $img_pro = $img_path . $img;
+                    echo "
+                    <div class='col-lg-6 col-md-6'>
+                        <div class='product__details__pic'>
+                            <div class='product__details__pic__item'>
+                            <img class='product__details__pic__item--large'
+                                src='".$img_pro."' alt=''>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-lg-6 col-md-6'>
+                        <div class='product__details__text'>
+                            <h3>" . $name . "</h3>
+                            <div class='product__details__rating'>
+                                <i class='fa fa-star'></i>
+                                <i class='fa fa-star'></i>
+                                <i class='fa fa-star'></i>
+                                <i class='fa fa-star'></i>
+                                <i class='fa fa-star-half-o'></i>
+                                <span>(18k Lượt xem)</span>
+                            </div>
+                            <div class='product__details__price'>" . $price . "</div>
+                            <p>" . $mota . "</p>
+                            <div class='product__details__quantity'>
+                                <div class='quantity'>
+                                    <div class='pro-qty'>
+                                        <input type='text' value='1'>
+                                    </div>
+                                </div>
+                            </div><br><br>
+                            <a href='#' class='primary-btn'>Mua ngay</a>
+                            <a href='index.php?act=giohang' class='primary-btn'>Thêm vào giỏ hàng</a>
+                            <ul>
+                                <li><b>Khả dụng</b> <span>Trong kho</span></li>
+                                <li><b>Đang chuyển hàng</b> <span>1 ngày vận chuyển. <samp>Nhận hàng miễn phí ngay hôm nay</samp></span></li>
+                                <li><b>Cân nặng</b> <span>0.5 kg</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    ";
+                ?>
+
+
+
+                <!-- <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
@@ -75,7 +120,7 @@
                             <li><b>Cân nặng</b> <span>0.5 kg</span></li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-lg-12">
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
@@ -96,12 +141,17 @@
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
                                     <h6>Miêu tả</h6>
-                                    <p>Áo Khoác Jean Drafting All Black Basic là sự kết hợp hoàn hảo giữa phong cách 
+                                    <?php
+                            extract($onesp);
+                            echo "<p>".$mota."</p>
+                            ";
+                            ?>
+                                    <!-- <p>Áo Khoác Jean Drafting All Black Basic là sự kết hợp hoàn hảo giữa phong cách 
                                         đương đại và sự thoải mái. Với thiết kế màu đen đơn giản và tối màu, sản phẩm này 
                                         là lựa chọn hoàn hảo cho những ngày se lạnh hoặc để tạo điểm nhấn cho trang phục của bạn.
                                         Áo khoác jean với cổ cài nút giúp bạn thể hiện phong cách cổ điển và cá nhân hóa, túi hai
                                         bên đựng đồ cá nhân và giữ tay ấm. Thiết kế rã rập đem đến hơi hướng sáng tạo đột phá, 
-                                        không theo lối mòn.</p>
+                                        không theo lối mòn.</p> -->
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
@@ -149,7 +199,31 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <?php
+                    foreach($sanpham_cungloai as $sanpham_cungloai){
+                        extract($sanpham_cungloai);
+                        $img_pro = $img_path . $img;
+                        echo "
+                        <div class='col-lg-3 col-md-4 col-sm-6'>
+                        <div class='product__item'>
+                        <div class='product__item__pic set-bg' data-setbg='" . $img_pro . "'>
+                            <ul class='product__item__pic__hover'>
+                                <li><a href='#'><i class='fa fa-heart'></i></a></li>
+                                <li><a href='#'><i class='fa fa-retweet'></i></a></li>
+                                <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>
+                            </ul>
+                        </div>
+                        <div class='product__item__text'>
+                            <h6><a href='index.php?act=ctsanpham'>".$name."</a></h6>
+                            <h5>".$price."</h5>
+                        </div>
+                    </div>
+                </div>
+                        ";
+                    }
+                    
+                ?>
+                <!-- <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
                             <ul class="product__item__pic__hover">
@@ -208,7 +282,7 @@
                             <h5>150.000 VND</h5>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

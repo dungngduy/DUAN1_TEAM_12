@@ -15,36 +15,47 @@
         <table class="table table-striped">
         <thead>
             <tr>
-            <th>STT</th>
-            <th>Tên sản phẩm</th>
-            <th>Hình </th>
-            <th>Giá </th>
-            <th>mô tả </th>
-            <th>Lượt xem </th>
-            <th>Vai Trò </th>
+                <th></th>
+                <th>STT</th>
+                <th>TÊN SẢN PHẨM</th>
+                <th>HÌNH</th>
+                <th>GIÁ</th>
+                <th>MÔ TẢ</th>
+                <th>NGÀY NHẬP</th>
+                <th>LƯỢT XEM</th>
+                <th>VAI TRÒ</th>
             </tr>
+            <?php
+            foreach ($listsp as $sp) {
+                extract($sp);
+                $suasp = "index.php?act=suasp&id=" . $id;
+                $xoasp = "index.php?act=xoasp&id=" . $id;
+                $hinhpath = "../upload/" . $img;
+                if (isset($hinhpath)) {
+                    $hinh = "<img src = '" . $hinhpath . "' height = '80'>";
+                } else {
+                    $hinh = "No photo";
+                }
+                echo '<tr>
+                            <td><input type="checkbox" name="" id=""></td>
+                            <td>' . $id . '</td>
+                            <td>' . $name . '</td>
+                            <td>' . $hinh . '</td>
+                            <td>' . $price . '</td>
+                            <td>' . $mota . '</td>
+                            <td>' . $ngaynhapkhau . '</td>
+                            <td>' . $luotxem . '</td>
+                            <td><a href="' . $suasp . '"><input type="button" value="Sửa"></a>
+                            <a href="' . $xoasp . '"><input type="button" value="Xóa"></a></td>
+                        </tr>';
+            }
+            ?>
         </thead>
-        <tbody>
-            <tr>
-            <td>1</td>
-            <td>BALO</td>
-            <td></td>
-            <td>10$</td>
-            <td>Đẹp lắm</td>
-            <td></td>
-            <td>
-                <button class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</button>
-                <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Xóa</button>
-            </td>
-            </tr>
-        </tbody>
         </table>
         <button class="btn btn-primary"><i class="fas fa-edit"></i>Chọn tất cả</button>
         <button class="btn btn-primary"><i class="fas fa-edit"></i>Bỏ chọn tất cả</button>
-        <a href=""><button class="btn btn-primary"><i class="fas fa-edit"></i>Thêm sản phẩm</button></a>
+        <a href="index.php?act=addsp"><button class="btn btn-primary"><i class="fas fa-edit"></i>Thêm sản phẩm</button></a>
     </div>
-    <div class="jumbotron text-center" style="margin-bottom:0">
-        <p>Footer</p>
-    </div>
+    <br><br>
 </body>
 </html>

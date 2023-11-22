@@ -9,7 +9,32 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
+               <?php
+                    foreach ($list_tintuc as $tintucmoi){
+                        extract($tintucmoi);
+                        $img_pro = $img_path . $img;
+                        echo "
+                        <div class='col-lg-4 col-md-4 col-sm-6'>
+                    <div class='blog__item'>
+                        <div class='blog__item__pic'>
+                            <img src='".$img_pro."' alt=''>
+                        </div>
+                        <div class='blog__item__text'>
+                            <ul>
+                                <li><i class='fa fa-calendar-o'></i>".$ngaydang."</li>
+                                <li><i class='fa fa-comment-o'></i> 5</li>
+                            </ul>
+                            <h5><a href='#'>
+                               ".$tieude."
+                            </a></h5>
+                            <p>".$noidung." </p>
+                        </div>
+                    </div>
+                </div>
+                        ";
+                    }
+               ?>
+                <!-- <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
                             <img src="img/blog/blog-1.jpg" alt="">
@@ -59,7 +84,7 @@
                             <p>Hãy mặc theo phong cách của bạn </p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

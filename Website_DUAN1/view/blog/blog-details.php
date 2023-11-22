@@ -85,6 +85,49 @@
                         </div>
                     </div>
                 </div>
+                <!-- <?php
+                extract($onett);
+                $img_pro = $img_path . $img;
+                echo "
+                <div class='col-lg-8 col-md-7 order-md-1 order-1'>
+                    <div class='blog__details__text'>
+                        <img src='".$img_pro."' alt=''>
+                        <p>".$noidung."</p>
+                    </div>
+                    <div class='blog__details__content'>
+                        <div class='row'>
+                            <div class='col-lg-6'>
+                                <div class='blog__details__author'>
+                                    <div class='blog__details__author__pic'>
+                                        <img src='img/blog/details/details-author.jpg' alt=''>
+                                    </div>
+                                    <div class='blog__details__author__text'>
+                                        <h6>Nguyễn Đức Chung</h6>
+                                        <span>Admin</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-lg-6'>
+                                <div class='blog__details__widget'>
+                                    <ul>
+                                        <li><span>Thể loại:</span> Phong cách</li>
+                                        <li><span>Tags:</span>Thời trang hiện nay, Phong cách, Sắc đẹp, Áo khoác, Quần áo thể thao, Áo mùa hè </li>
+                                    </ul>
+                                    <div class='blog__details__social'>
+                                        <a href'#'><i class='fa fa-facebook'></i></a>
+                                        <a href='#'><i class='fa fa-twitter'></i></a>
+                                        <a href='#'><i class='fa fa-google-plus'></i></a>
+                                        <a href='#'><i class='fa fa-linkedin'></i></a>
+                                        <a href='#'><i class='fa fa-envelope'></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                ";
+
+                ?> -->
                 <div class="col-lg-8 col-md-7 order-md-1 order-1">
                     <div class="blog__details__text">
                         <img src="img/blog/details/details-pic.jpg" alt="">

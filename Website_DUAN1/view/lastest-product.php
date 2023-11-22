@@ -7,7 +7,24 @@
                         <h4>Sản phẩm mới nhất</h4>
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
+                                <?php
+                                    foreach($list_sanpham as $sanphammoi){
+                                        extract($sanphammoi);
+                                        $img_pro = $img_path . $img;
+                                        echo"
+                                        <a href='#' class='latest-product__item'>
+                                        <div class='latest-product__item__pic'>
+                                        <img src='".$img_pro."' alt=''>
+                                        </div>
+                                        <div class='latest-product__item__text'>
+                                        <h6>"."$name"."</h6>
+                                        <span>".$price."</span>
+                                        </div>
+                                </a>
+                                        ";
+                                    }
+                                ?>
+                                <!-- <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="img/latest-product/lp-1.jpg" alt="">
                                     </div>
@@ -33,10 +50,27 @@
                                         <h6>Áo thể thao</h6>
                                         <span>120.000</span>
                                     </div>
-                                </a>
+                                </a> -->
                             </div>
                             <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
+                            <?php
+                                    foreach($list_sanpham as $sanphammoi){
+                                        extract($sanphammoi);
+                                        $img_pro = $img_path . $img;
+                                        echo"
+                                        <a href='#' class='latest-product__item'>
+                                        <div class='latest-product__item__pic'>
+                                        <img src='".$img_pro."' alt=''>
+                                        </div>
+                                        <div class='latest-product__item__text'>
+                                        <h6>"."$name"."</h6>
+                                        <span>".$price."</span>
+                                        </div>
+                                </a>
+                                        ";
+                                    }
+                                ?>
+                                <!-- <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="img/latest-product/lp-1.jpg" alt="">
                                     </div>
@@ -62,7 +96,7 @@
                                         <h6>Áo thể thao</h6>
                                         <span>120.000</span>
                                     </div>
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </div>
@@ -72,7 +106,24 @@
                         <h4>Sản phẩm bán chạy</h4>
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
+                                <?php
+                                     foreach($list_sanpham as $sanphammoi){
+                                        extract($sanphammoi);
+                                        $img_pro = $img_path . $img;
+                                        echo "
+                                        <a href='#' class='latest-product__item'>
+                                        <div class='latest-product__item__pic'>
+                                        <img src='".$img_pro."' alt=''>
+                                        </div>
+                                        <div class='latest-product__item__text'>
+                                        <h6>".$name."</h6>
+                                        <span>".$price."</span>
+                                        </div>
+                                </a>
+                                        ";
+                                     }
+                                ?>
+                                <!-- <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="img/latest-product/lp-1.jpg" alt="">
                                     </div>
@@ -98,10 +149,27 @@
                                         <h6>Áo thể thao</h6>
                                         <span>120.000</span>
                                     </div>
-                                </a>
+                                </a> -->
                             </div>
                             <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
+                            <?php
+                                     foreach($list_sanpham as $sanphammoi){
+                                        extract($sanphammoi);
+                                        $img_pro = $img_path . $img;
+                                        echo "
+                                        <a href='#' class='latest-product__item'>
+                                        <div class='latest-product__item__pic'>
+                                        <img src='".$img_pro."' alt=''>
+                                        </div>
+                                        <div class='latest-product__item__text'>
+                                        <h6>".$name."</h6>
+                                        <span>".$price."</span>
+                                        </div>
+                                </a>
+                                        ";
+                                     }
+                                ?>
+                                <!-- <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="img/latest-product/lp-1.jpg" alt="">
                                     </div>
@@ -127,7 +195,7 @@
                                         <h6>Áo thể thao</h6>
                                         <span>120.000</span>
                                     </div>
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </div>
@@ -137,7 +205,23 @@
                         <h4>Sản phẩm giới hạn</h4>
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
+                                <?php
+                                    foreach ($list_sanpham as $sanphammoi)
+                                    extract($sanphammoi);
+                                    $img_pro = $img_path . $img;
+                                    echo "
+                                    <a href='#' class='latest-product__item'>
+                                    <div class='latest-product__item__pic'>
+                                        <img src='".$img_pro."' alt=''>
+                                    </div>
+                                    <div class='latest-product__item__text'>
+                                        <h6>".$name."</h6>
+                                        <span>".$price."</span>
+                                    </div>
+                                </a>
+                                    ";
+                                ?>
+                                <!-- <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="img/latest-product/lp-1.jpg" alt="">
                                     </div>
@@ -163,10 +247,26 @@
                                         <h6>Áo thể thao</h6>
                                         <span>120.000</span>
                                     </div>
-                                </a>
+                                </a> -->
                             </div>
                             <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
+                            <?php
+                                    foreach ($list_sanpham as $sanphammoi)
+                                    extract($sanphammoi);
+                                    $img_pro = $img_path . $img;
+                                    echo "
+                                    <a href='#' class='latest-product__item'>
+                                    <div class='latest-product__item__pic'>
+                                        <img src='".$img_pro."' alt=''>
+                                    </div>
+                                    <div class='latest-product__item__text'>
+                                        <h6>".$name."</h6>
+                                        <span>".$price."</span>
+                                    </div>
+                                </a>
+                                    ";
+                                ?>
+                                <!-- <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="img/latest-product/lp-1.jpg" alt="">
                                     </div>
@@ -192,7 +292,7 @@
                                         <h6>Áo thể thao</h6>
                                         <span>120.000</span>
                                     </div>
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </div>
