@@ -10,6 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+<body>
     <div class="container">
         <h2>Sản Phẩm</h2>      
         <table class="table table-striped">
@@ -18,7 +19,7 @@
                 <th></th>
                 <th>STT</th>
                 <th>TÊN SẢN PHẨM</th>
-                <th>HÌNH</th>
+                <th>Màu</th>
                 <th>GIÁ</th>
                 <th>MÔ TẢ</th>
                 <th>NGÀY NHẬP</th>
@@ -37,13 +38,13 @@
                     $hinh = "No photo";
                 }
                 echo '<tr>
-                        <td><input type="checkbox" name="" id=""></td>
-                        <td>' . $id_ctsp . '</td>
-                        <td>' . $id_sp . '</td>
-                        <td>' . $color . '</td>
-                        <td>' . $size . '</td>
-                        <td>' . $soluong . '</td>
-                    </tr>';
+                <td><input type="checkbox" name="" id=""></td>
+                <td>' . $id_ctsp . '</td>
+                <td>' . $id_sp . '</td>
+                <td>' . $color . '</td>
+                <td>' . $size . '</td>
+                <td>' . $soluong . '</td>
+            </tr>';
             }
             ?>
         </thead>
