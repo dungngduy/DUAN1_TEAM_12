@@ -24,16 +24,6 @@
         $listsp = pdo_query($sql);
         return $listsp;
     }
-    function load_ten_dm($iddm){
-        if($iddm > 0){
-            $sql = "SELECT * FROM danh_muc WHERE id = '".$iddm."'";
-            $dm =pdo_query_one($sql);
-            extract($dm);
-            return $name;
-        }else{
-            return "";
-        }
-    }
     function loadone_sanpham($id){
         $sql = "SELECT * FROM san_pham WHERE id= $id ";
         $sp = pdo_query_one($sql);
@@ -51,13 +41,6 @@
         $sql = "SELECT * FROM san_pham ORDER BY id DESC";
         $listsp = pdo_query($sql);
         return $listsp;
-    }
-    
-
-    function loadall_sanpham_top3(){
-        $sql= "select * from san_pham where 1 order by id desc limit 0.3";
-        $list_sanpham = pdo_query($sql);
-        return $list_sanpham;
     }
 
     function loadone_chitietsp($id){
