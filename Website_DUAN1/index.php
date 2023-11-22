@@ -29,14 +29,15 @@
                     include "view/details/shop-details.php";
                 } 
                 break;
-            // case "blog_details":
-            //     if(isset($_GET['idtt']) && $_GET['idtt'] > 0 ){
-            //         $id = $_GET['idtt'];
-            //         $onett = loadone_tintuc($id);
-            //         extract($onett);
-            //         include "view/details/blog-details.php";
-            //     }
-            //     break;
+            case "blog_details":
+                if(isset($_GET['idtt']) && $_GET['idtt'] > 0 ){
+                    $id = $_GET['idtt'];
+                    // var_dump($id);
+                    $onett = loadone_tintuc($id);
+                    extract($onett);
+                    include "view/blog/blog-details.php";
+                }
+                break;
             case "tintuc":
                 // $tintucmoi = load_top3_tintuc();
                 include "view/blog/blog.php";
