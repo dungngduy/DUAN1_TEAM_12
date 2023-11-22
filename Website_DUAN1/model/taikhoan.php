@@ -1,7 +1,7 @@
 <?php
 function loadall_taikhoan()
 {
-    $sql = "SELECT * FROM tài_khoan ORDER BY id DESC";
+    $sql = "SELECT * FROM tai_khoan ORDER BY id DESC";
     $listtaikhoan = pdo_query($sql);
     return $listtaikhoan;
 }

@@ -17,10 +17,10 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Product Details Section Begin -->
+    <?php extract($onesp); ?> 
     <section class="product-details spad">
         <div class="container">
             <div class="row">
-            <?php extract($onesp) ?> 
             <?php
                 $img_pro = $img_path . $img;
                     echo "
@@ -41,7 +41,7 @@
                                 <i class='fa fa-star'></i>
                                 <i class='fa fa-star'></i>
                                 <i class='fa fa-star-half-o'></i>
-                                <span>(18k Lượt xem)</span>
+                                <span>(".$luotxem.")</span>
                             </div>
                             <div class='product__details__price'>" . $price . "</div>
                             <p>" . $mota . "</p>
@@ -141,17 +141,7 @@
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
                                     <h6>Miêu tả</h6>
-                                    <?php
-                            extract($onesp);
-                            echo "<p>".$mota."</p>
-                            ";
-                            ?>
-                                    <!-- <p>Áo Khoác Jean Drafting All Black Basic là sự kết hợp hoàn hảo giữa phong cách 
-                                        đương đại và sự thoải mái. Với thiết kế màu đen đơn giản và tối màu, sản phẩm này 
-                                        là lựa chọn hoàn hảo cho những ngày se lạnh hoặc để tạo điểm nhấn cho trang phục của bạn.
-                                        Áo khoác jean với cổ cài nút giúp bạn thể hiện phong cách cổ điển và cá nhân hóa, túi hai
-                                        bên đựng đồ cá nhân và giữ tay ấm. Thiết kế rã rập đem đến hơi hướng sáng tạo đột phá, 
-                                        không theo lối mòn.</p> -->
+                                    <p><?=$mota; ?></p>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
@@ -175,10 +165,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Đánh giá</h6>
-                                    <p>Sản phẩm mặc rất ưng ý. Giao hàng đúng thời hạn.</p>
-                                </div>
+                                <iframe src="view/comment/form-comment.php?idpro=<?php echo $id; ?>" frameborder="0" width="100%" min-height="300px"></iframe>
                             </div>
                         </div>
                     </div>
@@ -203,86 +190,26 @@
                     foreach($sanpham_cungloai as $sanpham_cungloai){
                         extract($sanpham_cungloai);
                         $img_pro = $img_path . $img;
+                        $link = "index.php?act=ctsanpham&idsp=" . $id;
                         echo "
                         <div class='col-lg-3 col-md-4 col-sm-6'>
-                        <div class='product__item'>
-                        <div class='product__item__pic set-bg' data-setbg='" . $img_pro . "'>
-                            <ul class='product__item__pic__hover'>
-                                <li><a href='#'><i class='fa fa-heart'></i></a></li>
-                                <li><a href='#'><i class='fa fa-retweet'></i></a></li>
-                                <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>
-                            </ul>
+                            <div class='product__item'>
+                                <div class='product__item__pic set-bg' data-setbg='" . $img_pro . "'>
+                                    <ul class='product__item__pic__hover'>
+                                        <li><a href='#'><i class='fa fa-heart'></i></a></li>
+                                        <li><a href='#'><i class='fa fa-retweet'></i></a></li>
+                                        <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class='product__item__text'>
+                                    <h6><a href='".$link."'>".$name."</a></h6>
+                                    <h5>".$price."</h5>
+                                </div>
+                            </div>
                         </div>
-                        <div class='product__item__text'>
-                            <h6><a href='index.php?act=ctsanpham'>".$name."</a></h6>
-                            <h5>".$price."</h5>
-                        </div>
-                    </div>
-                </div>
                         ";
-                    }
-                    
+                    } 
                 ?>
-                <!-- <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Áo khoác gió</a></h6>
-                            <h5>200.000 VND</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Áo khoác giữ nhiệt</a></h6>
-                            <h5>400.000 VND</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Áo gucci</a></h6>
-                            <h5>200.000 VND</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Áo dài</a></h6>
-                            <h5>150.000 VND</h5>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>

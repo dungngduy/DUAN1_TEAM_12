@@ -25,7 +25,7 @@
         ?>
 
     </table>
-    <button class="btn btn-primary"><i class="fas fa-edit"></i>Chọn tất cả</button>
-    <button class="btn btn-primary"><i class="fas fa-edit"></i>Bỏ chọn tất cả</button>
-    <a href="index.php?act=adddm"><button class="btn btn-primary"><i class="fas fa-edit"></i>Thêm danh mục</button></a>
+    <button class="btn btn-primary">Chọn tất cả</button>
+    <button class="btn btn-primary">Bỏ chọn tất cả</button>
+    <a href="index.php?act=adddm"><button class="btn btn-primary">Thêm danh mục</button></a>
 </div>

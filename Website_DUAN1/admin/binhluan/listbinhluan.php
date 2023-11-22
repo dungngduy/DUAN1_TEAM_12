@@ -6,10 +6,10 @@
             <tr>
                 <th></th>
                 <th>STT</th>
-                <th>Tên người dùng </th>
                 <th>Nội dung bình luận</th>
-                <th> Ngày bình luận </th>
-                <th>Vai trò </th>
+                <th>Tài khoản bình luận</th>
+                <th>Tên tài khoản</th>
+                <th>Ngày bình luận</th>
                 <th></th>
 
             </tr>
@@ -17,21 +17,21 @@
             <tbody>
             <tr>
             <?php
-                        foreach ($listbinhluan as $binhluan){
-                            extract($binhluan);
-                            $xoabinhluan = "index.php?act=xoabinhluan&id=".$id;
-                            echo '<tr>
-                            <td><input type="checkbox" name="" id=""></td>
-                            <td>'.$id.'</td>
-                            <td>'.$noidung.'</td>
-                            <td>'.$id_user.'</td>
-                            <td>'.$id_pro.'</td>
-                            <td>'.$ngaybinhluan.'</td>
-                            <a href="'.$xoabinhluan.'"><input type="button" value="Xóa"></a></td>
-                        </tr>';
-                        }
-                    ?>
-                </td>
+                foreach ($listbinhluan as $binhluan){
+                    extract($binhluan);
+                    $xoabinhluan = "index.php?act=xoabinhluan&id=".$id;
+                    echo '<tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>'.$id.'</td>
+                    <td>'.$noidung.'</td>
+                    <td>'.$user.'</td>
+                    <td>'.$name.'</td>
+                    <td>'.$ngaybinhluan.'</td>
+                    <td><a href="'.$xoabinhluan.'"><input type="button" value="Xóa"></a></td>
+                </tr>';
+                }
+            ?>
+            </td>
             </tr>
             </tbody>
         </table>

@@ -36,10 +36,5 @@ function formValidate(){
         errorConfirmPass.innerHTML = "";
     }
 
-    if(user && email && pass && cfPass == pass){
-        alert("Đăng kí thành công!");
-        window.location.href = "http://localhost/PRO1014_WD18324/DUAN1_TEAM_12/Website_DUAN1/index.php?act=login";
-    }
-
     return false;
 }

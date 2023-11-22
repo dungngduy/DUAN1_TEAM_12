@@ -125,48 +125,41 @@
                             <div class="latest-product__slider owl-carousel">
                                 <div class="latest-prdouct__slider__item">
                                     <?php
-                                         foreach ($list_sanpham as $sanphammoi) {
-                                            extract($sanphammoi);
-                                            $img_pro = $img_path . $img;
+                                        foreach ($list_danhmuc as $dm) {
+                                            extract($dm);
+                                            $img_new = $img_path . $img;
                                             echo"
-                                            <a href='#' class='latest-product__item'>
-                                            <div class='latest-product__item__pic' data-setbg='" . $img_pro . "'>
-                                            </div>
-                                            <div class='latest-product__item__text'>
-                                                <h6><a href='index.php?act=ctsanpham'>".$name."</h6>
-                                                <span>".$price."</span>
-                                            </div>
-                                        </a>
+                                            <a href='#' class=latest-product__item'>
+                                                <div class='latest-product__item__pic'>
+                                                    <img src='".$img_new."' alt=''>
+                                                </div>
+                                                <div class='latest-product__item__text'>
+                                                    <h6>".$name."</h6>
+                                                    <span></span>
+                                                </div>
+                                            </a>
                                             ";
-                                         }
+                                        }
                                     ?>
-                                    <!-- <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-1.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Áo khoác</h6>
-                                            <span>300.000</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-2.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Áo phông</h6>
-                                            <span>200.000</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-3.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Áo vest</h6>
-                                            <span>500.000</span>
-                                        </div>
-                                    </a> -->
+                                </div>
+                                <div class="latest-prdouct__slider__item">
+                                    <?php
+                                        foreach ($list_danhmuc as $dm) {
+                                            extract($dm);
+                                            $img_new = $img_path . $img;
+                                            echo"
+                                            <a href='#' class=latest-product__item'>
+                                                <div class='latest-product__item__pic'>
+                                                    <img src='".$img_new."' alt=''>
+                                                </div>
+                                                <div class='latest-product__item__text'>
+                                                    <h6>".$name."</h6>
+                                                    <span></span>
+                                                </div>
+                                            </a>
+                                            ";
+                                        }
+                                    ?>
                                 </div>
                                 <!-- <div class="latest-prdouct__slider__item">
                                     <a href="#" class="latest-product__item">
@@ -210,27 +203,26 @@
                     <div class="row">  
                     <?php
                     echo "<div class='product__discount__slider owl-carousel'>";
-                    foreach ($list_sanpham as $list) {
-                    extract($list);
-                    $img_pro = $img_path . $img;
-                    $linksp ="index.php?act=ctsanpham&idsp=".$id;
-                    echo "
-                    <div class='col-lg-4'>
-                    <div class='product__discount__item'>
-                    <div class='product__discount__item__pic set-bg' data-setbg='" . $img_pro . "'>
-                    <div class='product__discount__percent'>-20%</div>
-                    <ul class='product__item__pic__hover'>
-                    <li><a href='#'><i class='fa fa-heart'></i></a></li>
-                    <li><a href='#'><i class='fa fa-retweet'></i></a></li>
-                    <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>
-                    </ul>
-                    </div>
-                    <div class='product__discount__item__text'>
-                    <h5><a href='$linksp'>" . $name . "</a></h5>
-                    <div class='product__item__price'>" . $price . " <span>" . $price_old . "</span></div>
-                    </div> 
-                    </div>
-                    </div>";
+                    foreach ($list_sp_discount as $list) {
+                        extract($list);
+                        $img_pro = $img_path . $img;
+                        echo "
+                        <div class='col-lg-4'>
+                            <div class='product__discount__item'>
+                                <div class='product__discount__item__pic set-bg' data-setbg='" . $img_pro . "'>
+                                    <div class='product__discount__percent'>-20%</div>
+                                        <ul class='product__item__pic__hover'>
+                                            <li><a href='#'><i class='fa fa-heart'></i></a></li>
+                                            <li><a href='#'><i class='fa fa-retweet'></i></a></li>
+                                            <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class='product__discount__item__text'>
+                                        <h5><a href='index.php?act=ctsanpham'>" . $name . "</a></h5>
+                                        <div class='product__item__price'>" . $price . " <span>" . $price_old . "</span></div>
+                                        </div> 
+                                    </div>
+                                </div>";
                     }
                     echo "</div>";
                     ?>        
@@ -376,15 +368,15 @@
                         $total = mysqli_query($conn, "SELECT * FROM san_pham");
                         $totalRecords = $total->num_rows;
                         $totalPages = ceil($totalRecords / $item_per_page);
-                        $linksp ="index.php?act=ctsanpham&idsp=".$id;
                     ?>
                     <?php
-                        while ($row = mysqli_fetch_array($sql)){
+                        while($row = mysqli_fetch_array($sql)){
                             $img_pro = $img_path . $row['img'];
-                    ?>  
+                                $link_sp = "index.php?act=ctsanpham&idsp=" . $row['id'];
+                    ?>
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="<?=$img_pro; ?>">
+                                <div class="product__item__pic set-bg" data-setbg="<?=$img_pro ?>">
                                     <ul class="product__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -392,28 +384,13 @@
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6><a href="<?=$linksp; ?>"><?=$row['name']; ?></a></h6>
-                                    <h5><?=$row['price']; ?></h5>
+                                    <h6><a href="<?=$link_sp ?>"><?=$name ?></a></h6>
+                                    <h5><?=$price ?></h5>
                                 </div>
                             </div>
                         </div>
                     <?php } ?>
                     <!-- <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                                <ul class="product__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Áo phông</a></h6>
-                                <h5>300.000</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
                                 <ul class="product__item__pic__hover">

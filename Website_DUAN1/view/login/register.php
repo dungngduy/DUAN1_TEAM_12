@@ -13,33 +13,49 @@
         </div>
         <div class="register_box">
             <h3>ĐĂNG KÍ</h3>
-            <form action="" onsubmit="return formValidate();">
+            <form action="index.php?act=register" onsubmit="return formValidate();" method="post">
                 <div class="input_box">
-                    <input id="username" type="text" name="" placeholder="Tên tài khoản">
+                    <input id="username" type="text" name="user" placeholder="Tên tài khoản">
                     <span></span>
-                    <small id="errorName"></small>
+                    <?php
+                        if(isset($errorUser) && $errorUser != ""){
+                            echo "<small style='color:red;'>".$errorUser."</small>";
+                        }
+                    ?>
                 </div>
                 <div class="input_box">
-                    <input id="email" type="email" name="" placeholder="Email">
+                    <input id="email" type="email" name="email" placeholder="Email">
                     <span></span>
-                    <small id="errorEmail"></small>
+                    <small></small>
+                    <?php
+                        if(isset($errorEmail) && $errorEmail != ""){
+                            echo "<small style='color:red;'>".$errorEmail."</small>";
+                        }
+                    ?>
                 </div>
                 <div class="input_box">
-                    <input id="password" type="pass" name="" placeholder="Mật khẩu">
+                    <input id="password" type="password" name="pass" placeholder="Mật khẩu">
                     <span></span>
-                    <small id="errorPass"></small>
+                    <?php
+                        if(isset($errorPass) && $errorPass != ""){
+                            echo "<small style='color:red;'>".$errorPass."</small>";
+                        }
+                    ?>
                 </div>
                 <div class="input_box">
-                    <input id="confirm-password" type="pass" name="" placeholder="Nhập lại mật khẩu">
+                    <input id="confirm-password" type="password" name="repass" placeholder="Nhập lại mật khẩu">
                     <span></span>
-                    <small id="errorConfirmPass"></small>
+                    <?php
+                        if(isset($errorRepass) && $errorRepass != ""){
+                            echo "<small style='color:red;'>".$errorRepass."</small>";
+                        }
+                    ?>
                 </div>
-                <div class="btn_login">
-                    <a href=""><button type="submit">Đăng kí</button></a>
+                <div class="btn_register">
+                    <a href=""><button type="submit" name="submit">Đăng kí</button></a>
                 </div>
             </form>
         </div>
     </div>
-    <script src="js/index.js"></script>
 </body>
 </html>

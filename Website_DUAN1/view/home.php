@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="categories__slider owl-carousel">
                     <?php
-                        foreach($list_sanpham as $list){
+                        foreach($list_danhmuc as $list){
                             extract($list);
                             $img_pro = $img_path . $img;
                             echo "
@@ -101,26 +101,6 @@
                             ";
                         }
                     ?>
-                    <!-- <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="img/categories/cat-2.jpg">
-                            <h5><a href="#">Dried Fruit</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="img/categories/cat-3.jpg">
-                            <h5><a href="#">Vegetables</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="img/categories/cat-4.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="img/categories/cat-5.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -154,7 +134,7 @@
         </div>
         <div class="row featured__filter">
             <?php
-                foreach($list_sanpham as $list){
+                foreach($list_sp_discount as $list){
                     extract($list);
                     $img_pro_main = $img_path . $img;
                     echo "

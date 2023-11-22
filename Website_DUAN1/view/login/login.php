@@ -18,20 +18,24 @@
         </div>
         <div class="login_box">
             <h3>ĐĂNG NHẬP</h3>
-            <form action="">
+            <form action="index.php?act=login" method="post">
                 <div class="input_box">
-                    <input id="userLogin" type="text" name="" placeholder="Tên đăng nhập">
+                    <input id="userLogin" type="text" name="user" placeholder="Tên đăng nhập">
                     <span></span>
                     <small id="errorUserLogin"></small>
                 </div>
                 <div class="input_box">
-                    <input id="passLogin" type="pass" name="" placeholder="Mật khẩu">
+                    <input id="passLogin" type="pass" name="pass" placeholder="Mật khẩu">
                     <span></span>
                     <small id="errorPassLogin"></small>
                 </div>
                 <div class="btn_login">
-                    <a href=""><button type="submit">Đăng nhập</button></a>
+                    <a href=""><button type="submit" name="submit">Đăng nhập</button></a>
                 </div>
+                <?php if(isset($error) && $error != ""){
+                    echo "<h6 style='color: red;'>".$error."</h6>";
+                }
+                ?>
                 <div class="forget_and_register">
                     <a href="index.php?act=forget">Quên mật khẩu</a>
                     <a href="index.php?act=register">Bạn chưa có tài khoản?</a>

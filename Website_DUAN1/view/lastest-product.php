@@ -8,8 +8,8 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                                 <?php
-                                    foreach($list_sanpham as $sanphammoi){
-                                        extract($sanphammoi);
+                                    foreach($list_danhmuc as $dm){
+                                        extract($dm);
                                         $img_pro = $img_path . $img;
                                         echo"
                                         <a href='#' class='latest-product__item'>
@@ -18,7 +18,7 @@
                                         </div>
                                         <div class='latest-product__item__text'>
                                         <h6>"."$name"."</h6>
-                                        <span>".$price."</span>
+                                        <span>300.000đ</span>
                                         </div>
                                 </a>
                                         ";
@@ -54,8 +54,8 @@
                             </div>
                             <div class="latest-prdouct__slider__item">
                             <?php
-                                    foreach($list_sanpham as $sanphammoi){
-                                        extract($sanphammoi);
+                                    foreach($list_danhmuc as $dm){
+                                        extract($dm);
                                         $img_pro = $img_path . $img;
                                         echo"
                                         <a href='#' class='latest-product__item'>
@@ -64,7 +64,7 @@
                                         </div>
                                         <div class='latest-product__item__text'>
                                         <h6>"."$name"."</h6>
-                                        <span>".$price."</span>
+                                        <span>300.000đ</span>
                                         </div>
                                 </a>
                                         ";
@@ -107,8 +107,8 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                                 <?php
-                                     foreach($list_sanpham as $sanphammoi){
-                                        extract($sanphammoi);
+                                     foreach($list_danhmuc as $dm){
+                                        extract($dm);
                                         $img_pro = $img_path . $img;
                                         echo "
                                         <a href='#' class='latest-product__item'>
@@ -117,7 +117,7 @@
                                         </div>
                                         <div class='latest-product__item__text'>
                                         <h6>".$name."</h6>
-                                        <span>".$price."</span>
+                                        <span>300.000đ</span>
                                         </div>
                                 </a>
                                         ";
@@ -153,8 +153,8 @@
                             </div>
                             <div class="latest-prdouct__slider__item">
                             <?php
-                                     foreach($list_sanpham as $sanphammoi){
-                                        extract($sanphammoi);
+                                     foreach($list_danhmuc as $dm){
+                                        extract($dm);
                                         $img_pro = $img_path . $img;
                                         echo "
                                         <a href='#' class='latest-product__item'>
@@ -163,7 +163,7 @@
                                         </div>
                                         <div class='latest-product__item__text'>
                                         <h6>".$name."</h6>
-                                        <span>".$price."</span>
+                                        <span>300.000đ</span>
                                         </div>
                                 </a>
                                         ";
@@ -206,19 +206,19 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                                 <?php
-                                    foreach ($list_sanpham as $sanphammoi)
-                                    extract($sanphammoi);
+                                    foreach ($list_danhmuc as $dm)
+                                    extract($dm);
                                     $img_pro = $img_path . $img;
                                     echo "
                                     <a href='#' class='latest-product__item'>
-                                    <div class='latest-product__item__pic'>
-                                        <img src='".$img_pro."' alt=''>
-                                    </div>
-                                    <div class='latest-product__item__text'>
-                                        <h6>".$name."</h6>
-                                        <span>".$price."</span>
-                                    </div>
-                                </a>
+                                        <div class='latest-product__item__pic'>
+                                            <img src='".$img_pro."' alt=''>
+                                        </div>
+                                        <div class='latest-product__item__text'>
+                                            <h6>".$name."</h6>
+                                            <span>300.000đ</span>
+                                        </div>
+                                    </a>
                                     ";
                                 ?>
                                 <!-- <a href="#" class="latest-product__item">
@@ -250,20 +250,20 @@
                                 </a> -->
                             </div>
                             <div class="latest-prdouct__slider__item">
-                            <?php
-                                    foreach ($list_sanpham as $sanphammoi)
-                                    extract($sanphammoi);
+                                <?php
+                                    foreach ($list_danhmuc as $dm)
+                                    extract($dm);
                                     $img_pro = $img_path . $img;
                                     echo "
                                     <a href='#' class='latest-product__item'>
-                                    <div class='latest-product__item__pic'>
-                                        <img src='".$img_pro."' alt=''>
-                                    </div>
-                                    <div class='latest-product__item__text'>
-                                        <h6>".$name."</h6>
-                                        <span>".$price."</span>
-                                    </div>
-                                </a>
+                                        <div class='latest-product__item__pic'>
+                                            <img src='".$img_pro."' alt=''>
+                                        </div>
+                                        <div class='latest-product__item__text'>
+                                            <h6>".$name."</h6>
+                                            <span>300.000đ</span>
+                                        </div>
+                                    </a>
                                     ";
                                 ?>
                                 <!-- <a href="#" class="latest-product__item">

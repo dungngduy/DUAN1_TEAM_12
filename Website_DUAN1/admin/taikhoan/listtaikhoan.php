@@ -1,6 +1,11 @@
- <div class="container">
-        <h2>Danh sách tài khoản</h2>
-        <form action="#" method="POST">
+<style>
+    .row input{
+        margin-right: 10px;
+    }
+</style>
+<div class="container">
+    <h2>Danh sách tài khoản</h2>
+    <form action="#" method="POST">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -19,25 +24,38 @@
                 foreach ($listtaikhoan as $taikhoan) {
                     extract($taikhoan);
                     $xoataikhoan = "index.php?act=xoataikhoan&id=" . $id;
-                    echo '<tr>
-                    <td><input type="checkbox" name="" id=""></td>
-                    <td>'.$id.'</td>
-                    <td>'.$user.'</td>
-                    <td><img src= "'.$avatar.'"> </td>
-                    <td>'.$tel.'</td>
-                    <td>'.$email.'</td>
-                    <td>'.$address.'</td>
-                    <td>'.$role.'</td> 
-                    <td><a href="'.$xoataikhoan.'"><input type="button" value="Xóa"></a></td>
-                </tr>';
+                    if($role == 1){
+                        echo '<tr>
+                        <td><input type="checkbox" name="" id=""></td>
+                        <td>'.$id.'</td>
+                        <td>'.$user.'</td>
+                        <td><img src= "'.$avatar.'"> </td>
+                        <td>'.$tel.'</td>
+                        <td>'.$email.'</td>
+                        <td>'.$address.'</td>
+                        <td>'.$role.'</td> 
+                    </tr>';
+                    }else{
+                        echo '<tr>
+                        <td><input type="checkbox" name="" id=""></td>
+                        <td>'.$id.'</td>
+                        <td>'.$user.'</td>
+                        <td><img src= "'.$avatar.'"> </td>
+                        <td>'.$tel.'</td>
+                        <td>'.$email.'</td>
+                        <td>'.$address.'</td>
+                        <td>'.$role.'</td> 
+                        <td><a href="'.$xoataikhoan.'"><input type="button" value="Xóa"></a></td>
+                    </tr>';
+                    }
                 }
                 ?>
             </thead>
         </table>
         <div class="row mb10 ">
-                <input class="mr20" type="button" value="CHỌN TẤT CẢ">
-                <input  class="mr20" type="button" value="BỎ CHỌN TẤT CẢ">
-            </div>
-        </form>
-    </div>
+            <input class="mr20" type="button" value="CHỌN TẤT CẢ">
+            <input  class="mr20" type="button" value="BỎ CHỌN TẤT CẢ">
+        </div>
+    </form>
+</div>
    

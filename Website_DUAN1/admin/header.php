@@ -35,6 +35,15 @@
             text-decoration: none;
             transition: 0.2s ease-in-out;
         }
+        .header__menu a:hover{
+            text-decoration: none;
+        }
+        .footer__widget ul li a:hover{
+            text-decoration: none;
+        }
+        .footer__copyright__text p a:hover{
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -154,7 +163,7 @@
                     </nav>
                 </div>
                 <div class="col-lg-1 exit">
-                    <a href=""><button type="submit">Thoát</button></a>
+                    <a href="../index.php"><button type="submit">Thoát</button></a>
                 </div>
             </div>
             <div class="humberger__open">
