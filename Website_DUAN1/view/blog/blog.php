@@ -107,7 +107,7 @@
                         foreach ($list_tintuc as $tintuc){
                             extract($tintuc);
                             $img_pro = $img_path . $img;
-                            $linktintuc = "index.php?act=blog_details";
+                            $linktintuc = "index.php?act=blog_details&idtt=" .$id;
                             echo "
                             <div class='col-lg-6 col-md-6 col-sm-6'>
                             <div class='blog__item'>
@@ -119,8 +119,7 @@
                                         <li><i class='fa fa-calendar-o'></i>".$ngaydang."</li>
                                         <li><i class='fa fa-comment-o'></i> 5</li>
                                     </ul>
-                                    <h5><a href='index.php?act=blog_details'>
-                                        ".$tieude."</a></h5>
+                                    <h5><a href='$linktintuc'>".$tieude."</a></h5>
                                     <p>".$noidung." </p>
                                     <a href='#' class='blog__btn'>ĐỌC THÊM <span class='arrow_right'></span></a>
                                 </div>

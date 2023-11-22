@@ -42,7 +42,26 @@
                         <div class="blog__sidebar__item">
                             <h4>Tin tức thời trang gần đây</h4>
                             <div class="blog__sidebar__recent">
-                                <a href="#" class="blog__sidebar__recent__item">
+                                
+                                <?php
+                                   foreach ($list_tintuc as $tintucnew){
+                                       extract($tintucnew);
+                                       $img_pro = $img_path . $img;
+                                       echo "
+                                       <a href='#' class='blog__sidebar__recent__item'>
+                                   <div class='blog__sidebar__recent__item__pic'>
+                                       <img src='".$img_pro."' alt=''>
+                                   </div>
+                                   <div class='blog__sidebar__recent__item__text'>
+                                       <h6><a href='index.php?act=blog_details'>" . $tieude . "</a><br /></h6>
+                                       <span>".$ngaydang."</span>
+                                   </div>
+                               </a>
+                                       ";
+                                   }
+                               ?>
+                                
+                                <!-- <a href="#" class="blog__sidebar__recent__item">
                                     <div class="blog__sidebar__recent__item__pic">
                                         <img src="img/blog/sidebar/sr-1.jpg" alt="">
                                     </div>
@@ -69,7 +88,7 @@
                                         <h6>“Tiểu thư RMIT xinh nhất Đà Nẵng" diện áo lộ vòng eo, đẹp nổi bật ở Đại lộ Danh vọng <br /></h6>
                                         <span>2/11/2023</span>
                                     </div>
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                         <div class="blog__sidebar__item">
@@ -85,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <?php
+                <?php
                 extract($onett);
                 $img_pro = $img_path . $img;
                 echo "
@@ -127,8 +146,8 @@
                 </div>
                 ";
 
-                ?> -->
-                <div class="col-lg-8 col-md-7 order-md-1 order-1">
+                ?> 
+                <!-- <div class="col-lg-8 col-md-7 order-md-1 order-1">
                     <div class="blog__details__text">
                         <img src="img/blog/details/details-pic.jpg" alt="">
                         <p>Những bộ trang phục của Taylor Swift đã chiếm giữ tâm trí chúng ta, đóng vai trò là nguồn cảm hứng thời trang mùa thu hoàn hảo.
@@ -173,7 +192,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -190,7 +209,30 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
+            <?php
+                    foreach ($list_tintuc as $tintucnew){
+                    extract($tintucnew);
+                    $img_pro = $img_path . $img;
+                    echo "
+                    <div class='col-lg-4 col-md-4 col-sm-6'>
+                    <div class='blog__item'>
+                        <div class='blog__item__pic'>
+                            <img src='".$img_pro."' alt=''>
+                        </div>
+                        <div class='blog__item__text'>
+                            <ul>
+                                <li><i class='fa fa-calendar-o'></i>".$ngaydang."</li>
+                                <li><i class='fa fa-comment-o'></i> 5</li>
+                            </ul>
+                            <h5><a href='#'>".$tieude."</a></h5>
+                            <p>".$noidung."</p>
+                        </div>
+                    </div>
+                </div>                   
+                    ";
+                    }
+                ?>
+                <!-- <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
                             <img src="img/blog/blog-1.jpg" alt="">
@@ -234,7 +276,7 @@
                             <p>Hãy mặc theo phong cách của bạn </p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
