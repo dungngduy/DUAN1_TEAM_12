@@ -32,11 +32,7 @@
                 // $suasp = "index.php?act=suasp&id=" . $id;
                 // $xoasp = "index.php?act=xoasp&id=" . $id;
                 // $hinhpath = "../upload/" . $img;
-                if (isset($hinhpath)) {
-                    $hinh = "<img src = '" . $hinhpath . "' height='80px'>";
-                } else {
-                    $hinh = "No photo";
-                }
+               
                 echo '<tr>
                 <td><input type="checkbox" name="" id=""></td>
                 <td>' . $id_ctsp . '</td>

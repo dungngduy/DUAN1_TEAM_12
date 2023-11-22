@@ -122,7 +122,7 @@
                     $size = $_POST['size'];
                     $soluong = $_POST['soluong'];
                     $id_sp = $_POST['id_sp'];
-                    insert_chitietsp($soluong, $color, $size, $id_sp);
+                    insert_chitietsp($color, $size, $soluong, $id_sp);
                     $thongbao = "Thêm thành công";
                 }
                 $listsp = loadall_sp();
@@ -142,7 +142,7 @@
                     $thongbao = "Thêm thành công";
                 }
                 $listsp = loadall_sanpham("", 0);
-                include "sanpham/add.php";
+                include "sanpham/ctsp/listctsp.php";
                 break;
             // Danh sách tài khoản
             case 'dskh':

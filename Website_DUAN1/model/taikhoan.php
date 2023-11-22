@@ -7,12 +7,12 @@ function loadall_taikhoan()
 }
 function insert_taikhoan($email, $user, $pass)
 {
-    $sql = "INSERT INTO tài_khoan(user,email,pass) VALUES ('$user','$email','$pass')";
+    $sql = "INSERT INTO tai_khoan(user,email,pass) VALUES ('$user','$email','$pass')";
     pdo_execute($sql);
 }
 function delete_taikhoan($id_tk)
 {
     // $sql = "UPDATE danh_muc SET trang_thai = '1' WHERE id_dm=".$id_dm;
-    $sql = "DELETE FROM tài_khoan WHERE id_tk=" . $id_tk;
+    $sql = "DELETE FROM tai_khoan WHERE id_tk=" . $id_tk;
     pdo_execute($sql);
 }
