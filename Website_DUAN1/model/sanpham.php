@@ -1,11 +1,11 @@
 <?php
     function insert_sanpham($name,$price,$img,$mota,$iddm){
-        $sql = "INSERT INTO san_pham(name,price,img,mota,iddm) VALUES ('$name','$price','$img','$mota','$iddm')";
+        $sql = "INSERT INTO san_pham(name, price, img, mota, iddm) VALUES ('$name', '$price', '$img', '$mota', '$iddm')";
         pdo_execute($sql);
     }
 
-    function insert_chitietsp($color,$size,$soluong,$id_sp){
-        $sql = "INSERT INTO chi_tiet_san_pham(color,size,soluong,id_sp) VALUES ('$color','$size','$soluong','$id_sp')";
+    function insert_chitietsp($color, $size, $soluong, $id_sp){
+        $sql = "INSERT INTO chi_tiet_san_pham(color, size, soluong, id_sp) VALUES ('$color', '$size', '$soluong', '$id_sp')";
         pdo_execute($sql);
     }
 
@@ -13,11 +13,13 @@
         $sql = "DELETE FROM san_pham WHERE id=".$_GET['id'];
         pdo_execute($sql);
     }
+
     function delete_ctsanpham($id){
         $sql = "DELETE FROM chi_tiet_san_pham WHERE id_ctsp=".$_GET['id_ctsp'];
         pdo_execute($sql);
     }
-    function loadall_sanpham($kw=" ",$iddm = 0 ){
+
+    function loadall_sanpham($kw=" ",$iddm = 0){
         $sql = "SELECT * FROM san_pham WHERE 1"; 
         if($kw !=""){
             $sql.=" AND name LIKE '%".$kw."%'";
@@ -36,8 +38,26 @@
         return $list_sanpham;
     }
 
+    function load_color_sp(){
+        $sql = "SELECT *, chi_tiet_san_pham.color
+        FROM san_pham
+        INNER JOIN chi_tiet_san_pham ON chi_tiet_san_pham.id_sp = san_pham.id
+        ORDER BY chi_tiet_san_pham.id_sp";
+        $sp = pdo_query($sql);
+        return $sp;
+    }
+
+    function load_size_sp(){
+        $sql = "SELECT *, chi_tiet_san_pham.size
+        FROM san_pham
+        INNER JOIN chi_tiet_san_pham ON chi_tiet_san_pham.id_sp = san_pham.id
+        ORDER BY chi_tiet_san_pham.id_sp";
+        $sp = pdo_query($sql);
+        return $sp;
+    }
+
     function loadall_sanpham_top3(){
-        $sql= "SELECT * FROM san_pham WHERE 1 ORDER BY id DESC LIMit 0,3";
+        $sql= "SELECT * FROM san_pham WHERE 1 ORDER BY id DESC LIMIT 0,3";
         $list_sanpham = pdo_query($sql);
         return $list_sanpham;
     }
@@ -56,29 +76,31 @@
         }
         pdo_execute($sql);
     }
+
     function update_ctsanpham($id_ctsp, $id_sp, $color, $size, $soluong){
         $sql = "UPDATE `chi_tiet_san_pham` SET `id_ctsp` = '$id_ctsp', `id_sp` = '$id_sp', `color` = '$color', `size` = '$size', `soluong` = '$soluong' WHERE `chi_tiet_san_pham`.`id_ctsp` = $id_ctsp";
         pdo_execute($sql);
     }
+
     function loadall_spct(){
-        $sql = "SELECT * FROM chi_tiet_san_pham ORDER BY id_ctsp DESC";
+        $sql = "SELECT *, san_pham.name 
+        FROM chi_tiet_san_pham 
+        INNER JOIN san_pham ON san_pham.id = chi_tiet_san_pham.id_sp
+        WHERE 1";
         $listsp = pdo_query($sql);
         return $listsp;
     }
-    function loadone_spct($id_ctsp){
-        $sql = "SELECT * FROM chi_tiet_san_pham WHERE id=".$id_ctsp;
-        $dm = pdo_query_one($sql);
-        return $dm;
-    }
+
     function loadall_sp(){
         $sql = "SELECT * FROM san_pham ORDER BY id DESC";
         $listsp = pdo_query($sql);
         return $listsp;
     }
 
-    function loadone_chitietsp($id){
-        $sql = "SELECT * FROM san_pham WHERE id=".$id;
-        $dm = pdo_query_one($sql);
+    function loadone_chitietsp($idsp){
+        $sql = "SELECT * FROM chi_tiet_san_pham WHERE id_ctsp= ".$idsp;
+        $dm = pdo_query($sql);
+        
         return $dm;
     }
 
@@ -86,5 +108,15 @@
         $sql = "select * from san_pham where iddm=".$iddm." AND id <>".$id;
         $list_sanpham = pdo_query($sql);
         return $list_sanpham;
+    }
+
+    function getall_sp($iddm){
+        $sql = "SELECT * FROM san_pham WHERE 1";
+        if($iddm > 0){
+            $sql.= " AND iddm=" . $iddm;
+        }
+        $sql.=" ORDER BY id DESC LIMIT 0,3";
+        $sp = pdo_query($sql);
+        return $sp;
     }
 ?>

@@ -1,6 +1,6 @@
 <?php
     function list_danhmuc(){
-        $sql = "SELECT * FROM danh_muc WHERE 1";
+        $sql = "SELECT * FROM danh_muc WHERE 1 ORDER BY id ASC LIMIT 0,3";
         $danh_muc = pdo_query($sql);
         return $danh_muc;
     }

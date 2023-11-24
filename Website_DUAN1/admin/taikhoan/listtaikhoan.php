@@ -45,7 +45,7 @@
                         <td>'.$email.'</td>
                         <td>'.$address.'</td>
                         <td>'.$role.'</td> 
-                        <td><a href="'.$xoataikhoan.'"><input type="button" value="Xóa"></a></td>
+                        <td><a onclick="return confirm(\'Bạn có muốn xóa không?\')" href="'.$xoataikhoan.'"><input type="button" value="Xóa"></a></td>
                     </tr>';
                     }
                 }

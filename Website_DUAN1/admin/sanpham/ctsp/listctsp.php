@@ -12,29 +12,29 @@
 </head>
 <body>
     <div class="container">
-        <h2>Sản Phẩm</h2>      
+        <h2>Chi Tiết Sản Phẩm</h2>      
         <table class="table table-striped">
         <thead>
             <tr>
                 <th></th>
                 <th>STT</th>
                 <th>TÊN SẢN PHẨM</th>
-                <th>Màu</th>
-                <th>Kích cỡ</th>
-                <th>MÔ TẢ</th>
-                <th>NGÀY NHẬP</th>
-                <th>LƯỢT XEM</th>
-                <th>VAI TRÒ</th>
+                <th>MÀU</th>
+                <th>KÍCH CỠ</th>
+                <th>SỐ LƯỢNG</th>
+                <th></th>
             </tr>
             <?php
+                
             foreach ($listspct as $sp) {
                 extract($sp);
                 $xoactsp = "index.php?act=xoactsp&id_ctsp=" . $id_ctsp;
                 $suactsp = "index.php?act=updatectsp&id_ctsp=" . $id_ctsp;
                 echo '<tr>
+
                     <td><input type="checkbox" name="" id=""></td>
                     <td>' . $id_ctsp . '</td>
-                    <td>' . $id_sp . '</td>
+                    <td>' . $name . '</td>
                     <td>' . $color . '</td>
                     <td>' . $size . '</td>
                     <td>' . $soluong . '</td>
@@ -45,14 +45,13 @@
                         <a href="'.$suactsp.'"><input type="button" value="Sửa"></a>
                     </td>
                 </tr>';
-}
-?>
-
+            }
+            ?>
         </thead>
         </table>
         <button class="btn btn-primary">Chọn tất cả</button>
         <button class="btn btn-primary">Bỏ chọn tất cả</button>
-        <a href="index.php?act=chitietsp"><button class="btn btn-primary">Thêm sản phẩm</button></a>
+        <a href="index.php?act=addspct"><button class="btn btn-primary">Thêm sản phẩm</button></a>
     </div>
     <br><br>
 </body>

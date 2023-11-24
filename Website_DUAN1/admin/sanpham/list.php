@@ -23,35 +23,24 @@
                 <th>MÔ TẢ</th>
                 <th>NGÀY NHẬP</th>
                 <th>LƯỢT XEM</th>
-                <th>VAI TRÒ</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <?php
-            // Số mục bạn muốn hiển thị trên mỗi trang
-            $muc_tren_trang = 5;
+            include "../model/offset.php";
+            $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] :3;
+            $current_page = !empty($_GET['page']) ? $_GET['page'] :1;
+            $offset = ($current_page - 1) * $item_per_page;
+            $sql = mysqli_query($conn, "SELECT * FROM san_pham ORDER BY id ASC LIMIT ".$item_per_page." OFFSET ".$offset."");
+            $total = mysqli_query($conn, "SELECT * FROM san_pham");
+            $totalRecords = $total->num_rows;
+            $totalPages = ceil($totalRecords / $item_per_page);
 
-            // Tính tổng số trang dựa trên số sản phẩm và số mục trên mỗi trang
-            $tong_so_trang = ceil(count($listsp) / $muc_tren_trang);
-
-            // Kiểm tra xem trang hiện tại được chọn là trang nào
-            if (!isset($_GET['trang'])) {
-                $trang_hien_tai = 1;
-            } else {
-                $trang_hien_tai = $_GET['trang'];
-            }
-
-            // Xác định chỉ số của sản phẩm đầu tiên trên trang hiện tại
-            $so_muc_dau_tien = ($trang_hien_tai - 1) * $muc_tren_trang;
-
-            // Lọc mảng để chỉ hiển thị số sản phẩm cần thiết cho trang hiện tại
-            $listsp_trang_hien_tai = array_slice($listsp, $so_muc_dau_tien, $muc_tren_trang);
-
-            foreach ($listsp_trang_hien_tai as $sp) {
-                extract($sp);
-                $suasp = "index.php?act=suasp&id=" . $id;
-                $xoasp = "index.php?act=xoasp&id=" . $id;
-                $hinhpath = "../upload/" . $img;
+            while($row = mysqli_fetch_array($sql)){
+                $suasp = "index.php?act=suasp&id=" . $row['id'];
+                $xoasp = "index.php?act=xoasp&id=" . $row['id'];
+                $hinhpath = "../upload/" . $row['img'];
                 if (isset($hinhpath)) {
                     $hinh = "<img src = '" . $hinhpath . "' height='80px'>";
                 } else {
@@ -59,30 +48,49 @@
                 }
                 echo '<tr>
                             <td><input type="checkbox" name="" id=""></td>
-                            <td>' . $id . '</td>
-                            <td>' . $name . '</td>
+                            <td>' . $row['id'] . '</td>
+                            <td>' . $row['name'] . '</td>
                             <td>' . $hinh . '</td>
-                            <td>' . $price . '</td>
-                            <td>' . $mota . '</td>
-                            <td>' . $ngaynhapkhau . '</td>
-                            <td>' . $luotxem . '</td>
+                            <td>' . $row['price'] . '</td>
+                            <td>' . $row['mota'] . '</td>
+                            <td>' . $row['ngaynhapkhau'] . '</td>
+                            <td>' . $row['luotxem'] . '</td>
                             <td><a href="' . $suasp . '"><input type="button" value="Sửa"></a>
-                            <a href="' . $xoasp . '"><input type="button" value="Xóa"></a></td>
+                            <a onclick="return confirm(\'Bạn có muốn xóa không?\')" href="' . $xoasp . '"><input type="button" value="Xóa"></a></td>
                         </tr>';
             }
             ?>
         </tbody>
         </table>
         
-        <!-- Tạo liên kết phân trang -->
-        <ul class="pagination">
+        <div class="product__pagination">
             <?php
-            for ($i = 1; $i <= $tong_so_trang; $i++) {
-                echo '<li class="page-item"><a class="page-link" href="index.php?trang=' . $i . '">' . $i . '</a></li>';
-            }
+                if($current_page > 1){
+                    $prev_page = $current_page - 1;
+            ?>      
+                <a href="?act=listsp&per_page=<?=$item_per_page; ?>&page=<?=$prev_page; ?>"><i class="fa fa-long-arrow-left"></i></a>
+            <?php } ?>
+            <?php
+                for($num = 1; $num <= $totalPages; $num++){
             ?>
-        </ul>
-
+                    <?php
+                        if($num != $current_page){
+                    ?>
+                        <?php if($num > $current_page - 2 && $num < $current_page + 2){ ?>
+                            <a href="?act=listsp&per_page=<?=$item_per_page; ?>&page=<?=$num; ?>"><?=$num; ?></a>
+                        <?php } ?>
+                    <?php }else{ ?>
+                        <a style="background-color: #343a40; color: #fff;" href="?act=listsp&per_page=<?=$item_per_page; ?>&page=<?=$num; ?>"><?=$num; ?></a>
+                    <?php } ?>
+            <?php } ?>
+            <?php
+                if($current_page < $totalPages + 1){
+                    $next_page = $current_page + 1;
+            ?>      
+                <a href="?act=listsp&per_page=<?=$item_per_page; ?>&page=<?=$next_page; ?>"><i class="fa fa-long-arrow-right"></i></a>
+            <?php } ?>
+        </div>
+        <br>
         <button class="btn btn-primary">Chọn tất cả</button>
         <button class="btn btn-primary">Bỏ chọn tất cả</button>
         <a href="index.php?act=addsp"><button class="btn btn-primary">Thêm sản phẩm</button></a>

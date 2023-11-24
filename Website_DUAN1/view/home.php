@@ -9,21 +9,12 @@
                             <span>Menu sản phẩm</span>
                         </div>
                         <ul>
-                            <!-- <li><a href="#">Áo mùa hè</a></li>
-                            <li><a href="#">Áo dài mùa đông</a></li>
-                            <li><a href="#">Áo khoác</a></li>
-                            <li><a href="#">Quần áo thể thao</a></li>
-                            <li><a href="#">Quần mùa hè</a></li>
-                            <li><a href="#">Quần dài</a></li>
-                            <li><a href="#">Áo vest</a></li>
-                            <li><a href="#">Quần áo lao động</a></li>
-                            <li><a href="#">Quần áo theo bộ</a></li> -->
                             <?php
-                                foreach($list_danhmuc as $list){
+                                foreach($loadall_danhmuc as $list){
                                     extract($list);
-                                    echo "<li><a>".$name."</a></li>";
-                                }
                             ?>
+                                <li><a href="index.php?act=dmsanpham&iddm=<?=$id; ?>"><?=$name; ?></a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -118,10 +109,6 @@
                 <div class="featured__controls">
                     <ul>
                         <li class="active" data-filter="*">Tất cả</li>
-                        <!-- <li data-filter=".oranges">Quần áo hè</li>
-                        <li data-filter=".fresh-meat">Quần áo đông</li>
-                        <li data-filter=".vegetables">Quần áo thể thao</li>
-                        <li data-filter=".fastfood">Áo vest</li> -->
                         <?php
                             foreach($list_danhmuc as $list){
                                 extract($list);
@@ -136,6 +123,7 @@
             <?php
                 foreach($list_sp_discount as $list){
                     extract($list);
+                    $link = "index.php?act=ctsanpham&idsp=" . $id;
                     $img_pro_main = $img_path . $img;
                     echo "
                     <div class='col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat'>
@@ -148,7 +136,7 @@
                                 </ul>
                             </div>
                             <div class='featured__item__text'>
-                                <h6><a href='#'>".$name."</a></h6>
+                                <h6><a href='".$link."'>".$name."</a></h6>
                                 <h5>".$price."</h5>
                             </div>
                         </div>
@@ -156,111 +144,6 @@
                     ";
                 }
             ?>
-            <!-- <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-2.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Áo khoác</a></h6>
-                        <h5>300.000 VND</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-3.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Áo khoác gió</a></h6>
-                        <h5>250.000 VND</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-4.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Áo vest</a></h6>
-                        <h5>500.000 VND</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-5.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Quân âu</a></h6>
-                        <h5>150.000 VND</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-6.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Áo dài</a></h6>
-                        <h5>300.000 VND</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-7.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Áo sơ mi trắng</a></h6>
-                        <h5>300.000 VND</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-8.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Áo đá bóng</a></h6>
-                        <h5>120.000 VND</h5>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 </section>

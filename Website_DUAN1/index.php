@@ -10,6 +10,7 @@
     include "model/tintuc.php";
     include "model/binhluan.php";
     $list_danhmuc = list_danhmuc();
+    $loadall_danhmuc = loadall_danhmuc();
     $list_tintuc = loadall_tintuc();
     $list_sp_discount = loadall_sp_discount();
     $sanphammoi = loadall_sanpham_top3();
@@ -18,6 +19,43 @@
         $act = $_GET['act'];
         switch($act){
             case "dmsanpham":
+                if(isset($_GET['iddm']) && ($_GET['iddm'] > 0)){
+                    $iddm = $_GET['iddm'];
+                    $sp_with_dm = getall_sp($iddm);
+                }else{
+                    $sp_with_dm = getall_sp(0);
+                }
+
+                if(isset($_GET['maxPrice']) && isset($_GET['minPrice'])){
+                    $minPrice = isset($_GET['minPrice']) ? (int)$_GET['minPrice'] : 0;
+                    $maxPrice = isset($_GET['maxPrice']) ? (int)$_GET['maxPrice'] : 0;
+                    // Lọc sản phẩm theo giá
+                    $list_sp_discount = array_filter($list_sp_discount, function ($list_sp_discount) use ($minPrice, $maxPrice) {
+                        return $list_sp_discount['price'] >= $minPrice && $list_sp_discount['price'] <= $maxPrice;
+                    });
+                }else{
+                    $list_sp_discount = loadall_sp_discount();
+                }
+
+                // $color = load_color_sp();
+                // if(isset($_GET['color'])){
+                //     $selectedColor = isset($_GET['color']) ? $_GET['color'] : '';
+                //     $color = array_filter($color, function ($color) use ($selectedColor) {
+                //         return $selectedColor === '' || strtolower($color['color']) === strtolower($selectedColor);
+                //     });
+                // }else{
+                //     $list_sp_discount = loadall_sp_discount();
+                // }
+
+                // $size = load_size_sp();
+                // if(isset($_GET['size'])){
+                //     $selectedSize = isset($_GET['size']) ? $_GET['size'] : '';
+                //     $list_sp_discount = array_filter($size, function ($size) use ($selectedSize) {
+                //         return $selectedSize === '' || strtoupper($size['size']) === strtoupper($selectedSize);
+                //     });
+                // }else{
+                //     $list_sp_discount = loadall_sp_discount();
+                // }
                 include "view/details/shop-grid.php";
                 break;
             case "ctsanpham":
@@ -26,6 +64,7 @@
                     extract($onesp);
                     $list_binhluan = load_binhluan($_GET['idsp']);
                     $sanpham_cungloai=loadall_sanpham_cungloai($id,$iddm);
+                    $ctsp = loadone_chitietsp($_GET['idsp']);
                     include "view/details/shop-details.php";
                 } 
                 break;
@@ -42,8 +81,11 @@
                 // $tintucmoi = load_top3_tintuc();
                 include "view/blog/blog.php";
                 break;
-            case "giohang":
+            case "cart":
                 include "view/cart/cart.php";
+                break;
+            case "checkout":
+                include "view/cart/checkout.php";
                 break;
             case "contact":
                 include "view/contact.php";

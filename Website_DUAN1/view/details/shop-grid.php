@@ -1,5 +1,5 @@
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+<section class="breadcrumb-section set-bg" data-setbg="img/bg-trangsp.webp">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -24,101 +24,56 @@
                 <div class="sidebar">
                     <div class="sidebar__item">
                         <h4>Danh sách</h4>
-                        <ul>
-                            <li><a href="#">Áo mùa hè</a></li>
-                            <li><a href="#">Áo dài mùa đông</a></li>
-                            <li><a href="#">Áo khoác</a></li>
-                            <li><a href="#">Quần áo thể thao</a></li>
-                            <li><a href="#">Quần mùa hè</a></li>
-                            <li><a href="#">Quần dài</a></li>
-                            <li><a href="#">Áo vest</a></li>
-                            <li><a href="#">Quần áo lao động</a></li>
-                            <li><a href="#">Quần áo theo bộ</a></li>
-                        </ul>
+                        <?php
+                            foreach($loadall_danhmuc as $list){
+                                extract($list);
+                        ?>
+                            <ul>
+                                <li><a href="index.php?act=dmsanpham&iddm=<?=$id; ?>"><?=$name; ?></a></li>
+                            </ul>
+                        <?php } ?>
                     </div>
                     <div class="sidebar__item">
                         <h4>Giá Thành</h4>
                         <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="200000" data-max="4000000">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <input type="text" id="minamount">
-                                    <input type="text" id="maxamount">
-                                </div>
-                            </div>
+                            <form id="priceFilterForm">
+                                <label for="minPrice">Giá tối thiểu:</label>
+                                <input type="number" id="minPrice" name="minPrice" value="<?php echo $minPrice; ?>" min="0">
+
+                                <label for="maxPrice">Giá tối đa:</label>
+                                <input type="number" id="maxPrice" name="maxPrice" value="<?php echo $maxPrice; ?>" min="0">
+                                <br>
+                                <input type="submit" value="Lọc">
+                            </form>
                         </div>
                     </div>
-                    <div class="sidebar__item sidebar__item__color--option">
+                    <!-- <div class="sidebar__item">
                         <h4>Màu sắc</h4>
-                        <div class="sidebar__item__color sidebar__item__color--white">
-                            <label for="white">
-                                Trắng
-                                <input type="radio" id="white">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--gray">
-                            <label for="gray">
-                                Xám
-                                <input type="radio" id="gray">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--red">
-                            <label for="red">
-                                Đỏ
-                                <input type="radio" id="red">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--black">
-                            <label for="black">
-                                Đen
-                                <input type="radio" id="black">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--blue">
-                            <label for="blue">
-                                Xanh dương
-                                <input type="radio" id="blue">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--green">
-                            <label for="green">
-                                Xanh lá cây
-                                <input type="radio" id="green">
-                            </label>
-                        </div>
-                    </div>
-                    <div class="sidebar__item">
+                        <form id="colorFilterForm">
+                            <select id="color" name="color">
+                                <option value="">Tất cả</option>
+                                <option value="Đỏ">Đỏ</option>
+                                <option value="Xanh">Xanh</option>
+                                <option value="Vàng">Vàng</option>
+                                <option value="Đen">Đen</option>
+                            </select>
+                            <input class="color" type="submit" value="Lọc">
+                        </form>
+                    </div> -->
+                    <!-- <div class="sidebar__item">
                         <h4>Kích thước</h4>
-                        <div class="sidebar__item__size">
-                            <label for="large">
-                                Lớn
-                                <input type="radio" id="large">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__size">
-                            <label for="medium">
-                                Trung bình
-                                <input type="radio" id="medium">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__size">
-                            <label for="small">
-                                Nhỏ
-                                <input type="radio" id="small">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__size">
-                            <label for="tiny">
-                                Trẻ em
-                                <input type="radio" id="tiny">
-                            </label>
-                        </div>
-                    </div>
+                        <form id="sizeFilterForm">
+                            <select id="size" name="size">
+                                <option value="">Tất cả</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
+
+                            <input class="size" type="submit" value="Lọc">
+                        </form>
+                    </div> -->
                     <div class="sidebar__item">
                          <div class="latest-product__text">
                             <h4>Sản phẩm mới</h4>
@@ -161,35 +116,6 @@
                                         }
                                     ?>
                                 </div>
-                                <!-- <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-1.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Áo khoác</h6>
-                                            <span>300.000</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-2.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Áo phông</h6>
-                                            <span>200.000</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-3.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Áo vest</h6>
-                                            <span>500.000</span>
-                                        </div>
-                                    </a>
-                                </div> -->
                             </div>
                         </div> 
                     </div>
@@ -334,6 +260,47 @@
                                 </div>
                             </div> -->
                 </div>
+                <br>
+                <br>
+                <div class="product__discount">
+                    <div class="section-title product__discount__title">
+                        <h2>Sản phẩm lọc</h2>
+                    </div>
+                    <div class="row">  
+                    <?php
+                        foreach ($sp_with_dm as $list) {
+                            extract($list);
+                            $img_pro = $img_path . $img;
+                            echo "
+                            <div class='col-lg-4'>
+                                <div class='product__discount__item'>
+                                    <div class='product__discount__item__pic set-bg' data-setbg='" . $img_pro . "'>
+                                        <div class='product__discount__percent'>-20%</div>
+                                            <ul class='product__item__pic__hover'>
+                                                <li><a href='#'><i class='fa fa-heart'></i></a></li>
+                                                <li><a href='#'><i class='fa fa-retweet'></i></a></li>
+                                                <li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class='product__discount__item__text'>
+                                            <h5><a href='index.php?act=ctsanpham'>" . $name . "</a></h5>
+                                            <div class='product__item__price'>" . $price . " <span>" . $price_old . "</span></div>
+                                            </div> 
+                                        </div>
+                                    </div>";
+                        }
+                    ?>        
+                </div>
+                <?php 
+                    include "model/offset.php";
+                    $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] :1;
+                    $current_page = !empty($_GET['page']) ? $_GET['page'] :1;
+                    $offset = ($current_page - 1) * $item_per_page;
+                    $sql = mysqli_query($conn, "SELECT * FROM san_pham ORDER BY id ASC LIMIT ".$item_per_page." OFFSET ".$offset."");
+                    $total = mysqli_query($conn, "SELECT * FROM san_pham");
+                    $totalRecords = $total->num_rows;
+                    $totalPages = ceil($totalRecords / $item_per_page);
+                ?>
                 <div class="filter__item">
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
@@ -347,7 +314,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter__found">
-                                <h6><span>16</span> Sản phẩm được tìm thấy</h6>
+                                <h6><span><?=$totalRecords; ?></span>sản phẩm được tìm thấy</h6>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-3">
@@ -359,20 +326,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <?php 
-                        include "model/offset.php";
-                        $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] :1;
-                        $current_page = !empty($_GET['page']) ? $_GET['page'] :1;
-                        $offset = ($current_page - 1) * $item_per_page;
-                        $sql = mysqli_query($conn, "SELECT * FROM san_pham ORDER BY id ASC LIMIT ".$item_per_page." OFFSET ".$offset."");
-                        $total = mysqli_query($conn, "SELECT * FROM san_pham");
-                        $totalRecords = $total->num_rows;
-                        $totalPages = ceil($totalRecords / $item_per_page);
-                    ?>
                     <?php
                         while($row = mysqli_fetch_array($sql)){
                             $img_pro = $img_path . $row['img'];
-                                $link_sp = "index.php?act=ctsanpham&idsp=" . $row['id'];
+                            $link_sp = "index.php?act=ctsanpham&idsp=" . $row['id'];
                     ?>
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -384,8 +341,8 @@
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6><a href="<?=$link_sp ?>"><?=$name ?></a></h6>
-                                    <h5><?=$price ?></h5>
+                                    <h6><a href="<?=$link_sp ?>"><?=$row['name'] ?></a></h6>
+                                    <h5><?=$row['price'] ?></h5>
                                 </div>
                             </div>
                         </div>
@@ -557,4 +514,48 @@
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('priceFilterForm');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Lấy giá trị từ ô input
+        const minPrice = document.getElementById('minPrice').value;
+        const maxPrice = document.getElementById('maxPrice').value;
+
+        // Chuyển hướng trang với tham số giá mới
+        window.location.href = `index.php?act=dmsanpham&minPrice=${minPrice}&maxPrice=${maxPrice}`;
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('colorFilterForm');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Lấy giá trị từ ô select
+        const selectedColor = document.getElementById('color').value;
+
+        // Chuyển hướng trang với tham số màu sắc mới
+        window.location.href = `index.php?act=dmsanpham&color=${selectedColor}`;
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('sizeFilterForm');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Lấy giá trị từ ô select
+        const selectedSize = document.getElementById('size').value;
+
+        // Chuyển hướng trang với tham số kích thước mới
+        window.location.href = `index.php?act=dmsanpham&size=${selectedSize}`;
+    });
+});
+</script>
 <!-- Product Section End -->

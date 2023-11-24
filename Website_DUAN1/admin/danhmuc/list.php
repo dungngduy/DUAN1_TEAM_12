@@ -19,7 +19,7 @@
                 <td>' . $id . '</td>
                 <td>' . $name . '</td>
                 <td><a href="' . $suadm . '"><input type="button" value="Sửa"></a> 
-                <a href="' . $xoadm . '"><input type="button" value="Xóa"></a></td>
+                <a onclick="return confirm(\'Bạn có muốn xóa không?\')" href="' . $xoadm . '"><input type="button" value="Xóa"></a></td>
             </tr>';
         }
         ?>

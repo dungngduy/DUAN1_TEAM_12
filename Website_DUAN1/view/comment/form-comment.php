@@ -3,6 +3,7 @@
     ob_start();
 ?>  
 <?php
+    if(isset($_SESSION['user_id'])){
     include "../../model/pdo.php";
     include "../../model/binhluan.php";
     $idpro = $_REQUEST['idpro'];
@@ -178,3 +179,6 @@
 </body>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </html>
+<?php }else{ ?>
+    <a href="../../index.php?act=login" target="_parent">Bạn phải đăng nhập để có thể bình luận sản phẩm này</a>
+<?php } ?>

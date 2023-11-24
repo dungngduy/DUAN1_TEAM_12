@@ -88,9 +88,6 @@
         .product__item__text h6 a:hover{
             text-decoration: none;
         }
-        .product__details__tab__desc{
-            display: flex;
-        }
         .product__details__tab__desc .avatar{
             height: 60px;
             width: 60px;
@@ -117,6 +114,60 @@
         }
         .product__details__text a:hover{
             text-decoration: none;
+        }
+        .product__details__text .color{
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .product__details__text .color a{
+            margin-right: 20px;
+            color: #6f6f6f;
+            font-weight: 700;
+        }
+        .product__details__text .size{
+            margin-bottom: 20px;
+        }
+        .product__details__text .size input{
+            border: 1px solid #f5f5f5;
+            background-color: #f5f5f5;
+            color: #6f6f6f;
+            border-radius: 5px;
+        }
+        .price-range-wrap form input[type="number"]{
+            margin-bottom: 20px;
+        }
+        .price-range-wrap form input[type="submit"]{
+            color: #fff;
+            background-color: #343a40;
+            border: 1px solid #343a40;
+            padding: 2px 15px;
+            border-radius: 5px;
+        }
+        .sidebar__item form .color{
+            color: #fff;
+            background-color: #343a40;
+            border: 1px solid #343a40;
+            padding: 2px 15px;
+            border-radius: 5px;
+            margin-left: 20px;
+            margin-top: 6px;
+        }
+        .sidebar__item form .size{
+            color: #fff;
+            background-color: #343a40;
+            border: 1px solid #343a40;
+            padding: 2px 15px;
+            border-radius: 5px;
+            margin-left: 20px;
+            margin-top: 6px;
+        }
+        .blog__item .blog__item__pic{
+            width: 350px;
+            height: 220px;
+        }
+        .blog__item .blog__item__pic img{
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -251,8 +302,8 @@
                             <li><a href="#">Trang</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="index.php?act=ctsanpham">Chi tiết cửa hàng</a></li>
-                                    <li><a href="./shoping-cart.html">Giỏ hàng</a></li>
-                                    <li><a href="./checkout.html">Thanh toán</a></li>
+                                    <li><a href="index.php?act=cart">Giỏ hàng</a></li>
+                                    <li><a href="index.php?act=checkout">Thanh toán</a></li>
                                     <li><a href="index.php?act=blog_details">Chi tiết blog</a></li>
                                 </ul>
                             </li>

@@ -14,8 +14,8 @@
             <input type="text" class="form-control" id="soluong" name="soluong" required>
         </div>
         <div class="form-group">
-        <label> Sản phẩm : </label> <br>
-            <select name="id" id="" required>
+        <label> Sản phẩm </label> <br>
+            <select name="id_sp" id="" required>
                 <option value="0">Chọn sản phẩm </option>
                   <?php
                       foreach ($listsp as $sanpham){
@@ -26,7 +26,7 @@
             </select>
         </div> <br>
         <div class="mt-3 text-center">
-          <input type="hidden" name="id_sp" value="<?php echo $id_ctsp; ?>">
+          <input type="hidden" name="id_ctsp" value="<?php echo $id_ctsp; ?>">
           <input type="submit" name="themmoi" class="btn btn-primary" value="Thêm" ></input>
           <input type="reset" class="btn btn-outline-primary" value="Nhập lại"></input>
           <a href="index.php?act=listctsp"><button type="button" class="btn btn-outline-primary">Danh sách <i class="fa-solid fa-right-long"></i></button></a>

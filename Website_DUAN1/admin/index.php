@@ -116,8 +116,24 @@
                 include "sanpham/list.php";
                 break;
             // Chi tiết sản phẩm
-            case 'chitietsp':
-                if(isset($_POST['themmoi']) && ($_POST['themmoi'])){
+            // case 'chitietsp':
+            //     if(isset($_POST['themmoi']) && ($_POST['themmoi'])){
+            //         $color = $_POST['color'];
+            //         $size = $_POST['size'];
+            //         $soluong = $_POST['soluong'];
+            //         $id_sp = $_POST['id_sp'];
+            //         insert_chitietsp($color, $size, $soluong, $id_sp);
+            //         $thongbao = "Thêm thành công";
+            //     }
+            //     $listsp = loadall_sp();
+            //     include "sanpham/ctsp/chitietsp.php";
+            //     break;
+            case "listctsp":
+                $listspct = loadall_spct();
+                include "sanpham/ctsp/listctsp.php";
+                break;
+            case 'addspct':
+                if (isset($_POST['themmoi'])) {
                     $color = $_POST['color'];
                     $size = $_POST['size'];
                     $soluong = $_POST['soluong'];
@@ -125,21 +141,17 @@
                     insert_chitietsp($color, $size, $soluong, $id_sp);
                     $thongbao = "Thêm thành công";
                 }
-                $listsp = loadall_sp();
+                $listsp = loadall_sanpham("", 0);
                 include "sanpham/ctsp/chitietsp.php";
                 break;
-            case "listctsp":
-                $listspct = loadall_spct();
-                include "sanpham/ctsp/listctsp.php";
-                break;
-            case 'suactsp':
+            case 'updatectsp':
                 if (isset($_GET['id_ctsp']) && ($_GET['id_ctsp'] > 0)) {
-                    $ctsanpham = loadone_spct($_GET['id_ctsp']);
+                    $ctsanpham = loadone_chitietsp($_GET['id_ctsp']);
                 }
-                $listctsp = loadall_spct();
+                $listsp = loadall_sanpham("", 0);
                 include "sanpham/ctsp/update.php";
                 break;
-            case 'updatectsp':
+            case 'postupdatectsp':
                 if (isset($_POST['capnhatctsp']) && ($_POST['capnhatctsp'])) {
                     $id_ctsp = $_POST['id_ctsp'];
                     $id_sp = $_POST['id_sp'];
@@ -149,8 +161,9 @@
                     update_ctsanpham($id_ctsp, $id_sp, $color, $size, $soluong);
                     $thongbao = "Cập nhật thành công";
                 }
-                    $listspct = loadall_spct("", 0);
-                    include "sanpham/ctsp/listctsp.php";
+                $listsp = loadall_sanpham("", 0);
+                $listspct = loadall_spct();
+                include "sanpham/ctsp/listctsp.php";
                 break;
             case 'xoactsp':
                 if (isset($_GET['id_ctsp']) && ($_GET['id_ctsp'] > 0)) {
@@ -158,18 +171,6 @@
                 }
                     $listspct = loadall_spct("", 0);
                     include "sanpham/ctsp/listctsp.php";
-                break;
-            case 'addspct':
-                if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
-                    $id_sp = $_POST['id'];
-                    $color = $_POST['color'];
-                    $size = $_POST['size'];
-                    $soluong = $_POST['soluong'];
-                    insert_chitietsp($id_sp, $color, $size, $soluong);
-                    $thongbao = "Thêm thành công";
-                }
-                $listsp = loadall_sanpham("", 0);
-                include "sanpham/ctsp/listctsp.php";
                 break;
             // Danh sách tài khoản
             case 'dskh':

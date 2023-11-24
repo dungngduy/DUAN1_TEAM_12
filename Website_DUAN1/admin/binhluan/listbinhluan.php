@@ -27,7 +27,7 @@
                     <td>'.$user.'</td>
                     <td>'.$name.'</td>
                     <td>'.$ngaybinhluan.'</td>
-                    <td><a href="'.$xoabinhluan.'"><input type="button" value="Xóa"></a></td>
+                    <td><a onclick="return confirm(\'Bạn có muốn xóa không?\')" href="'.$xoabinhluan.'"><input type="button" value="Xóa"></a></td>
                 </tr>';
                 }
             ?>
@@ -36,3 +36,4 @@
             </tbody>
         </table>
     </div>
+ </div>
