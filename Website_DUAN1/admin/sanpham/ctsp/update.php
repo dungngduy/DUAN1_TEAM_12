@@ -5,7 +5,7 @@ if (is_array($ctsanpham)) {
 ?>
 <div class="container">
     <h1>Cập nhật Chi Tiết Sản Phẩm</h1>
-    <form action="index.php?act=updatesp" method="POST" enctype="multipart/form-data">
+    <form action="index.php?act=updatectsp" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="id_ctsp">ID Chi Tiết</label>
             <input type="text" class="form-control" id="id_ctsp" name="id_ctsp" value="<?= $ctsanpham['id_ctsp'] ?>" required>

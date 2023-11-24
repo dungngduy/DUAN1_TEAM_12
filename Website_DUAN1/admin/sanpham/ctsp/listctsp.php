@@ -36,7 +36,7 @@
                     <td>' . $id_ctsp . '</td>
                     <td>' . $id_sp . '</td>
                     <td>' . $color . '</td>
-                    <td>' . $size . '</td>
+                    <td>' . $size . '</td>  
                     <td>' . $soluong . '</td>
                     <td>
                         <a href="'.$xoactsp.'" onclick="return confirm(\'Bạn có chắc chắn muốn xóa không?\');">
