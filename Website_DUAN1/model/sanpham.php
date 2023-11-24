@@ -13,7 +13,10 @@
         $sql = "DELETE FROM san_pham WHERE id=".$_GET['id'];
         pdo_execute($sql);
     }
-
+    function delete_ctsanpham($id){
+        $sql = "DELETE FROM chi_tiet_san_pham WHERE id_ctsp=".$_GET['id_ctsp'];
+        pdo_execute($sql);
+    }
     function loadall_sanpham($kw=" ",$iddm = 0 ){
         $sql = "SELECT * FROM san_pham WHERE 1"; 
         if($kw !=""){
@@ -53,13 +56,20 @@
         }
         pdo_execute($sql);
     }
-
+    function update_ctsanpham($id_ctsp, $id_sp, $color, $size, $soluong){
+        $sql = "UPDATE `chi_tiet_san_pham` SET `id_ctsp` = '$id_ctsp', `id_sp` = '$id_sp', `color` = '$color', `size` = '$size', `soluong` = '$soluong' WHERE `chi_tiet_san_pham`.`id_ctsp` = $id_ctsp";
+        pdo_execute($sql);
+    }
     function loadall_spct(){
         $sql = "SELECT * FROM chi_tiet_san_pham ORDER BY id_ctsp DESC";
         $listsp = pdo_query($sql);
         return $listsp;
     }
-
+    function loadone_spct($id_ctsp){
+        $sql = "SELECT * FROM chi_tiet_san_pham WHERE id=".$id_ctsp;
+        $dm = pdo_query_one($sql);
+        return $dm;
+    }
     function loadall_sp(){
         $sql = "SELECT * FROM san_pham ORDER BY id DESC";
         $listsp = pdo_query($sql);

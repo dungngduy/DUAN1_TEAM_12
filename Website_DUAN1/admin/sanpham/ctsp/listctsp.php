@@ -20,7 +20,7 @@
                 <th>STT</th>
                 <th>TÊN SẢN PHẨM</th>
                 <th>Màu</th>
-                <th>GIÁ</th>
+                <th>Kích cỡ</th>
                 <th>MÔ TẢ</th>
                 <th>NGÀY NHẬP</th>
                 <th>LƯỢT XEM</th>
@@ -29,20 +29,25 @@
             <?php
             foreach ($listspct as $sp) {
                 extract($sp);
-                // $suasp = "index.php?act=suasp&id=" . $id;
-                // $xoasp = "index.php?act=xoasp&id=" . $id;
-                // $hinhpath = "../upload/" . $img;
-               
+                $xoactsp = "index.php?act=xoactsp&id_ctsp=" . $id_ctsp;
+                $suactsp = "index.php?act=updatectsp&id_ctsp=" . $id_ctsp;
                 echo '<tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>' . $id_ctsp . '</td>
-                <td>' . $id_sp . '</td>
-                <td>' . $color . '</td>
-                <td>' . $size . '</td>
-                <td>' . $soluong . '</td>
-            </tr>';
-            }
-            ?>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>' . $id_ctsp . '</td>
+                    <td>' . $id_sp . '</td>
+                    <td>' . $color . '</td>
+                    <td>' . $size . '</td>
+                    <td>' . $soluong . '</td>
+                    <td>
+                        <a href="'.$xoactsp.'" onclick="return confirm(\'Bạn có chắc chắn muốn xóa không?\');">
+                            <input type="button" value="Xóa">
+                        </a>
+                        <a href="'.$suactsp.'"><input type="button" value="Sửa"></a>
+                    </td>
+                </tr>';
+}
+?>
+
         </thead>
         </table>
         <button class="btn btn-primary">Chọn tất cả</button>

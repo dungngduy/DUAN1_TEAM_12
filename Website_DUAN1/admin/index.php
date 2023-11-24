@@ -132,6 +132,33 @@
                 $listspct = loadall_spct();
                 include "sanpham/ctsp/listctsp.php";
                 break;
+            case 'suactsp':
+                if (isset($_GET['id_ctsp']) && ($_GET['id_ctsp'] > 0)) {
+                    $ctsanpham = loadone_spct($_GET['id_ctsp']);
+                }
+                $listctsp = loadall_spct();
+                include "sanpham/ctsp/update.php";
+                break;
+            case 'updatectsp':
+                if (isset($_POST['capnhatctsp']) && ($_POST['capnhatctsp'])) {
+                    $id_ctsp = $_POST['id_ctsp'];
+                    $id_sp = $_POST['id_sp'];
+                    $color = $_POST['color'];
+                    $size = $_POST['size'];
+                    $soluong = $_POST['soluong'];
+                    update_ctsanpham($id_ctsp, $id_sp, $color, $size, $soluong);
+                    $thongbao = "Cập nhật thành công";
+                }
+                    $listspct = loadall_spct("", 0);
+                    include "sanpham/ctsp/listctsp.php";
+                break;
+            case 'xoactsp':
+                if (isset($_GET['id_ctsp']) && ($_GET['id_ctsp'] > 0)) {
+                    delete_ctsanpham($_GET['id_ctsp']);
+                }
+                    $listspct = loadall_spct("", 0);
+                    include "sanpham/ctsp/listctsp.php";
+                break;
             case 'addspct':
                 if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
                     $id_sp = $_POST['id'];
