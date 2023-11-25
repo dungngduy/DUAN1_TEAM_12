@@ -82,36 +82,29 @@ if (isset($imgpath)) {
 
         if (ten.trim() === "") {
             tenError.innerHTML = "Vui lòng nhập tên sản phẩm";
-            console.log("Tên sản phẩm không được để trống");
             return false;
         }
 
         if (gia.trim() === "") {
             giaError.innerHTML = "Vui lòng nhập giá sản phẩm";
-            console.log("Giá sản phẩm không được để trống");
             return false;
         }
 
         if (anh.trim() === "") {
             anhError.innerHTML = "Vui lòng chọn ảnh sản phẩm";
-            console.log("Ảnh sản phẩm không được để trống");
             return false;
         }
 
         if (mota.trim() === "") {
             motaError.innerHTML = "Vui lòng nhập mô tả sản phẩm";
-            console.log("Mô tả sản phẩm không được để trống");
             return false;
         }
 
         if (iddm === "0") {
             iddmError.innerHTML = "Vui lòng chọn danh mục";
-            console.log("Danh mục không được để trống");
             return false;
         }
 
-        console.log("Form hợp lệ");
         return true;
     }
 </script>
-
