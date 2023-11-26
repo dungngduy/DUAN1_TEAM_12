@@ -9,7 +9,7 @@
         pdo_execute($sql);
     }
     function delete_danhmuc($id){
-        $sql = "DELETE FROM danh_muc WHERE id=".$_GET['id'];
+        $sql = "DELETE FROM danh_muc WHERE id=".$id;
         pdo_execute($sql);
     }
 
@@ -27,4 +27,5 @@
         $sql = "UPDATE danh_muc SET name= '".$name."' WHERE id=".$id;
         pdo_execute($sql);
     }
+   
 ?>

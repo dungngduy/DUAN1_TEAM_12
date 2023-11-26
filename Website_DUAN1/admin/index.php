@@ -24,7 +24,14 @@
                 break;
             case "xoadm":
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                    delete_danhmuc($_GET['id']);
+                    $iddm = $_GET['id'];
+                    $sl_sp = kt_sl($iddm)['product_count'];
+                    var_dump($sl_sp);   
+                    if(intval($sl_sp)>0){
+                        echo "danh mục có sản phẩm, không thể xóa";
+                    }else{
+                        delete_danhmuc($iddm);
+                    }
                 }
                 $listdm = loadall_danhmuc();
                 include "danhmuc/list.php";

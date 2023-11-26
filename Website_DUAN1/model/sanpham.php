@@ -119,4 +119,8 @@
         $sp = pdo_query($sql);
         return $sp;
     }
+    function kt_sl($id){
+        $sql = "SELECT COUNT(*) as product_count FROM san_pham WHERE iddm = $id";
+        return pdo_query_one($sql);
+       }
 ?>
