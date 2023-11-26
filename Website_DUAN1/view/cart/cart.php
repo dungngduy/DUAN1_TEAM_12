@@ -33,7 +33,51 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                            <?php
+                                 $i = 0;
+                                 $total_amount = 0;
+                                 
+                                 foreach ($_SESSION['mycart'] as $cart) {
+                                     $img_pro = $img_path . $cart[2];
+                                     $xoasp = "<td class='shoping__cart__item__close'>
+                                         <a href='index.php?act=delcart&idcart=" . $i . "' class='icon_close'></a>
+                                     </td>";
+                                     $price = $cart[3];
+                                     $quantity = isset($_POST['quantity'][$i]) ? intval($_POST['quantity'][$i]) : $cart[4];
+                                     if (!is_numeric($price) || !is_numeric($quantity)) {                
+                                 $i += 1;  
+                                 continue;
+                                     }
+                                     $ttien = $price * $quantity;
+                                     $total_amount += $ttien;
+                                     echo "
+                                         <tr>
+                                             <td class='shoping__cart__item'>
+                                                 <img src='" . $img_pro . "' alt=''>
+                                                 <h5>" . $cart[1] . "</h5>
+                                             </td>
+                                             <td class='shoping__cart__price'>
+                                                 " . $price . "đ
+                                             </td>
+                                             <td class='shoping__cart__quantity'>
+                                                 <div class='quantity'>
+                                                     <div class='pro-qty'>
+                                                         <input type='text' name='quantity[" . $i . "]' value='" . $quantity . "'>
+                                                     </div>
+                                                 </div>
+                                             </td>
+                                             <td class='shoping__cart__total'>
+                                                 " . $ttien . " đ
+                                             </td>
+                                             " . $xoasp . "
+                                         </tr>
+                                     ";
+                                 
+                                     $i += 1;
+                                 }
+                                    ?>
+
+                                <!-- <tr>
                                     <td class="shoping__cart__item">
                                         <img src="img/cart/cart-1.jpg" alt="">
                                         <h5>Áo khoác</h5>
@@ -98,7 +142,7 @@
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -127,8 +171,7 @@
                     <div class="shoping__checkout">
                         <h5>Tổng số giỏ hàng</h5>
                         <ul>
-                            <li>Tổng phụ <span>900.000 VND</span></li>
-                            <li>Tổng cộng <span>900.000 VND</span></li>
+                            <?php echo" <li>Tổng cộng <span>".$total_amount." đ</span></li>" ?>
                         </ul>
                         <a href="#" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>
                     </div>

@@ -19,72 +19,79 @@
     <!-- Product Details Section Begin -->
     <?php extract($onesp); ?> 
     <section class="product-details spad">
-        <div class="container">
-            <div class="row">
+    <div class="container">
+        <div class="row">
             <?php
                 $img_pro = $img_path . $img;
             ?>
-                <div class='col-lg-6 col-md-6'>
-                    <div class='product__details__pic'>
-                        <div class='product__details__pic__item'>
-                        <img class='product__details__pic__item--large'
-                            src='<?=$img_pro; ?>' alt=''>
-                        </div>
+            <div class='col-lg-6 col-md-6'>
+                <div class='product__details__pic'>
+                    <div class='product__details__pic__item'>
+                        <img class='product__details__pic__item--large' src='<?=$img_pro; ?>' alt=''>
                     </div>
                 </div>
-                <div class='col-lg-6 col-md-6'>
-                    <div class='product__details__text'>
-                        <h3><?=$name; ?></h3>
-                        <div class='product__details__rating'>
-                            <i class='fa fa-star'></i>
-                            <i class='fa fa-star'></i>
-                            <i class='fa fa-star'></i>
-                            <i class='fa fa-star'></i>
-                            <i class='fa fa-star-half-o'></i>
-                            <span>(<?=$luotxem; ?>)</span>
-                        </div>
-                        <div class='product__details__price'><?=$price; ?></div>
-                        <p><?=$mota; ?></p>
-                        <?php
-                            foreach($ctsp as $key){
-                                extract($key);
-                                echo "<div class='color'>
-                                        <a href=''>".$color."</a>
-                                    </div>";
-                            }
-                        ?>
-                        <?php
-                            foreach($ctsp as $key){
-                                extract($key);
-                                echo "<div class='size'>
-                                        <input type='button' value='Size ".$size."'>
-                                    </div>";
-                            }
-                        ?>
-                        <?php
-                            foreach($ctsp as $key){
-                                extract($key);
-                            }
-                        ?>
-                        <?php
-                            include "model/offset.php";
-                            $sql = mysqli_query($conn, "SELECT * FROM chi_tiet_san_pham");
-                            if($result = $sql->num_rows > 0){
-                                $row = $sql->fetch_assoc();
-                                $soLuong = $row['soluong'];
-                            }
-                        ?>
-                        <div class='product__details__quantity'>
+            </div>
+            <div class='col-lg-6 col-md-6'>
+                <div class='product__details__text'>
+                    <h3><?=$name; ?></h3>
+                    <div class='product__details__rating'>
+                        <i class='fa fa-star'></i>
+                        <i class='fa fa-star'></i>
+                        <i class='fa fa-star'></i>
+                        <i class='fa fa-star'></i>
+                        <i class='fa fa-star-half-o'></i>
+                        <span>(<?=$luotxem; ?>)</span>
+                    </div>
+                    <div class='product__details__price'><?=$price; ?></div>
+                    <p><?=$mota; ?></p>
+                    <?php
+                        foreach($ctsp as $key){
+                            extract($key);
+                            echo "<div class='color'>
+                                    <a href=''>".$color."</a>
+                                </div>";
+                        }
+                    ?>
+                    <?php
+                        foreach($ctsp as $key){
+                            extract($key);
+                            echo "<div class='size'>
+                                    <input type='button' value='Size ".$size."'>
+                                </div>";
+                        }
+                    ?>
+                    <?php
+                        foreach($ctsp as $key){
+                            extract($key);
+                        }
+                    ?>
+                    <?php
+                        include "model/offset.php";
+                        $sql = mysqli_query($conn, "SELECT * FROM chi_tiet_san_pham");
+                        if($result = $sql->num_rows > 0){
+                            $row = $sql->fetch_assoc();
+                            $soLuong = $row['soluong'];
+                        }
+                    ?>
+                    <div class='product__details__quantity'>
+                        <form method="post" action="index.php?act=cart">
+                            <input type="hidden" name="id" value="<?=$id;?>">
+                            <input type="hidden" name="name" value="<?=$name;?>">
+                            <input type="hidden" name="img" value="<?=$img;?>">
+                            <input type="hidden" name="price" value="<?=$price;?>">
+                            <input type="hidden" name="soluong" value="1">
                             <div class='quantity'>
                                 <div class='pro-qty'>
                                     <input type='text' value='1' min="1" max="<?=$soluong; ?>">
                                 </div>
                             </div>
-                        </div><br><br>
-                        <a href='#' class='primary-btn'>Mua ngay</a>
-                        <a href='index.php?act=giohang' class='primary-btn'>Thêm vào giỏ hàng</a>
+                            <br><br>
+                            <a href='#' class='primary-btn'>Mua ngay</a>
+                            <input type='submit' class='primary-btn' name='cart' value="Thêm vào giỏ hàng"></input>
+                        </form>
                     </div>
                 </div>
+            </div>
 
 
 
