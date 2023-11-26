@@ -9,6 +9,9 @@
     include "model/sanpham.php";
     include "model/tintuc.php";
     include "model/binhluan.php";
+    
+    if(!isset($_SESSION['mycart'])) $_SESSION['mycart']=[];
+
     $list_danhmuc = list_danhmuc();
     $loadall_danhmuc = loadall_danhmuc();
     $list_tintuc = loadall_tintuc();
@@ -82,8 +85,31 @@
                 include "view/blog/blog.php";
                 break;
             case "cart":
+                if(isset($_POST['cart'])&& ($_POST['cart'])){
+                    $id = $_POST['id'];
+                    $name = $_POST['name'];
+                    $img = $_POST['img'];
+                    $price = $_POST['price'];
+                    $soluong = $_POST['soluong'];
+                    $ttien = $soluong * $price;
+                    $spadd =[$id,$name,$img,$price,$soluong,$ttien];
+                    array_push($_SESSION['mycart'],$spadd);
+                    
+                }
                 include "view/cart/cart.php";
                 break;
+            case "delcart":
+                if(isset($_GET['idcart'])){
+                    $_SESSION['mycart'] = array_merge(
+                    array_slice($_SESSION['mycart'], 0, $_GET['idcart']),
+                    array_slice($_SESSION['mycart'], $_GET['idcart'] + 1)
+                );
+                } else {
+                    $_SESSION['mycart'] = [];
+                }
+                header('Location: index.php?act=cart');
+                break;
+                
             case "checkout":
                 include "view/cart/checkout.php";
                 break;

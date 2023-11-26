@@ -169,6 +169,9 @@
             width: 100%;
             height: 100%;
         }
+        .shoping__cart__item img{
+            width: 150px;
+        }
     </style>
 </head>
 <body>
@@ -211,7 +214,7 @@
                 <li><a href="#">Trang</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="index.php?act=ctsanpham">Chi tiết cửa hàng</a></li>
-                        <li><a href="index.php?act=giohang">Giỏ hàng</a></li>
+                        <li><a href="index.php?act=cart">Giỏ hàng</a></li>
                         <li><a href="./checkout.html">Thanh toán</a></li>
                         <li><a href="./blog-details.html">Chi tiết blog</a></li>
                     </ul>
