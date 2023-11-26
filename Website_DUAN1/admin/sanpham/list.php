@@ -28,6 +28,7 @@
         </thead>
         <tbody>
             <?php
+<<<<<<< Updated upstream
             include "../model/offset.php";
             $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] :3;
             $current_page = !empty($_GET['page']) ? $_GET['page'] :1;
@@ -41,6 +42,14 @@
                 $suasp = "index.php?act=suasp&id=" . $row['id'];
                 $xoasp = "index.php?act=xoasp&id=" . $row['id'];
                 $hinhpath = "../upload/" . $row['img'];
+=======
+            foreach ($listsp as $sp) {
+                extract($sp);
+                $suasp = "index.php?act=suasp&id=" . $id;
+                $xoasp = "index.php?act=xoasp&id=" . $id;
+                $chitietsp = "index.php?act=chitietsp&id=" . $id;
+                $hinhpath = "../upload/" . $img;
+>>>>>>> Stashed changes
                 if (isset($hinhpath)) {
                     $hinh = "<img src = '" . $hinhpath . "' height='80px'>";
                 } else {
@@ -56,12 +65,18 @@
                             <td>' . $row['ngaynhapkhau'] . '</td>
                             <td>' . $row['luotxem'] . '</td>
                             <td><a href="' . $suasp . '"><input type="button" value="Sửa"></a>
+<<<<<<< Updated upstream
                             <a onclick="return confirm(\'Bạn có muốn xóa không?\')" href="' . $xoasp . '"><input type="button" value="Xóa"></a></td>
+=======
+                            <a href="' . $xoasp . '"><input type="button" value="Xóa"></a> <br>
+                            <a href="' . $chitietsp . '"><input type="button" value="Chi tiết sản phẩm"></a></td>
+>>>>>>> Stashed changes
                         </tr>';
             }
             ?>
         </tbody>
         </table>
+<<<<<<< Updated upstream
         
         <div class="product__pagination">
             <?php
@@ -94,6 +109,12 @@
         <button class="btn btn-primary">Chọn tất cả</button>
         <button class="btn btn-primary">Bỏ chọn tất cả</button>
         <a href="index.php?act=addsp"><button class="btn btn-primary">Thêm sản phẩm</button></a>
+=======
+        <button class="btn btn-primary"><i class="fas fa-edit"></i>Chọn tất cả</button>
+        <button class="btn btn-primary"><i class="fas fa-edit"></i>Bỏ chọn tất cả</button>
+        <a href="index.php?act=addsp"><button class="btn btn-primary"><i class="fas fa-edit"></i>Thêm sản phẩm</button></a>
+       
+>>>>>>> Stashed changes
     </div>
     <br><br>
 </body>

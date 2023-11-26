@@ -1,9 +1,18 @@
 <?php
+<<<<<<< Updated upstream
     include "../model/pdo.php";
     include "../model/danhmuc.php";
     include "../model/sanpham.php";
     include "../model/taikhoan.php";
     include "../model/binhluan.php";
+=======
+include "../model/pdo.php";
+include "../model/danhmuc.php";
+include "../model/sanpham.php";
+include "../model/taikhoan.php";
+include "../model/binhluan.php";
+include "../model/chitietsp.php";
+>>>>>>> Stashed changes
 
     include "header.php";
     if (isset($_GET['act'])) {
@@ -16,6 +25,7 @@
                     insert_danhmuc($name);
                     $thongbao = "Thêm thành công";
                 }
+<<<<<<< Updated upstream
                 include "danhmuc/add.php";
                 break;
             case "list_danhmuc":
@@ -32,6 +42,68 @@
                     }else{
                         delete_danhmuc($iddm);
                     }
+=======
+                insert_sanpham($name, $price, $filename, $mota, $iddm);
+                $thongbao = "Thêm thành công";
+            }
+            $listdm = loadall_danhmuc();
+            //var_dump($listdm);
+            include "sanpham/add.php";
+            break;
+        case 'addct':
+            if(isset($_POST['themmoi']) && ($_POST['themmoi'])){
+                $color = $_POST['color'];
+                $size = $_POST['size'];
+                $soluong = $_POST['soluong'];
+                $id_sp = $_POST['id_sp'];
+                insert_chitietsp($soluong, $color, $size, $id_sp);
+                $thongbao = "Thêm thành công";
+            }
+            $listsp = loadall_sp();
+            include "sanpham/chitietsp.php";
+            break;
+        case 'listsp':
+            if (isset($_POST['listok']) && ($_POST['listok'])) {
+                $kw = $_POST['kw'];
+                $iddm = $_POST['iddm'];
+            } else {
+                $kw = '';
+                $iddm = 0;
+            }
+            $listdm = loadall_danhmuc();
+            $listsp = loadall_sanpham($kw, $iddm);
+            include "sanpham/list.php";
+            break;
+    
+        case 'xoasp':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                delete_sanpham($_GET['id']);
+            }
+            $listsp = loadall_sanpham("", 0);
+            include "sanpham/list.php";
+            break;
+        case 'suasp':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $sanpham = loadone_sanpham($_GET['id']);
+            }
+            $listdm = loadall_danhmuc();
+            include "sanpham/update.php";
+            break;
+        case 'updatesp':
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $id = $_POST['id'];
+                $iddm = $_POST['iddm'];
+                $name = $_POST['name'];
+                $price = $_POST['price'];
+                $mota = $_POST['mota'];
+                $img = $_FILES['img']['name'];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES['img']['name']);
+                if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+                    //echo 
+                } else {
+                    //
+>>>>>>> Stashed changes
                 }
                 $listdm = loadall_danhmuc();
                 include "danhmuc/list.php";

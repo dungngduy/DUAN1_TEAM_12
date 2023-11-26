@@ -1,5 +1,6 @@
 <?php
 function pdo_get_connection(){
+<<<<<<< Updated upstream
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -10,6 +11,15 @@ function pdo_get_connection(){
     } catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
+=======
+    $dburl = "mysql:host=localhost;dbname=duan1_team122;charset=utf8";
+    $username = 'root';
+    $password = '';
+
+    $conn = new PDO($dburl, $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return $conn;
+>>>>>>> Stashed changes
 }
 
 function pdo_execute($sql){
