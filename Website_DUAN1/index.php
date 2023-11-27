@@ -101,16 +101,16 @@
             case "updatecart":
                 if(isset($_POST['idcart']) && isset($_POST['quantity'])){
                     $idcart = $_POST['idcart'];
-                    $quantity = $_POST['quantity'];
+                    $quantitynew = $_POST['quantity'];
             
                     // Kiểm tra xem idcart có tồn tại trong giỏ hàng hay không
                     if(isset($_SESSION['mycart'][$idcart])){
                         // Cập nhật số lượng cho sản phẩm tương ứng
-                        $_SESSION['mycart'][$idcart]['quantity'] = $quantity;
+                        $_SESSION['mycart'][$idcart]['quantity'] = $quantitynew;
                     }
                 }
                 var_dump($_SESSION['mycart']);
-                // header('Location: index.php?act=cart');
+                header('Location: index.php?act=cart');
                 break;
             case "checkout":
                 include "view/cart/checkout.php";

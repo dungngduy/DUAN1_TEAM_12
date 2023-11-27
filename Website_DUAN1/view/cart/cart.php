@@ -55,7 +55,7 @@
                                     $total_amount += $ttien;
                                     echo "
                                         <tr>
-                                            <form action='index.php?act=updatecart' method='post'>
+                                            <form action='index.php?act=updatecart&idcart=".$i."' method='post'>
                                                 <td class='shoping__cart__item'>
                                                     <img src='" . $img_pro . "' alt=''>
                                                     <h5>" . $cart[1] . "</h5>
@@ -68,7 +68,7 @@
                                                     <div class='quantity'>
                                                         <div class='pro-qty'>
                                                             <input type='text' name='quantity[" . $i . "]' value='" . $quantity . "'>
-                                                            <input type='hidden' name='quantity' value='" . $quantity . "'>
+                                                            <input type='hidden' name='quantity[" . $i . "]' value='" . $quantitynew . "'>
                                                         </div>
                                                     </div>
                                                 </td>

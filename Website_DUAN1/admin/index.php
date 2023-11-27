@@ -30,83 +30,13 @@
                 include "danhmuc/list.php";
                 break;
             case "xoadm":
-                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                if(isset($_GET['id']) && $_GET['id'] > 0){
                     $id = $_GET['id'];
-                    $sl_sp = kt_sl($id)['product_count'];
-                    
-                    if (intval($sl_sp) > 0) {
-                        echo '<script>
-                                var confirmed = window.confirm("Danh mục có sản phẩm. Bạn có chắc muốn xóa không?");
-                                if (confirmed) {
-                                    window.location.href = "index.php?act=xoadm&id=' . $id . '";
-                                }
-                                
-                            </script>';
-                    } else {
-                        delete_danhmuc($id);
-                    }
+                    $del = delete_cate($id);
                 }
                 $listdm = loadall_danhmuc();
                 include "danhmuc/list.php";
                 break;
-            // case 'addct':
-            //     if(isset($_POST['themmoi']) && ($_POST['themmoi'])){
-            //         $color = $_POST['color'];
-            //         $size = $_POST['size'];
-            //         $soluong = $_POST['soluong'];
-            //         $id_sp = $_POST['id_sp'];
-            //         insert_chitietsp($soluong, $color, $size, $id_sp);
-            //         $thongbao = "Thêm thành công";
-            //     }
-            //     $listsp = loadall_sp();
-            //     include "sanpham/chitietsp.php";
-            //     break;
-            // case 'listsp':
-            //     if (isset($_POST['listok']) && ($_POST['listok'])) {
-            //         $kw = $_POST['kw'];
-            //         $iddm = $_POST['iddm'];
-            //     } else {
-            //         $kw = '';
-            //         $iddm = 0;
-            //     }
-            //     $listdm = loadall_danhmuc();
-            //     $listsp = loadall_sanpham($kw, $iddm);
-            //     include "sanpham/list.php";
-            //     break;
-        
-            // case 'xoasp':
-            //     if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-            //         delete_sanpham($_GET['id']);
-            //     }
-            //     $listsp = loadall_sanpham("", 0);
-            //     include "sanpham/list.php";
-            //     break;
-            // case 'suasp':
-            //     if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-            //         $sanpham = loadone_sanpham($_GET['id']);
-            //     }
-            //     $listdm = loadall_danhmuc();
-            //     include "sanpham/update.php";
-            //     break;
-            // case 'updatesp':
-            //     if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-            //         $id = $_POST['id'];
-            //         $iddm = $_POST['iddm'];
-            //         $name = $_POST['name'];
-            //         $price = $_POST['price'];
-            //         $mota = $_POST['mota'];
-            //         $img = $_FILES['img']['name'];
-            //         $target_dir = "../upload/";
-            //         $target_file = $target_dir . basename($_FILES['img']['name']);
-            //         if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-            //             //echo 
-            //         } else {
-            //             //
-            //         }
-            //     }
-            //     $listdm = loadall_danhmuc();
-            //     include "danhmuc/list.php";
-            //     break;
             case 'suadm':
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                     $dm = loadone_danhmuc($_GET['id']);

@@ -1,6 +1,6 @@
 <?php
     function list_danhmuc(){
-        $sql = "SELECT * FROM danh_muc WHERE 1 ORDER BY id ASC LIMIT 0,3";
+        $sql = "SELECT * FROM danh_muc WHERE 1 ORDER BY id ASC LIMIT 1,3";
         $danh_muc = pdo_query($sql);
         return $danh_muc;
     }
@@ -26,6 +26,21 @@
     function update_danhmuc($id, $name){
         $sql = "UPDATE danh_muc SET name= '".$name."' WHERE id=".$id;
         pdo_execute($sql);
+    }
+
+    function delete_cate ($id_cate){
+        $sql = "SELECT * FROM san_pham WHERE iddm = $id_cate";
+        $pro = pdo_query($sql);
+        if(is_array($pro)){
+            $sql = "UPDATE san_pham SET iddm = 6 WHERE iddm = $id_cate";
+            pdo_execute($sql);
+            $delete = "DELETE FROM danh_muc WHERE id = $id_cate";
+            pdo_execute($delete);
+        }else {
+            $delete = "DELETE FROM danh_muc WHERE id = $id_cate";
+            pdo_execute($delete);
+        }
+         
     }
    
 ?>
