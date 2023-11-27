@@ -31,6 +31,24 @@
                     </div>
                 </div>
             </div>
+            <!-- <div class="col-lg-6 col-md-6">
+                    <div class="product__details__pic">
+                        <div class="product__details__pic__item">
+                            <img class="product__details__pic__item--large"
+                                src="img/product/details/product-details-1.jpg" alt="">
+                        </div>
+                        <div class="product__details__pic__slider owl-carousel">
+                            <img data-imgbigurl="img/product/details/product-details-2.jpg"
+                                src="img/product/details/thumb-1.jpg" alt="">
+                            <img data-imgbigurl="img/product/details/product-details-3.jpg"
+                                src="img/product/details/thumb-2.jpg" alt="">
+                            <img data-imgbigurl="img/product/details/product-details-5.jpg"
+                                src="img/product/details/thumb-3.jpg" alt="">
+                            <img data-imgbigurl="img/product/details/product-details-4.jpg"
+                                src="img/product/details/thumb-4.jpg" alt="">
+                        </div>
+                    </div>
+                </div> -->
             <div class='col-lg-6 col-md-6'>
                 <div class='product__details__text'>
                     <h3><?=$name; ?></h3>
@@ -42,7 +60,7 @@
                         <i class='fa fa-star-half-o'></i>
                         <span>(<?=$luotxem; ?>)</span>
                     </div>
-                    <div class='product__details__price'><?=$price; ?></div>
+                    <div class='product__details__price'><?=number_format($price, 0, ',', '.'); ?>đ</div>
                     <p><?=$mota; ?></p>
                     <?php
                         foreach($ctsp as $key){
@@ -79,10 +97,13 @@
                             <input type="hidden" name="name" value="<?=$name;?>">
                             <input type="hidden" name="img" value="<?=$img;?>">
                             <input type="hidden" name="price" value="<?=$price;?>">
-                            <input type="hidden" name="soluong" value="1">
-                            <div class='quantity'>
-                                <div class='pro-qty'>
-                                    <input type='text' value='1' min="1" max="<?=$soluong; ?>">
+                            <!-- <input type="hidden" name="soluong" value="1">    -->
+                            <div class='product__details__quantity'>
+                                <div class='quantity'>
+                                    <div class='pro-qty'>
+                                        <input type="text" value="1">
+                                        <input type="hidden" value="1" name="qty">
+                                    </div>
                                 </div>
                             </div>
                             <br><br>
@@ -92,64 +113,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-                <!-- <div class="col-lg-6 col-md-6">
-                    <div class="product__details__pic">
-                        <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large"
-                                src="img/product/details/product-details-1.jpg" alt="">
-                        </div>
-                        <div class="product__details__pic__slider owl-carousel">
-                            <img data-imgbigurl="img/product/details/product-details-2.jpg"
-                                src="img/product/details/thumb-1.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-3.jpg"
-                                src="img/product/details/thumb-2.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-5.jpg"
-                                src="img/product/details/thumb-3.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-4.jpg"
-                                src="img/product/details/thumb-4.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="product__details__text">
-                        <h3>Áo khoác</h3>
-                        <div class="product__details__rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(18k Lượt xem)</span>
-                        </div>
-                        <div class="product__details__price">300.000 VND</div>
-                        <p>Bảng size: <br>
-                            - Size S: Cân nặng: 53-60kg; Ngang vai: 45cm; Rộng ngực: 51cm; Dài áo: 70cm <br>
-                            - Size M: Cân nặng 60-68kg; Ngang vai: 46cm; Rộng ngực: 53cm; Dài áo: 72cm <br>
-                            - Size L:  Cân nặng 68-78kg; Ngang vai:47cm; Rộng ngực: 55cm; Dài áo: 74cm <br>
-                            - Size XL: Cân nặng 78-85kg; Ngang vai: 48cm; Rộng ngực: 57cm; Dài áo: 76cm <br>
-                            
-                            Chất liệu: Jean 100% Cotton <br>
-                            Form áo: Regular <br>
-                            </p>
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
-                                </div>
-                            </div>
-                        </div><br><br>
-                        <a href="#" class="primary-btn">Mua ngay</a>
-                        <a href="#" class="primary-btn">Thêm vào giỏ hàng</a>
-                        <ul>
-                            <li><b>Khả dụng</b> <span>Trong kho</span></li>
-                            <li><b>Đang chuyển hàng</b> <span>1 ngày vận chuyển. <samp>Nhận hàng miễn phí ngay hôm nay</samp></span></li>
-                            <li><b>Cân nặng</b> <span>0.5 kg</span></li>
-                        </ul>
-                    </div>
-                </div> -->
                 <div class="col-lg-12">
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
@@ -163,7 +126,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">Đánh giá <span>(1)</span></a>
+                                    aria-selected="false">Đánh giá <span>(<?=$count; ?>)</span></a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -232,7 +195,7 @@
                                 </div>
                                 <div class='product__item__text'>
                                     <h6><a href='".$link."'>".$name."</a></h6>
-                                    <h5>".$price."</h5>
+                                    <h5>".number_format($price, 0, ',', '.')."đ</h5>
                                 </div>
                             </div>
                         </div>

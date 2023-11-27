@@ -38,21 +38,10 @@
         </div><br>
 
         <div class="mt-3 text-center">
-<<<<<<< Updated upstream
             <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <input type="submit" name="themmoi" class="btn btn-primary" value="Thêm">
-            <input type="reset" class="btn btn-outline-primary" value="Nhập lại">
-            <a href="index.php?act=listsp"><button type="button" class="btn btn-outline-primary">Danh sách <i
-                        class="fa-solid fa-right-long"></i></button></a>
-            <a href="index.php?act=listctsp"><button type="button" class="btn btn-outline-primary">Chi tiết sản phẩm <i
-                        class="fa-solid fa-right-long"></i></button></a>
-=======
-          <input type="hidden" name="id" value="<?php echo $id; ?>">
-          <input type="submit" name="themmoi" class="btn btn-primary" value="Thêm" ></input>
-          <input type="reset" class="btn btn-outline-primary" value="Nhập lại"></input>
-          <a href="index.php?act=listsp"><button type="button" class="btn btn-outline-primary">Danh sách <i class="fa-solid fa-right-long"></i></button></a>
-          
->>>>>>> Stashed changes
+            <input type="submit" name="themmoi" class="btn btn-primary" value="Thêm" ></input>
+            <input type="reset" class="btn btn-outline-primary" value="Nhập lại"></input>
+            <a href="index.php?act=listsp"><button type="button" class="btn btn-outline-primary">Danh sách <i class="fa-solid fa-right-long"></i></button></a>
         </div>
     </form>
     <?php

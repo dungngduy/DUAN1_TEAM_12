@@ -1,25 +1,15 @@
 <?php
 function pdo_get_connection(){
-<<<<<<< Updated upstream
     $servername = "localhost";
     $username = "root";
     $password = "";
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=duan1_team122", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=duan1_team12", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
     } catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
-=======
-    $dburl = "mysql:host=localhost;dbname=duan1_team122;charset=utf8";
-    $username = 'root';
-    $password = '';
-
-    $conn = new PDO($dburl, $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    return $conn;
->>>>>>> Stashed changes
 }
 
 function pdo_execute($sql){
@@ -71,19 +61,14 @@ function pdo_query_one($sql){
     }
 }
 
-// function pdo_query_value($sql){
-//     $sql_args = array_slice(func_get_args(), 1);
-//     try{
-//         $conn = pdo_get_connection();
-//         $stmt = $conn->prepare($sql);
-//         $stmt->execute($sql_args);
-//         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-//         return array_values($row)[0];
-//     }
-//     catch(PDOException $e){
-//         throw $e;
-//     }
-//     finally{
-//         unset($conn);
-//     }
-// }
+function pdo_fetch_assoc($result) {
+    // Kiểm tra xem $result có phải là một đối tượng PDOStatement không
+    if ($result instanceof PDOStatement) {
+        // Sử dụng phương thức fetch để lấy một dòng kết quả dưới dạng mảng kết hợp
+        return $result->fetch(PDO::FETCH_ASSOC);
+    } else {
+        // Hoặc xử lý lỗi nếu $result không phải là một đối tượng PDOStatement
+        // (ví dụ, có thể trả về một thông báo lỗi)
+        return false;
+    }
+}

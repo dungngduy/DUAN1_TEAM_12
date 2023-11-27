@@ -172,13 +172,20 @@
         .shoping__cart__item img{
             width: 150px;
         }
+        .shoping__cart__btns a:hover{
+            text-decoration: none;
+        }
+        .shoping__checkout a:hover{
+            text-decoration: none;
+            transition: 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
+    <!-- <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div> -->
 
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
@@ -189,7 +196,18 @@
         <div class="humberger__menu__cart">
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>
+                    <?php
+                        $cart = [];
+                        if(isset($_SESSION['mycart'])){
+                            $cart = $_SESSION['mycart'];
+                        }
+                        $count = 0;
+                        foreach($cart as $num){
+                            $count += $num['qty'];
+                        }
+                    ?>
+                </span></a></li>
             </ul>
             <div class="header__cart__price">Tổng: <span>$150.00</span></div>
         </div>
@@ -319,9 +337,23 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>
+                            <?php
+                                $cart = [];
+                                if(isset($_SESSION['mycart'])){
+                                    $cart = $_SESSION['mycart'];
+                                }
+                                $count = 0;
+                                $sum_sp = 0;
+                                foreach($cart as $num){
+                                    $count += $num[4];
+                                    $sum_sp += $num[5] * $num[4];
+                                }
+                                echo $count;
+                            ?>
+                            </span></a></li>
                         </ul>
-                        <div class="header__cart__price">Tổng: <span>$150.00</span></div>
+                        <div class="header__cart__price">Tổng: <span><?=number_format($sum_sp, 0, ',', '.'); ?>đ</span></div>
                     </div>
                 </div>
             </div>

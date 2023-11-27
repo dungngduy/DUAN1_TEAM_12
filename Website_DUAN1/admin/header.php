@@ -48,9 +48,9 @@
 </head>
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
+    <!-- <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div> -->
 
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
@@ -76,7 +76,7 @@
                 </ul>
             </div>
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i><b>Admin</b></a>
+                <a href="#"><i class="fa fa-user"></i><b>admin</b></a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -154,8 +154,8 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="index.php">Trang chủ</a></li>
-                            <li><a href="index.php?act=adddm">Danh mục</a></li>
-                            <li><a href="index.php?act=addsp">Sản phẩm</a></li>
+                            <li><a href="index.php?act=list_danhmuc">Danh mục</a></li>
+                            <li><a href="index.php?act=listsp">Sản phẩm</a></li>
                             <li><a href="index.php?act=dskh">Tài khoản</a></li>
                             <li><a href="index.php?act=dsbl">Bình luận</a></li>
                             <li><a href="">Thống kê</a></li>
@@ -163,7 +163,7 @@
                     </nav>
                 </div>
                 <div class="col-lg-1 exit">
-                    <a href="../index.php"><button type="submit">Thoát</button></a>
+                    <a href="./index.php"><button type="submit">Thoát</button></a>
                 </div>
             </div>
             <div class="humberger__open">

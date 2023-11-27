@@ -1,6 +1,9 @@
 <?php
     session_start();
     ob_start();
+    // if(isset($_SESSION['role']) && $_SESSION['role'] == 1){
+    //     header("Location: admin/index.php");
+    // }
     include "view/header.php";
     include "global.php";
     include "model/pdo.php";
@@ -24,41 +27,26 @@
             case "dmsanpham":
                 if(isset($_GET['iddm']) && ($_GET['iddm'] > 0)){
                     $iddm = $_GET['iddm'];
-                    $sp_with_dm = getall_sp($iddm);
-                }else{
-                    $sp_with_dm = getall_sp(0);
+                    $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 3;
+                    $current_page = !empty($_GET['page']) ? $_GET['page'] : 1;
+                    
+                    $minPrice = isset($_GET['minPrice']) ? (int)$_GET['minPrice'] : null;
+                    $maxPrice = isset($_GET['maxPrice']) ? (int)$_GET['maxPrice'] : null;
+                    
+                    $sp_with_dm = getall_sp($iddm, $current_page, $item_per_page, $minPrice, $maxPrice);
+                    $total_items = get_total_sp_count($iddm, $minPrice, $maxPrice);
+                    $totalPages = ceil($total_items / $item_per_page);
+                } else {
+                    $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 3;
+                    $current_page = !empty($_GET['page']) ? $_GET['page'] : 1;
+
+                    $minPrice = isset($_GET['minPrice']) ? (int)$_GET['minPrice'] : null;
+                    $maxPrice = isset($_GET['maxPrice']) ? (int)$_GET['maxPrice'] : null;
+
+                    $sp_with_dm = getall_sp(0, $current_page, $item_per_page, $minPrice, $maxPrice);
+                    $total_items = get_total_sp_count(0, $minPrice, $maxPrice);
+                    $totalPages = ceil($total_items / $item_per_page);
                 }
-
-                if(isset($_GET['maxPrice']) && isset($_GET['minPrice'])){
-                    $minPrice = isset($_GET['minPrice']) ? (int)$_GET['minPrice'] : 0;
-                    $maxPrice = isset($_GET['maxPrice']) ? (int)$_GET['maxPrice'] : 0;
-                    // Lọc sản phẩm theo giá
-                    $list_sp_discount = array_filter($list_sp_discount, function ($list_sp_discount) use ($minPrice, $maxPrice) {
-                        return $list_sp_discount['price'] >= $minPrice && $list_sp_discount['price'] <= $maxPrice;
-                    });
-                }else{
-                    $list_sp_discount = loadall_sp_discount();
-                }
-
-                // $color = load_color_sp();
-                // if(isset($_GET['color'])){
-                //     $selectedColor = isset($_GET['color']) ? $_GET['color'] : '';
-                //     $color = array_filter($color, function ($color) use ($selectedColor) {
-                //         return $selectedColor === '' || strtolower($color['color']) === strtolower($selectedColor);
-                //     });
-                // }else{
-                //     $list_sp_discount = loadall_sp_discount();
-                // }
-
-                // $size = load_size_sp();
-                // if(isset($_GET['size'])){
-                //     $selectedSize = isset($_GET['size']) ? $_GET['size'] : '';
-                //     $list_sp_discount = array_filter($size, function ($size) use ($selectedSize) {
-                //         return $selectedSize === '' || strtoupper($size['size']) === strtoupper($selectedSize);
-                //     });
-                // }else{
-                //     $list_sp_discount = loadall_sp_discount();
-                // }
                 include "view/details/shop-grid.php";
                 break;
             case "ctsanpham":
@@ -67,7 +55,8 @@
                     extract($onesp);
                     $list_binhluan = load_binhluan($_GET['idsp']);
                     $sanpham_cungloai=loadall_sanpham_cungloai($id,$iddm);
-                    $ctsp = loadone_chitietsp($_GET['idsp']);
+                    $ctsp = loadall_ctsp($_GET['idsp']);
+                    $count = get_count_bl($_GET['idsp']);
                     include "view/details/shop-details.php";
                 } 
                 break;
@@ -81,7 +70,6 @@
                 }
                 break;
             case "tintuc":
-                // $tintucmoi = load_top3_tintuc();
                 include "view/blog/blog.php";
                 break;
             case "cart":
@@ -90,7 +78,7 @@
                     $name = $_POST['name'];
                     $img = $_POST['img'];
                     $price = $_POST['price'];
-                    $soluong = $_POST['soluong'];
+                    $soluong = $_POST['qty'];
                     $ttien = $soluong * $price;
                     $spadd =[$id,$name,$img,$price,$soluong,$ttien];
                     array_push($_SESSION['mycart'],$spadd);
@@ -108,8 +96,22 @@
                     $_SESSION['mycart'] = [];
                 }
                 header('Location: index.php?act=cart');
+                include "view/header.php";
                 break;
-                
+            case "updatecart":
+                if(isset($_POST['idcart']) && isset($_POST['quantity'])){
+                    $idcart = $_POST['idcart'];
+                    $quantity = $_POST['quantity'];
+            
+                    // Kiểm tra xem idcart có tồn tại trong giỏ hàng hay không
+                    if(isset($_SESSION['mycart'][$idcart])){
+                        // Cập nhật số lượng cho sản phẩm tương ứng
+                        $_SESSION['mycart'][$idcart]['quantity'] = $quantity;
+                    }
+                }
+                var_dump($_SESSION['mycart']);
+                // header('Location: index.php?act=cart');
+                break;
             case "checkout":
                 include "view/cart/checkout.php";
                 break;
@@ -163,7 +165,6 @@
                         $_SESSION['user'] = $result[0]['user'];
                         header("Location: index.php");
                     }
-                    ;
                 }
                 include "view/login/login.php";
                 break;
@@ -174,10 +175,11 @@
                 header("Location: index.php");
                 break;
             case "forget":
+                if(isset($_POST['guiemail'])){
+                    $email = $_POST['email'];
+                    $sendMailMess = sendMail($email);
+                }
                 include "view/login/forget-pass.php";
-                break;
-            case "info_user":
-                include "view/login/info_user.php";
                 break;
         }
     }else{

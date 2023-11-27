@@ -1,10 +1,10 @@
 <!-- Hero Section Begin -->
-<section class="hero hero-normal">
+<section class="hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
                     <div class="hero__categories">
-                        <div class="hero__categories__all">
+                        <div class="hero__categories__all active">
                             <i class="fa fa-bars"></i>
                             <span>Menu sản phẩm</span>
                         </div>
@@ -137,7 +137,7 @@
                             </div>
                             <div class='featured__item__text'>
                                 <h6><a href='".$link."'>".$name."</a></h6>
-                                <h5>".$price."</h5>
+                                <h5>".number_format($price, 0, ',', '.')."đ</h5>
                             </div>
                         </div>
                     </div>

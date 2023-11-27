@@ -33,7 +33,7 @@
     }
 
     function loadall_sp_discount(){
-        $sql = "SELECT * FROM san_pham";
+        $sql = "SELECT * FROM san_pham WHERE 1 ORDER BY id DESC LIMIT 0,8";
         $list_sanpham = pdo_query($sql);
         return $list_sanpham;
     }
@@ -100,7 +100,12 @@
     function loadone_chitietsp($idsp){
         $sql = "SELECT * FROM chi_tiet_san_pham WHERE id_ctsp= ".$idsp;
         $dm = pdo_query($sql);
-        
+        return $dm;
+    }
+
+    function loadall_ctsp($idsp){
+        $sql = "SELECT * FROM chi_tiet_san_pham WHERE id_sp= ".$idsp;
+        $dm = pdo_query($sql);
         return $dm;
     }
 
@@ -110,17 +115,41 @@
         return $list_sanpham;
     }
 
-    function getall_sp($iddm){
+    function getall_sp($iddm, $current_page, $item_per_page, $minPrice, $maxPrice){
+        $offset = ($current_page - 1) * $item_per_page;
         $sql = "SELECT * FROM san_pham WHERE 1";
+        // danh mục
         if($iddm > 0){
             $sql.= " AND iddm=" . $iddm;
         }
-        $sql.=" ORDER BY id DESC LIMIT 0,3";
+
+        // giá
+        if($minPrice !== null && $maxPrice !== null){
+            $sql.= " AND price BETWEEN " . $minPrice . " AND " . $maxPrice;
+        }
+
+        $sql .= " ORDER BY id DESC LIMIT ".$item_per_page." OFFSET ".$offset."";
+        // Thực hiện truy vấn và nhận kết quả
         $sp = pdo_query($sql);
+
+        // Trả về bộ kết quả
         return $sp;
     }
+
     function kt_sl($id){
         $sql = "SELECT COUNT(*) as product_count FROM san_pham WHERE iddm = $id";
         return pdo_query_one($sql);
-       }
+    }
+
+    function get_total_sp_count($iddm, $minPrice, $maxPrice) {
+        $sql = "SELECT COUNT(*) AS total FROM san_pham WHERE 1";
+        if ($iddm > 0) {
+            $sql .= " AND iddm=" . $iddm;
+        }
+        if ($minPrice !== null && $maxPrice !== null) {
+            $sql .= " AND price BETWEEN " . $minPrice . " AND " . $maxPrice;
+        }
+        $result = pdo_query($sql);
+        return $result[0]['total'];
+    }
 ?>

@@ -52,6 +52,7 @@
         <button class="btn btn-primary">Chọn tất cả</button>
         <button class="btn btn-primary">Bỏ chọn tất cả</button>
         <a href="index.php?act=addspct"><button class="btn btn-primary">Thêm sản phẩm</button></a>
+        <a href="index.php?act=listsp"><button class="btn btn-primary">Quay về</button></a>
     </div>
     <br><br>
 </body>

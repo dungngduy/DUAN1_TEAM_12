@@ -38,4 +38,10 @@
         pdo_execute($sql);
     }
 
+    function get_count_bl($id_pro){
+        $sql = "SELECT COUNT(*) AS total FROM binh_luan WHERE id_pro=" . $id_pro;
+        $result = pdo_query($sql);
+        return $result[0]['total'];
+    }
+
 ?>
