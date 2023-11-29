@@ -9,6 +9,12 @@
         pdo_execute($sql);
     }
 
+    function countAdmins($user){
+        $sql = "SELECT COUNT(*) as count FROM tai_khoan WHERE role = 1 AND user = '$user'";
+        $result = pdo_query($sql);
+        return $result[0]['count'];
+    }
+
     function get_user($user, $pass){
         $sql = "SELECT * FROM tai_khoan WHERE user = '$user' AND pass = '$pass'";
         $check = pdo_query($sql);

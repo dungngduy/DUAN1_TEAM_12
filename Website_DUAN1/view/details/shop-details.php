@@ -65,22 +65,6 @@
                     <?php
                         foreach($ctsp as $key){
                             extract($key);
-                            echo "<div class='color'>
-                                    <a href=''>".$color."</a>
-                                </div>";
-                        }
-                    ?>
-                    <?php
-                        foreach($ctsp as $key){
-                            extract($key);
-                            echo "<div class='size'>
-                                    <input type='button' value='Size ".$size."'>
-                                </div>";
-                        }
-                    ?>
-                    <?php
-                        foreach($ctsp as $key){
-                            extract($key);
                         }
                     ?>
                     <?php
@@ -97,7 +81,32 @@
                             <input type="hidden" name="name" value="<?=$name;?>">
                             <input type="hidden" name="img" value="<?=$img;?>">
                             <input type="hidden" name="price" value="<?=$price;?>">
-                            <!-- <input type="hidden" name="soluong" value="1">    -->
+                            <!-- <input type="hidden" name="color" value="<?=$color;?>"> -->
+                            <!-- <input type="hidden" name="size" value="<?=$size;?>"> -->
+                            <select name="color">
+                                <?php
+                                    foreach($ctsp as $key){
+                                        extract($key);
+                                        echo "<div class='color'>
+                                                <option name='color' value='".$color."'>".$color."</option>
+                                            </div>";
+                                    }
+                                ?>
+                            </select>
+                            <select name="size">
+                                <?php
+                                    foreach($ctsp as $key){
+                                        extract($key);
+                                        echo "<div class='size'>
+                                                <option name='size' value='".$size."'>Size ".$size."</option>
+                                            </div>";
+                                    }
+                                ?>
+                            </select>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
                             <div class='product__details__quantity'>
                                 <div class='quantity'>
                                     <div class='pro-qty'>

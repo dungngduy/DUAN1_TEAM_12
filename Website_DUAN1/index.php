@@ -1,9 +1,7 @@
 <?php
     session_start();
     ob_start();
-    // if(isset($_SESSION['role']) && $_SESSION['role'] == 1){
-    //     header("Location: admin/index.php");
-    // }
+        
     include "view/header.php";
     include "global.php";
     include "model/pdo.php";
@@ -79,10 +77,11 @@
                     $img = $_POST['img'];
                     $price = $_POST['price'];
                     $soluong = $_POST['qty'];
+                    $color = $_POST['color'];
+                    $size = $_POST['size'];
                     $ttien = $soluong * $price;
-                    $spadd =[$id,$name,$img,$price,$soluong,$ttien];
+                    $spadd =[$id,$name,$img,$price,$soluong,$color,$size,$ttien];
                     array_push($_SESSION['mycart'],$spadd);
-                    
                 }
                 include "view/cart/cart.php";
                 break;
@@ -99,20 +98,40 @@
                 include "view/header.php";
                 break;
             case "updatecart":
-                if(isset($_POST['idcart']) && isset($_POST['quantity'])){
+                if(isset($_POST['idcart'])) {
                     $idcart = $_POST['idcart'];
-                    $quantitynew = $_POST['quantity'];
-            
-                    // Kiểm tra xem idcart có tồn tại trong giỏ hàng hay không
-                    if(isset($_SESSION['mycart'][$idcart])){
-                        // Cập nhật số lượng cho sản phẩm tương ứng
-                        $_SESSION['mycart'][$idcart]['quantity'] = $quantitynew;
-                    }
+                    $quantity = $_POST['quantity'][$idcart];
+                    
+                    // Cập nhật số lượng trong phiên
+                    $_SESSION['mycart'][$idcart][4] = $quantity;
                 }
-                var_dump($_SESSION['mycart']);
                 header('Location: index.php?act=cart');
                 break;
             case "checkout":
+                $cart = [];
+                if(isset($_SESSION['mycart'])){
+                    $cart = $_SESSION['mycart'];
+                }
+                if(isset($_POST['submit']) && isset($_SESSION['user_id'])){
+                    $id = $_POST['id_user'];
+                    $name = $_POST['lastname'];
+                    $address = $_POST['address'];
+                    $tel = $_POST['tel'];
+                    $email = $_POST['email'];
+                    $id_order = order($id, $name, $email, $address, $tel);
+                    if($id_order){
+                        foreach($cart as $item){
+                            $id_sp = $item[0];
+                            $color = $item[5];
+                            $size = $item[6];
+                            $soluong = $item[4];
+                            $thanhtien = (int)$item[3] * (int)$item[4];
+                            order_detail($id_order, $id_sp, $color, $size, $soluong, $thanhtien);
+                        }
+                    }
+                    unset($_SESSION['mycart']);
+                    header("Location: view/cart/thank.php");
+                }
                 include "view/cart/checkout.php";
                 break;
             case "contact":
@@ -124,38 +143,15 @@
             case "blog_details":
                 include "view/blog/blog-details.php";
                 break;
-            case "register":
-                if(isset($_POST['submit'])){
-                    $email = $_POST['email'];
-                    $user = $_POST['user'];
-                    $pass = $_POST['pass'];
-                    $repass = $_POST['repass'];
-                    $checkrepass = $repass == $pass;
-                    if(empty($user)){
-                        $errorUser = "Không để trống tên tài khoản";
-                    }else if(empty($email)){
-                        $errorEmail = "Không để trống Email";
-                    }else if(empty($pass)){
-                        $errorPass = "Không để trống mật khẩu";
-                    }else if(empty($checkrepass)){
-                        $errorRepass = "Xác nhận mật khẩu không trùng khớp";
-                    }else{
-                        insert_taikhoan($email, $user, $pass);
-                        header("Location: index.php?act=login");
-                    }
-                }
-                include "view/login/register.php";
-                break;
             case "login":
                 if(isset($_POST['submit'])){
                     $user = $_POST['user'];
                     $pass = $_POST['pass'];
                     $result = get_user($user, $pass);
                     $role = $result[0]['role'];
-                    if(empty($user) || empty($pass)){
+                    if(!isset($result[0]['user']) || !isset($result[0]['pass'])){
                         $error = "Tài khoản hoặc mật khẩu không đúng";
-                    }
-                    if($role == 1){
+                    }else if($role == 1){
                         $_SESSION['role'] = $role;
                         header("Location: admin/index.php");
                     }
@@ -167,6 +163,22 @@
                     }
                 }
                 include "view/login/login.php";
+                break;
+            case "register":
+                if(isset($_POST['submit'])){
+                    $email = $_POST['email'];
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
+                    $repass = $_POST['repass'];
+                    $checkrepass = $repass == $pass;
+                    if(countAdmins($user) == 1){
+                        $errorUser = "Chỉ có thể có một tài khoản admin";
+                    }else{
+                        insert_taikhoan($email, $user, $pass);
+                        header("Location: index.php?act=login");
+                    }
+                }
+                include "view/login/register.php";
                 break;
             case "logout":
                 unset($_SESSION['user_id']);

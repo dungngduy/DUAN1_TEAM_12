@@ -16,3 +16,4 @@ function delete_taikhoan($id_tk)
     $sql = "DELETE FROM tai_khoan WHERE id_tk=" . $id_tk;
     pdo_execute($sql);
 }
+?>

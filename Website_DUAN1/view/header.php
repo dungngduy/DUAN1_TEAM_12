@@ -179,6 +179,17 @@
             text-decoration: none;
             transition: 0.3s ease-in-out;
         }
+        .shoping__cart__item__close a:hover{
+            text-decoration: none;
+        }
+        .shoping__cart__item__close button{
+            border: 1px solid #fff;
+            background-color: #fff;
+            font-size: small;
+        }
+        .shoping__cart__item h5{
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -322,10 +333,8 @@
                             <li><a href="index.php?act=dmsanpham">Sản phẩm</a></li>
                             <li><a href="#">Trang</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="index.php?act=ctsanpham">Chi tiết cửa hàng</a></li>
                                     <li><a href="index.php?act=cart">Giỏ hàng</a></li>
                                     <li><a href="index.php?act=checkout">Thanh toán</a></li>
-                                    <li><a href="index.php?act=blog_details">Chi tiết blog</a></li>
                                 </ul>
                             </li>
                             <li><a href="index.php?act=tintuc">Blog</a></li>
@@ -337,7 +346,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>
+                            <li><a href="index.php?act=cart"><i class="fa fa-shopping-bag"></i> <span>
                             <?php
                                 $cart = [];
                                 if(isset($_SESSION['mycart'])){
@@ -347,7 +356,7 @@
                                 $sum_sp = 0;
                                 foreach($cart as $num){
                                     $count += $num[4];
-                                    $sum_sp += $num[5] * $num[4];
+                                    $sum_sp += (int)$num[3] * (int)$num[4];
                                 }
                                 echo $count;
                             ?>

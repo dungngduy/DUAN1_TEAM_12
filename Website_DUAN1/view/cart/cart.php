@@ -58,7 +58,10 @@
                                             <form action='index.php?act=updatecart&idcart=".$i."' method='post'>
                                                 <td class='shoping__cart__item'>
                                                     <img src='" . $img_pro . "' alt=''>
-                                                    <h5>" . $cart[1] . "</h5>
+                                                    <h5>
+                                                        " . $cart[1] . "
+                                                        <p>" . $cart[5] . ", " . $cart[6] . "</p>
+                                                    </h5>
                                                     <input type='hidden' name='idcart' value='".$i."'>
                                                 </td>
                                                 <td class='shoping__cart__price'>
@@ -68,7 +71,7 @@
                                                     <div class='quantity'>
                                                         <div class='pro-qty'>
                                                             <input type='text' name='quantity[" . $i . "]' value='" . $quantity . "'>
-                                                            <input type='hidden' name='quantity[" . $i . "]' value='" . $quantitynew . "'>
+                                                            <input type='hidden' name='quantity[" . $i . "]' value='" . $quantity . "'>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -112,7 +115,7 @@
                         <ul>
                             <?php echo" <li>Tổng cộng <span>".number_format($total_amount, 0, ',', '.')."đ</span></li>" ?>
                         </ul>
-                        <a href="#" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>
+                        <a href="index.php?act=checkout" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>
                     </div>
                 </div>
             </div>

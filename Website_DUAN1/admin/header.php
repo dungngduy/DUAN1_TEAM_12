@@ -163,7 +163,7 @@
                     </nav>
                 </div>
                 <div class="col-lg-1 exit">
-                    <a href="./index.php"><button type="submit">Thoát</button></a>
+                    <a href="index.php?act=thoat"><button type="submit">Thoát</button></a>
                 </div>
             </div>
             <div class="humberger__open">
