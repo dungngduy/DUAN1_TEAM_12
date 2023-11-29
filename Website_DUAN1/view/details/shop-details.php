@@ -1,4 +1,19 @@
-    <!-- Breadcrumb Section Begin -->
+<style>
+    .stylish-input input {
+        width: 200px;
+        padding: 5px 10px;
+        font-size: 16px;
+        border: 1px solid #212529;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+    .stylish-input input:focus {
+        border-color: #2185d0;
+    }
+</style> 
+<!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/bg-trangsp.webp">
         <div class="container">
             <div class="row">
@@ -81,43 +96,34 @@
                             <input type="hidden" name="name" value="<?=$name;?>">
                             <input type="hidden" name="img" value="<?=$img;?>">
                             <input type="hidden" name="price" value="<?=$price;?>">
-                            <!-- <input type="hidden" name="color" value="<?=$color;?>"> -->
-                            <!-- <input type="hidden" name="size" value="<?=$size;?>"> -->
-                            <select name="color">
-                                <?php
-                                    foreach($ctsp as $key){
-                                        extract($key);
-                                        echo "<div class='color'>
-                                                <option name='color' value='".$color."'>".$color."</option>
-                                            </div>";
-                                    }
-                                ?>
-                            </select>
-                            <select name="size">
-                                <?php
-                                    foreach($ctsp as $key){
-                                        extract($key);
-                                        echo "<div class='size'>
-                                                <option name='size' value='".$size."'>Size ".$size."</option>
-                                            </div>";
-                                    }
-                                ?>
-                            </select>
+                            <?php
+                                foreach($ctsp as $key){
+                                    extract($key);
+                                    echo "<div class='color'>
+                                            <input type='radio' name='color' value='".$color."'> ".$color."
+                                        </div>";
+                                }
+                            ?>
                             <br>
-                            <br>
-                            <br>
+                            <?php
+                                foreach($ctsp as $key){
+                                    extract($key);
+                                    echo "<div class='size'>
+                                            <input type='radio' name='size' value='".$size."'> ".$size."
+                                        </div>";
+                                }
+                            ?>
                             <br>
                             <div class='product__details__quantity'>
                                 <div class='quantity'>
-                                    <div class='pro-qty'>
-                                        <input type="text" value="1">
-                                        <input type="hidden" value="1" name="qty">
+                                    <div class='stylish-input'>
+                                        <input type="number" pattern="\d*" id="quantityInput" value="1" min="1" max="<?=$soluong; ?>" name="qty" oninput="checkQuantity()">
                                     </div>
                                 </div>
                             </div>
                             <br><br>
                             <a href='#' class='primary-btn'>Mua ngay</a>
-                            <input type='submit' class='primary-btn' name='cart' value="Thêm vào giỏ hàng"></input>
+                            <input id="addToCartBtn" data-id="<?= $id; ?>" type='submit' class='primary-btn' name='cart' value="Thêm vào giỏ hàng"></input>
                         </form>
                     </div>
                 </div>
@@ -215,3 +221,30 @@
         </div>
     </section>
     <!-- Related Product Section End -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    function checkQuantity() {
+        var input = document.getElementById('quantityInput');
+        var currentQuantity = parseInt(input.value);
+
+        if (currentQuantity > <?=$soLuong; ?>) {
+            input.setCustomValidity('Số lượng đã vượt quá giới hạn!');
+        } else {
+            input.setCustomValidity('');
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const incrementButton = document.querySelector('.increment');
+        const decrementButton = document.querySelector('.decrement');
+        const input = document.querySelector('.number-input input');
+
+        incrementButton.addEventListener('click', function() {
+            input.stepUp();
+        });
+
+        decrementButton.addEventListener('click', function() {
+            input.stepDown();
+        });
+    });
+</script>

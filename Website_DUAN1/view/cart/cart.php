@@ -1,3 +1,18 @@
+<style>
+    .stylish-input input {
+        width: 200px;
+        padding: 5px 10px;
+        font-size: 16px;
+        border: 1px solid #212529;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+    .stylish-input input:focus {
+        border-color: #2185d0;
+    }
+</style>
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
         <div class="container">
@@ -38,6 +53,9 @@
                                 $total_amount = 0;
                                 
                                 foreach ($_SESSION['mycart'] as $cart) {
+                                    foreach($ctsp as $key){
+                                        extract($key);
+                                    }
                                     $img_pro = $img_path . $cart[2];
                                     $xoasp = "<td class='shoping__cart__item__close'>
                                         <a href='index.php?act=delcart&idcart=" . $i . "' class='icon_close'></a>
@@ -69,9 +87,8 @@
                                                 </td>
                                                 <td class='shoping__cart__quantity'>
                                                     <div class='quantity'>
-                                                        <div class='pro-qty'>
-                                                            <input type='text' name='quantity[" . $i . "]' value='" . $quantity . "'>
-                                                            <input type='hidden' name='quantity[" . $i . "]' value='" . $quantity . "'>
+                                                        <div class='stylish-input'>
+                                                            <input type='number' pattern='\d*'' id='quantityInput' value='" . $quantity . "' min='1' max=".$soluong." name='quantity[" . $i . "]' oninput='checkQuantity()'>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -122,3 +139,30 @@
         </div>
     </section>
     <!-- Shoping Cart Section End -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    function checkQuantity() {
+        var input = document.getElementById('quantityInput');
+        var currentQuantity = parseInt(input.value);
+
+        if (currentQuantity > <?=$soLuong; ?>) {
+            input.setCustomValidity('Số lượng đã vượt quá giới hạn!');
+        } else {
+            input.setCustomValidity('');
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const incrementButton = document.querySelector('.increment');
+        const decrementButton = document.querySelector('.decrement');
+        const input = document.querySelector('.number-input input');
+
+        incrementButton.addEventListener('click', function() {
+            input.stepUp();
+        });
+
+        decrementButton.addEventListener('click', function() {
+            input.stepDown();
+        });
+    });
+</script>

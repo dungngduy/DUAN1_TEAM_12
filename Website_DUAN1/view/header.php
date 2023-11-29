@@ -115,9 +115,11 @@
         .product__details__text a:hover{
             text-decoration: none;
         }
-        .product__details__text .color{
+        .product__details__text .color,
+        .product__details__text .size{
             margin-bottom: 20px;
             display: inline-block;
+            margin-right: 20px;
         }
         .product__details__text .color a{
             margin-right: 20px;

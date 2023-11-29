@@ -196,8 +196,8 @@
             }
                 // Thống kê về danh thu theo khoảng tg
                 // Đơn hàng đã dặt
-                // Tài khoản mới
                 // Sản phẩm bán chạy
+                // Thống kê theo khoảng tg
         }else {
             include "home.php";
         }

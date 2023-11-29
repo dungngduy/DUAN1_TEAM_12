@@ -72,7 +72,7 @@
                 break;
             case "cart":
                 if(isset($_POST['cart'])&& ($_POST['cart'])){
-                    $id = $_POST['id'];
+                    $id = isset($_POST['id']) ? $_POST['id'] : null;
                     $name = $_POST['name'];
                     $img = $_POST['img'];
                     $price = $_POST['price'];
@@ -80,8 +80,15 @@
                     $color = $_POST['color'];
                     $size = $_POST['size'];
                     $ttien = $soluong * $price;
-                    $spadd =[$id,$name,$img,$price,$soluong,$color,$size,$ttien];
-                    array_push($_SESSION['mycart'],$spadd);
+                    $spadd =[
+                        $id,$name,$img,$price,$soluong,$color,$size,$ttien
+                    ];
+                    if(!increaseProductQuantity($_SESSION['mycart'], $id, $color, $size, $soluong)){
+                        array_push($_SESSION['mycart'],$spadd);
+                    }
+                }
+                foreach ($_SESSION['mycart'] as $item) {
+                    $ctsp = loadall_ctsp($item[0]);
                 }
                 include "view/cart/cart.php";
                 break;
@@ -204,6 +211,6 @@
         include "view/lastest-product.php";
         include "view/news.php";
     }
-
+    //Theo doi don hang ben user
     include "view/footer.php";
 ?>

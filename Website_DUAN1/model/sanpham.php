@@ -153,6 +153,17 @@
         return $result[0]['total'];
     }
 
+    // Giỏ hàng
+    function increaseProductQuantity(&$cart, $id, $color, $size, $quantity) {
+        foreach ($cart as &$item) {
+            if ($item[0] == $id && $item[5] == $color && $item[6] == $size) {
+                $item[4] += $quantity;
+                return true; // Đã tăng số lượng thành công
+            }
+        }
+        return false; // Chưa tìm thấy sản phẩm trong giỏ hàng
+    }
+
     // Đơn hàng
     function order($id_user, $name, $email, $address, $tel){
         $sql = "INSERT INTO don_hang(id_user, id_trangthai, ten_nguoi_nhan, email, sdt_nguoi_nhan, dia_chi_nguoi_nhan) 
