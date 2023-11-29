@@ -8,6 +8,7 @@
         include "../model/sanpham.php";
         include "../model/taikhoan.php";
         include "../model/binhluan.php";
+        include "../model/donhang.php";
 
         include "header.php";
         if (isset($_GET['act'])) {
@@ -193,7 +194,43 @@
                     unset($_SESSION['role']);
                     header("Location: ../index.php");
                     break;
-            }
+                // Đơn hàng đã dặt
+                case 'donhang':
+                    $list_donhang = loadall_donhang();
+                    include "donhang/listdh.php";
+                    break;
+                case 'xoadh':
+                    if (isset($_GET['id_dh']) && ($_GET['id_dh'] > 0)) {
+                        delete_donhang($_GET['id_dh']);
+                    }
+                    $list_donhang = loadall_donhang("", 0);
+                    include "donhang/listdh.ph";
+                    break;
+                    
+                    case 'suadh':
+                        if (isset($_GET['id_dh']) && ($_GET['id_dh'] > 0)) {
+                            $dh = loadone_donhang($_GET['id_dh']);
+                            $list_ctdonhang = loadall_trangthai(); // Thêm dòng này để load danh sách trạng thái đơn hàng
+                        }
+                        include "donhang/updatedh.php";
+                        break;
+                    
+                    case 'updatedh':
+                        if (isset($_POST['suadh']) && ($_POST['suadh'])) {
+                            $name = $_POST['id_trangthai'];
+                            $id = $_POST['id'];
+                            update_donhang($id, $name);
+                            $thongbao = "Cập nhật thành công";
+                        }
+                    
+                        $list_donhang = loadall_donhang();
+                        include "donhang/listdh.php";
+                        break;
+                }
+                        
+    
+            
+            
                 // Thống kê về danh thu theo khoảng tg
                 // Đơn hàng đã dặt
                 // Sản phẩm bán chạy
