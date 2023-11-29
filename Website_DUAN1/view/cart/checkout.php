@@ -100,8 +100,14 @@
                                 </ul>
                                 <div class="checkout__order__subtotal">Tổng phụ <span><?=number_format($total_amount, 0, ',', '.'); ?>đ</span></div>
                                 <div class="checkout__order__total">Tổng cộng <span><?=number_format($total_amount, 0, ',', '.'); ?>đ</span></div>
-                                <input type="hidden" name="id_user" value="<?= $_SESSION['user_id']; ?>">
                                 <button name="submit" type="submit" class="site-btn">ĐẶT HÀNG</button>
+                                <?php
+                                    if(isset($error) && $error != ""){ 
+                                ?>
+                                        <?= $error; ?>
+                                <?php }else{ ?>
+                                        <input type="hidden" name="id_user" value="<?= $_SESSION['user_id']; ?>">
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

@@ -112,25 +112,29 @@
                 if(isset($_SESSION['mycart'])){
                     $cart = $_SESSION['mycart'];
                 }
-                if(isset($_POST['submit']) && isset($_SESSION['user_id'])){
-                    $id = $_POST['id_user'];
-                    $name = $_POST['lastname'];
-                    $address = $_POST['address'];
-                    $tel = $_POST['tel'];
-                    $email = $_POST['email'];
-                    $id_order = order($id, $name, $email, $address, $tel);
-                    if($id_order){
-                        foreach($cart as $item){
-                            $id_sp = $item[0];
-                            $color = $item[5];
-                            $size = $item[6];
-                            $soluong = $item[4];
-                            $thanhtien = (int)$item[3] * (int)$item[4];
-                            order_detail($id_order, $id_sp, $color, $size, $soluong, $thanhtien);
+                if(isset($_SESSION['user_id'])){
+                    if(isset($_POST['submit']) && isset($_SESSION['user_id'])){
+                        $id = $_POST['id_user'];
+                        $name = $_POST['lastname'];
+                        $address = $_POST['address'];
+                        $tel = $_POST['tel'];
+                        $email = $_POST['email'];
+                        $id_order = order($id, $name, $email, $address, $tel);
+                        if($id_order){
+                            foreach($cart as $item){
+                                $id_sp = $item[0];
+                                $color = $item[5];
+                                $size = $item[6];
+                                $soluong = $item[4];
+                                $thanhtien = (int)$item[3] * (int)$item[4];
+                                order_detail($id_order, $id_sp, $color, $size, $soluong, $thanhtien);
+                            }
                         }
+                        unset($_SESSION['mycart']);
+                        header("Location: view/cart/thank.php");
                     }
-                    unset($_SESSION['mycart']);
-                    header("Location: view/cart/thank.php");
+                }else{
+                    $error = "Bạn cần đăng nhập để đặt hàng";
                 }
                 include "view/cart/checkout.php";
                 break;
