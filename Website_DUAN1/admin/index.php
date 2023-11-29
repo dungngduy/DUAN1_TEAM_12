@@ -8,6 +8,7 @@
         include "../model/sanpham.php";
         include "../model/taikhoan.php";
         include "../model/binhluan.php";
+        include "../model/donhang.php";
 
         include "header.php";
         if (isset($_GET['act'])) {
@@ -192,6 +193,18 @@
                 case 'thoat':
                     unset($_SESSION['role']);
                     header("Location: ../index.php");
+                    break;
+                // Đơn hàng đã dặt
+                case 'donhang':
+                    $list_donhang = loadall_donhang();
+                    include "donhang/listdh.php";
+                    break;
+                case 'xoadh':
+                    if (isset($_GET['id_dh']) && ($_GET['id_dh'] > 0)) {
+                        delete_donhang($_GET['id_dh']);
+                    }
+                    $list_donhang = loadall_donhang("", 0);
+                    include "donhang/listdh.ph";
                     break;
             }
                 // Thống kê về danh thu theo khoảng tg

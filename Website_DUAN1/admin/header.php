@@ -158,6 +158,7 @@
                             <li><a href="index.php?act=listsp">Sản phẩm</a></li>
                             <li><a href="index.php?act=dskh">Tài khoản</a></li>
                             <li><a href="index.php?act=dsbl">Bình luận</a></li>
+                            <li><a href="index.php?act=donhang">Đơn hàng</a></li>
                             <li><a href="">Thống kê</a></li>
                         </ul>
                     </nav>
