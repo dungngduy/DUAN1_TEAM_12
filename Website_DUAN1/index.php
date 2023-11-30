@@ -10,6 +10,7 @@
     include "model/sanpham.php";
     include "model/tintuc.php";
     include "model/binhluan.php";
+    include "model/donhang.php";
     
     if(!isset($_SESSION['mycart'])) $_SESSION['mycart']=[];
 
@@ -203,6 +204,14 @@
                     $sendMailMess = sendMail($email);
                 }
                 include "view/login/forget-pass.php";
+                break;
+            case "follow":
+                if(isset($_SESSION['user_id'])){
+                    $ctdh = follow_order($_SESSION['user_id']);
+                }else{
+                    $error = "Bạn phải đăng nhập mới có thể xem được đơn hàng của bạn !!!";
+                }
+                include "view/cart/follow_order.php";
                 break;
         }
     }else{

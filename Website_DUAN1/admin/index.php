@@ -176,7 +176,7 @@
                         delete_taikhoan($_GET['id_tk']);
                     }
                     $listtaikhoan= loadall_taikhoan();
-                    include "taikhoan/list.php";
+                    include "taikhoan/listtaikhoan.php";
                     break;
                 // Danh sách bình luận
                 case 'dsbl':
@@ -207,30 +207,31 @@
                     include "donhang/listdh.ph";
                     break;
                     
-                    case 'suadh':
-                        if (isset($_GET['id_dh']) && ($_GET['id_dh'] > 0)) {
-                            $dh = loadone_donhang($_GET['id_dh']);
-                            $list_ctdonhang = loadall_trangthai(); // Thêm dòng này để load danh sách trạng thái đơn hàng
-                        }
-                        include "donhang/updatedh.php";
-                        break;
-                    
-                    case 'updatedh':
-                        if (isset($_POST['suadh']) && ($_POST['suadh'])) {
-                            $name = $_POST['id_trangthai'];
-                            $id = $_POST['id'];
-                            update_donhang($id, $name);
-                            $thongbao = "Cập nhật thành công";
-                        }
-                    
-                        $list_donhang = loadall_donhang();
-                        include "donhang/listdh.php";
-                        break;
+                case 'suadh':
+                    if (isset($_GET['id_dh']) && ($_GET['id_dh'] > 0)) {
+                        $dh = loadone_donhang($_GET['id_dh']);
+                        $list_ctdonhang = loadall_trangthai(); // Thêm dòng này để load danh sách trạng thái đơn hàng
+                    }
+                    include "donhang/updatedh.php";
+                    break;
+                
+                case 'updatedh':
+                    if (isset($_POST['suadh']) && ($_POST['suadh'])) {
+                        $name = $_POST['id_trangthai'];
+                        $id = $_POST['id'];
+                        update_donhang($id, $name);
+                        $thongbao = "Cập nhật thành công";
+                    }
+                
+                    $list_donhang = loadall_donhang();
+                    include "donhang/listdh.php";
+                    break;
+                
+                case "thongke":
+                    include "thongke/list.php";
+                    break;
                 }
-                        
-    
-            
-            
+
                 // Thống kê về danh thu theo khoảng tg
                 // Đơn hàng đã dặt
                 // Sản phẩm bán chạy

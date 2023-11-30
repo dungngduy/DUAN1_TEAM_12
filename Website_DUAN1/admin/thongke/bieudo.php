@@ -7,32 +7,26 @@
     </div>
 
     <script>
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        // Set Data
-        const data = google.visualization.arrayToDataTable([
-          ['Danh muc', 'Số lượng'],
-          <?php 
-            foreach($dsthongke as $thongke){
-              extract($thongke);
-              echo "['$name', $soluong],";
-            }
-          ?>
-        ]);
-
-        // Set Options
-        const options = {
-          title:'BIỂU ĐỒ SỐ LƯỢNG SẢN PHẨM TRONG DANH MỤC',
-          is3D:true
-        };
-
-        // Draw
-        const chart = new google.visualization.PieChart(document.getElementById('myChart'));
-        chart.draw(data, options);
-
-      }
+      new Morris.Line({
+        // ID of the element in which to draw the chart.
+        element: 'myfirstchart',
+        // Chart data records -- each entry in this array corresponds to a point on
+        // the chart.
+        data: [
+          { year: '2008', value: 20 },
+          { year: '2009', value: 10 },
+          { year: '2010', value: 5 },
+          { year: '2011', value: 5 },
+          { year: '2012', value: 20 }
+        ],
+        // The name of the data record attribute that contains x-values.
+        xkey: 'year',
+        // A list of names of data record attributes that contain y-values.
+        ykeys: ['value'],
+        // Labels for the ykeys -- will be displayed when you hover over the
+        // chart.
+        labels: ['Value']
+      });
     </script>
     <a href="index.php?act=thongke"><button type="button" class="btn btn-outlinedark" style="margin: 10px 20px;">Quay lại</button></a>
   </div>

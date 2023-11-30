@@ -1,39 +1,28 @@
 <div class="list_tk">
     <div class="list_title_tk">
-        <h3>THỐNG KÊ SẢN PHẨM TRONG DANH MUC</h3>
+        <h3>THỐNG KÊ DOANH THU</h3>
     </div>
-    <div class="list_content">
-        <form action="" method="post">
-            <table class="table table-hover text-center">
-                <thead>
-                    <tr>
-                        <th scope="col">Mã loại</th>
-                        <th scope="col">Tên loại</th>
-                        <th scope="col">Số lượng</th>
-                        <th scope="col">Giá nhỏ nhất</th>
-                        <th scope="col">Giá lớn nhất</th>
-                        <th scope="col">Giá trung bình</th>
-                    </tr>
-                </thead> 
-                <tbody>
-                    <tr>
-                        <?php foreach($dsthongke as $thongke): ?>
-                            <?php
-                                extract($thongke);
-                                echo '<tr>
-                                        <td>'.$id.'</td>
-                                        <td>'.$name.'</td>
-                                        <td>'.$soluong.'</td>
-                                        <td>'.$gia_min.'₫</td>
-                                        <td>'.$gia_max.'₫</td>
-                                        <td>'.number_format($gia_avg, 6).'</td>
-                                    </tr>';
-                            ?>
-                        <?php endforeach; ?>
-                    </tr>
-                </tbody>
-            </table>
-            <a href="index.php?act=bieudo"><button type="button" class="btn btn-outlinedark">Xem biểu đồ</button></a>
-        </form>
-    </div>
+    <div id="myfirstchart" style="height: 250px; width: 100%;"></div>
+    <script>
+      new Morris.Line({
+        // ID of the element in which to draw the chart.
+        element: 'myfirstchart',
+        // Chart data records -- each entry in this array corresponds to a point on
+        // the chart.
+        data: [
+          { year: '2008', value: 20 },
+          { year: '2009', value: 10 },
+          { year: '2010', value: 5 },
+          { year: '2011', value: 5 },
+          { year: '2012', value: 20 }
+        ],
+        // The name of the data record attribute that contains x-values.
+        xkey: 'year',
+        // A list of names of data record attributes that contain y-values.
+        ykeys: ['value'],
+        // Labels for the ykeys -- will be displayed when you hover over the
+        // chart.
+        labels: ['Value']
+      });
+    </script>
 </div>

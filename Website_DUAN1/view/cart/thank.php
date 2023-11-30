@@ -6,7 +6,7 @@
 
 <p style="text-align:center;"><strong>Và đơn hàng của bạn sẽ được giao đến bạn tỏng vài ngày tới. Xin trân trọng cảm ơn !!!</strong>
 
-<p style="text-align:center;"><strong>Xem thông tin chi tiết về đơn hàng của bạn <a href="">ở đây</a></strong>.</p>
+<p style="text-align:center;"><strong>Xem thông tin chi tiết về đơn hàng của bạn <a href="../../index.php?act=follow">ở đây</a></strong>.</p>
 
 <style>
 img {

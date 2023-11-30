@@ -12,8 +12,7 @@ function insert_taikhoan($email, $user, $pass)
 }
 function delete_taikhoan($id_tk)
 {
-    // $sql = "UPDATE danh_muc SET trang_thai = '1' WHERE id_dm=".$id_dm;
-    $sql = "DELETE FROM tai_khoan WHERE id_tk=" . $id_tk;
+    $sql = "DELETE FROM tai_khoan WHERE id=" . $id_tk;
     pdo_execute($sql);
 }
 ?>

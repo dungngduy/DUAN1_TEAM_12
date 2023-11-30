@@ -23,7 +23,7 @@
                 <?php
                 foreach ($listtaikhoan as $taikhoan) {
                     extract($taikhoan);
-                    $xoataikhoan = "index.php?act=xoataikhoan&id=" . $id;
+                    $xoataikhoan = "index.php?act=xoatk&id_tk=" . $id;
                     if($role == 1){
                         echo '<tr>
                         <td><input type="checkbox" name="" id=""></td>

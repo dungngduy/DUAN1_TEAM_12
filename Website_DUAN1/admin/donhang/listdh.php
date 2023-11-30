@@ -12,11 +12,9 @@
 <body>
     <div class="container">
         <h2>Đơn hàng</h2>      
-        <table class="table table-striped">
+        <table class="table table-striped text-center">
         <thead>
             <tr>
-                <th></th>
-                
                 <th>Tên người nhận</th>
                 <th>Email</th>
                 <th>SĐT Người nhận</th>
@@ -30,12 +28,11 @@
                     $xoadh = "index.php?act=xoadh&id_dh=" . $id_dh;
                     $suadh = "index.php?act=suadh&id_dh=" . $id_dh;
                     echo '<tr>
-                        <td><input type="checkbox" name="" id=""></td>
                         <td>' . $ten_nguoi_nhan . '</td>
                         <td>' . $email . '</td>
                         <td>' . $sdt_nguoi_nhan . '</td>
                         <td>' . $dia_chi_nguoi_nhan . '</td>  
-                        <td>' . $name.'</td>
+                        <td>' . $name_tt.'</td>
                         <td>
                             <a href="'.$xoadh.'" onclick="return confirm(\'Bạn có chắc chắn muốn xóa không?\');">
                                 <input type="button" value="Xóa">

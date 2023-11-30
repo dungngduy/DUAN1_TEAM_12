@@ -337,6 +337,7 @@
                                 <ul class="header__menu__dropdown">
                                     <li><a href="index.php?act=cart">Giỏ hàng</a></li>
                                     <li><a href="index.php?act=checkout">Thanh toán</a></li>
+                                    <li><a href="index.php?act=follow">Theo dỗi đơn hàng</a></li>
                                 </ul>
                             </li>
                             <li><a href="index.php?act=tintuc">Blog</a></li>

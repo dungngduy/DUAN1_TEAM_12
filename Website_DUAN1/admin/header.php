@@ -159,7 +159,7 @@
                             <li><a href="index.php?act=dskh">Tài khoản</a></li>
                             <li><a href="index.php?act=dsbl">Bình luận</a></li>
                             <li><a href="index.php?act=donhang">Đơn hàng</a></li>
-                            <li><a href="">Thống kê</a></li>
+                            <li><a href="index.php?act=thongke">Thống kê</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -173,3 +173,7 @@
         </div>
     </header>
     <!-- Header Section End -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
