@@ -26,7 +26,7 @@
     }
 
     function update_donhang($id_dh, $id_trangthai){
-        $sql = "UPDATE `don_hang` SET `id_dh` = '$id_dh', `id_trangthai` = '$id_trangthai' WHERE `don_hang`.`id_dh` = $id_dh";
+        $sql = "UPDATE `don_hang` SET `id_dh` = '$id_dh', `id_trangthai` = '$id_trangthai' WHERE id_dh = $id_dh";
         pdo_execute($sql);
     }
     

@@ -10,19 +10,18 @@ if (is_array($dh)) {
         <div class="form-group">
             <label for="trangthai">Trạng thái đơn hàng</label>
             <select class="form-control" id="trangthai" name="id_trangthai">
-                <?php
-                if (isset($list_ctdonhang) && is_array($list_ctdonhang)) {
-                    foreach ($list_ctdonhang as $dh) {
-                        extract($dh);
-                        if ($id_trangthai == $id) {
-                            echo '<option value="' . $id . '" selected>' . $name . '</option>';
-                        } else {
-                            echo '<option value="' . $id . '">' . $name . '</option>';
-                        }
-                    }
-                }
-                ?>
-            </select>
+    <?php
+    if (isset($list_ctdonhang) && is_array($list_ctdonhang)) {
+        foreach ($list_ctdonhang as $trangthai) {
+            if ($id_trangthai == $trangthai['id']) {
+                echo '<option value="' . $trangthai['id'] . '" selected>' . $trangthai['name_tt'] . '</option>';
+            } else {
+                echo '<option value="' . $trangthai['id'] . '">' . $trangthai['name_tt'] . '</option>';
+            }
+        }
+    }
+    ?>
+</select>
         </div>
         <div class="mt-3 text-center">
             <input type="hidden" name="id" value="<?php if(isset($id) && ($id > 0)) echo $id ?>">

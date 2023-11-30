@@ -217,9 +217,9 @@
                 
                 case 'updatedh':
                     if (isset($_POST['suadh']) && ($_POST['suadh'])) {
-                        $name = $_POST['id_trangthai'];
+                        $id_trangthai = $_POST['id_trangthai'];
                         $id = $_POST['id'];
-                        update_donhang($id, $name);
+                        update_donhang($id, $id_trangthai);
                         $thongbao = "Cập nhật thành công";
                     }
                 
