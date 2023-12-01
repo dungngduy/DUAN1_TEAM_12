@@ -19,7 +19,7 @@
         pdo_execute($sql);
     }
 
-    function loadall_sanpham($kw=" ",$iddm = 0){
+    function loadall_sanpham($kw="",$iddm = 0){
         $sql = "SELECT * FROM san_pham WHERE 1"; 
         if($kw !=""){
             $sql.=" AND name LIKE '%".$kw."%'";

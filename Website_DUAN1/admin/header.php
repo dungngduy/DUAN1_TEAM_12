@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="../css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="../css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="../css/jquery-ui.min.css" type="text/css">
+    <!-- <link rel="stylesheet" href="../css/jquery-ui.min.css" type="text/css"> -->
     <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
@@ -145,12 +145,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-1">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="../img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-10">
+                <div class="col-lg-11">
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="index.php">Trang chủ</a></li>
@@ -177,3 +172,4 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

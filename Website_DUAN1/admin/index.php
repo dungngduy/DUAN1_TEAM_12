@@ -9,6 +9,7 @@
         include "../model/taikhoan.php";
         include "../model/binhluan.php";
         include "../model/donhang.php";
+        include "../model/tintuc.php";
 
         include "header.php";
         if (isset($_GET['act'])) {
@@ -74,7 +75,7 @@
                     include "sanpham/add.php";
                     break;
                 case 'listsp':
-                    if (isset($_POST['listok']) && ($_POST['listok'])) {
+                    if (isset($_POST['clickok']) && ($_POST['clickok'])) {
                         $kw = $_POST['kw'];
                         $iddm = $_POST['iddm'];
                     } else {
@@ -249,6 +250,7 @@
                     
                 
                 case "thongke":
+                    $top3_sp = top3_sp(); 
                     include "thongke/list.php";
                     break;
                 }
