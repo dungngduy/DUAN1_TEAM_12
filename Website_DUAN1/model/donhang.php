@@ -7,7 +7,16 @@
         $dh = pdo_query($sql);
         return $dh;
     }
-    
+    function loadall_ctdonhang($id_dh){
+        $sql = "SELECT *, san_pham.name, trang_thai.name_tt
+        FROM chi_tiet_don_hang
+        INNER JOIN san_pham ON san_pham.id = chi_tiet_don_hang.ma_sp
+        INNER JOIN don_hang ON don_hang.id_dh = chi_tiet_don_hang.ma_dh
+        INNER JOIN trang_thai ON trang_thai.id = don_hang.id_trangthai
+        WHERE don_hang.id_dh = '$id_dh' ";
+        $dh= pdo_query($sql);
+        return $dh;
+    }
     function delete_donhang($id_dh){
         $sql = "DELETE FROM don_hang WHERE id=".$id_dh;
         pdo_execute($sql);
@@ -26,7 +35,7 @@
     }
 
     function update_donhang($id_dh, $id_trangthai){
-        $sql = "UPDATE `don_hang` SET `id_dh` = '$id_dh', `id_trangthai` = '$id_trangthai' WHERE id_dh = $id_dh";
+        $sql = "UPDATE `don_hang` SET `id_trangthai` = '$id_trangthai' WHERE id_dh = '$id_dh'";
         pdo_execute($sql);
     }
     
