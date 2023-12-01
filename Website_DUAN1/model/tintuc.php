@@ -14,4 +14,14 @@ function loadone_tintuc($id){
     $dm = pdo_query_one($sql);
     return $dm;
 }
+function top3_sp(){
+    $sql = "SELECT chi_tiet_don_hang.ma_sp, SUM(soluong) AS 'soluong', san_pham.name 
+    FROM chi_tiet_don_hang 
+    INNER JOIN san_pham ON san_pham.id = chi_tiet_don_hang.ma_sp 
+    WHERE 1 
+    GROUP BY chi_tiet_don_hang.ma_sp 
+    ORDER BY soluong DESC LIMIT 0,3";
+    $sp = pdo_query($sql);
+    return $sp;
+}
 ?>
