@@ -30,8 +30,8 @@ if (is_array($dh)) {
     ?>
 </select>
         <?php
-        foreach ($ctdh as $cdh){
-        extract($cdh);  
+        foreach ($ctdh as $dh){
+        extract($dh);  
         echo "Tên sản phẩm: $name ";
         }
         ?>
