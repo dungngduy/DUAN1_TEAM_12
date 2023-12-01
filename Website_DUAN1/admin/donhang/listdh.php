@@ -25,7 +25,7 @@
                 
                 foreach ($list_donhang as $dh) {
                     extract($dh);
-                    $xoadh = "index.php?act=xoadh&id_dh=" . $id_dh;
+                    // $xoadh = "index.php?act=xoadh&id_dh=" . $id_dh;
                     $suadh = "index.php?act=suadh&id_dh=" . $id_dh;
                     echo '<tr>
                         <td>' . $ten_nguoi_nhan . '</td>
@@ -34,9 +34,6 @@
                         <td>' . $dia_chi_nguoi_nhan . '</td>  
                         <td>' . $name_tt.'</td>
                         <td>
-                            <a href="'.$xoadh.'" onclick="return confirm(\'Bạn có chắc chắn muốn xóa không?\');">
-                                <input type="button" value="Xóa">
-                            </a>
                             <a href="' . $suadh . '"><input type="button" value="Sửa"></a>
                         </td>
                     </tr>';
