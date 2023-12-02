@@ -15,30 +15,38 @@
         <table class="table table-striped text-center">
         <thead>
             <tr>
+                <th>Đơn hàng cập nhật</th>
                 <th>Tên người nhận</th>
                 <th>Email</th>
                 <th>SĐT Người nhận</th>
                 <th>Địa chỉ</th>
                 <th>Trạng thái</th>
             </tr>
-            <?php
-                
-                foreach ($list_donhang as $dh) {
+            <?php  
+                foreach ($list_donhang as $dh){
                     extract($dh);
-                    // $xoadh = "index.php?act=xoadh&id_dh=" . $id_dh;
                     $suadh = "index.php?act=suadh&id_dh=" . $id_dh;
-                    echo '<tr>
-                        <td>' . $ten_nguoi_nhan . '</td>
-                        <td>' . $email . '</td>
-                        <td>' . $sdt_nguoi_nhan . '</td>
-                        <td>' . $dia_chi_nguoi_nhan . '</td>  
-                        <td>' . $name_tt.'</td>
-                        <td>
-                            <a href="' . $suadh . '"><input type="button" value="Sửa"></a>
-                        </td>
-                    </tr>';
-                }
             ?>
+                <tr>
+                    <td>
+                        <?php   
+                            if($cart_status == 1){
+                                echo "<a href='index.php?act=xuly&cart_status=0&code=".$id_dh."'>Đơn hàng mới</a>";
+                            }else{
+                                echo "Đợi phê duyệt";
+                            }
+                        ?>
+                    </td>
+                    <td><?= $ten_nguoi_nhan; ?></td>
+                    <td><?= $email; ?></td>
+                    <td><?= $sdt_nguoi_nhan; ?></td>
+                    <td><?= $dia_chi_nguoi_nhan; ?></td>    
+                    <td><?= $name_tt; ?></td>
+                    <td>
+                        <a href="<?=$suadh;?>"><input type="button" value="Sửa"></a>
+                    </td>
+                </tr>
+            <?php } ?>
         </thead>
         </table>
         <a href="index.php?act=listsp"><button class="btn btn-primary">Quay về</button></a>

@@ -1,4 +1,7 @@
 <?php
+    include "../carbon/autoload.php";
+    use Carbon\Carbon;
+    use Carbon\CarbonInterval;
     session_start();
     ob_start();
     if(isset($_SESSION['role']) && $_SESSION['role'] == 1){
@@ -196,6 +199,34 @@
                     header("Location: ../index.php");
                     break;
                 // Đơn hàng đã dặt
+                case "xuly":
+                    $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+                    if(isset($_GET['cart_status']) && isset($_GET['code'])){
+                        $status = $_GET['cart_status'];
+                        $code = $_GET['code'];
+                        cart_status($status, $code);
+                        $tk_dh = tk_donhang($code);
+                        extract($tk_dh);
+                        $tk_time = tk_ngaydat($now);
+                        extract($tk_time);
+                        $soluongmua = 0;
+                        $doanhthu = 0;
+                        $soluongmua = $tk_dh[0]['soluong'];
+                        $doanhthu = $tk_dh[0]['thanh_tien'];
+                        if($tk_time[0]['ngaydat'] == 0){
+                            $soluongban = $soluongmua;
+                            $doanhthu = $doanhthu;
+                            $donhang = 1;
+                            insert_thongke($now, $donhang, $doanhthu, $soluongban);
+                        }else if($tk_time[0]['ngaydat'] != 0){
+                            $soluongban = $tk_time[0]['soluongban'] + $soluongmua;
+                            $doanhthu = $tk_time[0]['doanhthu'] + $doanhthu;
+                            $donhang = $tk_time[0]['donhang'] + 1;
+                            update_thongke($donhang, $doanhthu, $soluongban, $now);
+                        }
+                    }
+                    // header("Location:index.php?act=donhang");
+                    break;
                 case 'donhang':
                     $list_donhang = loadall_donhang();
                     include "donhang/listdh.php";
@@ -211,9 +242,8 @@
                 case 'suadh':
                     if (isset($_GET['id_dh']) && ($_GET['id_dh'] > 0)) {
                         $dh = loadone_donhang($_GET['id_dh']);
-                        $ctdh = loadall_ctdonhang("");
                         $list_ctdonhang = loadall_trangthai(); 
-                        // $ctdh = loadall_ctdonhang("");
+                        $ctdh = ctdh($_GET['id_dh']);
                     }
                     include "donhang/updatedh.php";
                     break;
@@ -229,7 +259,7 @@
                         include "donhang/listdh.php";
                         break;
                     
-                
+                // Thống kê
                 case "thongke":
                     $top3_sp = top3_sp(); 
                     include "thongke/list.php";

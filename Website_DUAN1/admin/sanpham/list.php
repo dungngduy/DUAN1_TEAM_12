@@ -53,7 +53,7 @@
                             <td>' . $row['id'] . '</td>
                             <td>' . $row['name'] . '</td>
                             <td>' . $hinh . '</td>
-                            <td>' . $row['price'] . '</td>
+                            <td>' . number_format($row['price'], 0, ',', '.') . 'đ</td>
                             <td>' . $row['mota'] . '</td>
                             <td>' . $row['ngaynhapkhau'] . '</td>
                             <td>' . $row['luotxem'] . '</td>

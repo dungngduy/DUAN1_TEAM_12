@@ -11,31 +11,46 @@ if (is_array($dh)) {
             <?php
                 extract($dh);
                 echo "<p>Tên người nhận: $ten_nguoi_nhan</p>";
-                echo "<p>email: $email</p>";
+                echo "<p>Email: $email</p>";
                 echo "<p>SĐT người nhận: $sdt_nguoi_nhan</p>";
                 echo "<p>Địa chỉ người nhận: $dia_chi_nguoi_nhan</p>"
             ?>
-            <select class="form-control" id="trangthai" name="id_trangthai">
-    <?php
-    
-        foreach ($list_ctdonhang as $trangthai) {
-            extract($trangthai);
-            if ($id_trangthai == $id) {
-                echo '<option value="' . $id . '" selected>' . $name_tt . '</option>';
-            } else {
-                echo '<option value="' . $id . '">' . $name_tt . '</option>';
-            }
-        }
-    
-    ?>
-</select>
-        <?php
-        foreach ($ctdh as $dh){
-        extract($dh);  
-        echo "Tên sản phẩm: $name ";
-        }
-        ?>
-        
+            <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Tổng tiền</th>
+                    <th>Ngày mua hàng</th>
+                </tr>
+                <?php
+                    
+                    foreach ($ctdh as $dh) {
+                        extract($dh);
+                        echo '<tr>
+                            <td>' . $name . '</td>
+                            <td>' . $soluong . '</td>
+                            <td>' . number_format($thanh_tien, 0, ',', '.') . 'đ</td>
+                            <td>' . $created . '</td>
+                        </tr>';
+                    }
+                ?>
+            </thead>
+        </table>
+        <select class="form-control" id="trangthai" name="id_trangthai">
+            <?php
+            
+                foreach ($list_ctdonhang as $trangthai) {
+                    extract($trangthai);
+                    if ($id_trangthai == $id) {
+                        echo '<option value="' . $id . '" selected>' . $name_tt . '</option>';
+                    } else {
+                        echo '<option value="' . $id . '">' . $name_tt . '</option>';
+                    }
+                }
+            
+            ?>
+        </select>
         </div>
         <div class="mt-3 text-center">
             <input type="hidden" name="id" value="<?php if(isset($id_dh) && ($id_dh > 0)) echo $id_dh ?>"> 

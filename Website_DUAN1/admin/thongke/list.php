@@ -11,6 +11,8 @@
             </p>
         </h3>
     </div>
+    <br>
+    <br>
     <div id="myfirstchart" style="height: 250px; width: 100%;"></div>
     <script>
       $(document).ready(function(){
