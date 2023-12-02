@@ -24,6 +24,7 @@
                 foreach ($listtaikhoan as $taikhoan) {
                     extract($taikhoan);
                     $xoataikhoan = "index.php?act=xoatk&id_tk=" . $id;
+                    $suataikhoan = "index.php?act=suatk&id_tk=" . $id;
                     if($role == 1){
                         echo '<tr>
                         <td><input type="checkbox" name="" id=""></td>
@@ -45,7 +46,9 @@
                         <td>'.$email.'</td>
                         <td>'.$address.'</td>
                         <td>'.$role.'</td> 
-                        <td><a onclick="return confirm(\'Bạn có muốn xóa không?\')" href="'.$xoataikhoan.'"><input type="button" value="Xóa"></a></td>
+                        <td><a onclick="return confirm(\'Bạn có muốn xóa không?\')" href="'.$xoataikhoan.'"><input type="button" value="Xóa"></a>
+                        <a href="' . $suataikhoan . '"><input type="button" value="Sửa"></a> 
+                        </td>
                     </tr>';
                     }
                 }

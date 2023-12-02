@@ -182,6 +182,25 @@
                     $listtaikhoan= loadall_taikhoan();
                     include "taikhoan/listtaikhoan.php";
                     break;
+                case 'suatk':
+                    if(isset($_GET['id_tk']) && ($_GET['id_tk'] > 0)){
+                        $tk = loadone_taikhoan($_GET['id_tk']);
+                    }
+                    $listtaikhoan= loadall_taikhoan();
+                    include "taikhoan/updatetk.php";
+                    break;
+                case 'updatetk':
+                    if(isset($_POST['suatk']) && ($_POST['suatk'])){
+                        $id = $_POST['id'];
+                        $name = $_POST['name'];
+                        $pass = $_POST['pass'];
+                        $email = $_POST['email'];
+                        update_taikhoan($id,$name,$pass,$email);
+                        $thongbao = "Cập nhật thành công";
+                    }
+                    $listtaikhoan = loadall_taikhoan();
+                    include "taikhoan/listtaikhoan.php";
+                    break;
                 // Danh sách bình luận
                 case 'dsbl':
                     $listbinhluan = loadall_xembinhluan();
