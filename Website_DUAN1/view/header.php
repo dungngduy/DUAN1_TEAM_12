@@ -192,6 +192,28 @@
         .shoping__cart__item h5{
             font-size: 18px;
         }
+        .product__details__quantity form .color input[type="radio"]{
+            display: none;
+        }
+        .product__details__quantity form .color label{
+            border: 1px solid #eaeaea;
+            padding: 5px 10px;
+        }
+        .product__details__quantity form .color input[type="radio"]:checked + label {
+            border: 1px solid #343a40;
+            background-color: #f9f9f9;
+        }
+        .product__details__quantity form .size input[type="radio"]{
+            display: none;
+        }
+        .product__details__quantity form .size label{
+            border: 1px solid #eaeaea;
+            padding: 5px 10px;
+        }
+        .product__details__quantity form .size input[type="radio"]:checked + label {
+            border: 1px solid #343a40;
+            background-color: #f9f9f9;
+        }
     </style>
 </head>
 <body>
@@ -333,11 +355,11 @@
                         <ul>
                             <li class="active"><a href="index.php">Trang chủ</a></li>
                             <li><a href="index.php?act=dmsanpham">Sản phẩm</a></li>
-                            <li><a href="#">Trang</a>
+                            <li><a href="">Trang</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="index.php?act=cart">Giỏ hàng</a></li>
                                     <li><a href="index.php?act=checkout">Thanh toán</a></li>
-                                    <li><a href="index.php?act=follow">Theo dỗi đơn hàng</a></li>
+                                    <li><a href="index.php?act=follow">Theo dõi đơn hàng</a></li>
                                 </ul>
                             </li>
                             <li><a href="index.php?act=tintuc">Blog</a></li>

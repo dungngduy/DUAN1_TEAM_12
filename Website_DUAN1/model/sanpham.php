@@ -165,16 +165,16 @@
     }
 
     // Đơn hàng
-    function order($id_user, $name, $email, $address, $tel){
-        $sql = "INSERT INTO don_hang(id_user, id_trangthai, ten_nguoi_nhan, email, sdt_nguoi_nhan, dia_chi_nguoi_nhan) 
-        VALUES ('$id_user', '1', '$name', '$email', '$tel', '$address')";
+    function order($id_user, $name, $email, $address, $tel, $payment){
+        $sql = "INSERT INTO don_hang(id_user, id_trangthai, ten_nguoi_nhan, email, sdt_nguoi_nhan, dia_chi_nguoi_nhan, pt_thanh_toan) 
+        VALUES ('$id_user', '1', '$name', '$email', '$tel', '$address', '$payment')";
         $id_order = pdo_execute($sql);
         return $id_order;
     }
         
-    function order_detail($id_order, $id_sp, $color, $size, $soluong, $thanhtien){
-        $sql = $sql = "INSERT INTO chi_tiet_don_hang(ma_dh, ma_sp, color, size, soluong, thanh_tien) 
-        VALUES ('$id_order', '$id_sp', '$color', '$size', '$soluong', '$thanhtien')";
+    function order_detail($id_order, $id_sp, $color, $size, $soluong, $thanhtien, $code_cart){
+        $sql = $sql = "INSERT INTO chi_tiet_don_hang(ma_dh, ma_sp, color, size, soluong, thanh_tien, code_cart) 
+        VALUES ('$id_order', '$id_sp', '$color', '$size', '$soluong', '$thanhtien', '$code_cart')";
         pdo_execute($sql);
     }
 ?>

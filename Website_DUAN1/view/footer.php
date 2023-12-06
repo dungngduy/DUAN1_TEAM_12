@@ -9,7 +9,7 @@
                         </div>
                         <ul>
                             <li>Địa chỉ: 32 Đường ĐH06, Hoài Đức, Hà Nội</li>
-                            <li>Số điện thoại: 0235147718</li>
+                            <li>Số điện thoại: 0325147718</li>
                             <li>Email: chung2k4ndc@gmail.com</li>
                         </ul>
                     </div>

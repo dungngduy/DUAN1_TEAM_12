@@ -1,14 +1,14 @@
  <div class="container">
         <div class="mt-4">
         <h2>Danh sách bình luận</h2>
-        <table class="table table-striped">
+        <table class="table table-striped text-center">
             <thead>
             <tr>
                 <th></th>
                 <th>STT</th>
                 <th>Nội dung bình luận</th>
                 <th>Tài khoản bình luận</th>
-                <th>Tên tài khoản</th>
+                <th>Tên sản phẩm</th>
                 <th>Ngày bình luận</th>
                 <th></th>
 

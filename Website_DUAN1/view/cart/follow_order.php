@@ -1,6 +1,6 @@
 <?php
     if(isset($error) && $error != ""){
-        echo $error;
+        echo "<p style='text-align:center;'>".$error."</p>";
 ?>
 <?php }else{ ?>
 <style>
@@ -10,7 +10,7 @@
 </style>
 <div class="container">
     <h2>Đơn hàng của tôi</h2>
-    <form action="#" method="POST">
+    <form action="index.php?act=unset_order" method="POST">
         <table class="table table-striped text-center">
             <thead>
                 <tr>
@@ -18,22 +18,28 @@
                     <th>Ngày mua</th>
                     <th>Tên sản phẩm</th>
                     <th>Tổng tiền</th>
-                    <th>Trạng thái đơn hàng</th>
+                    <th></th>
                 </tr>
                 <?php
-                foreach ($ctdh as $list) {
+                foreach ($ctdh_follow as $list) {
                     extract($list);
-                        echo '<tr>
-                                <td>'.$ma_dh.'</td>
-                                <td>'.$created.'</td>
-                                <td>'.$name.'</td>
-                                <td>' . number_format($thanh_tien, 0, ',', '.') . 'đ</td>
-                                <td>'.$name_tt.'</td>
-                            </tr>';
+                    $order_detail = "index.php?act=order_detail&ma_dh=" . $id_dh;
+                    $unset_order = "index.php?act=unset_order&ma_dh=" . $id_dh;
+                    echo '<tr>
+                            <td>'.$ma_dh.'</td>
+                            <td>'.$created.'</td>
+                            <td>'.$name.'</td>
+                            <td>' . number_format($thanh_tien, 0, ',', '.') . 'đ</td>
+                            <td>
+                                <a href="' . $order_detail . '"><input type="button" value="Chi tiết đơn hàng"></a>
+                                <a onclick="return confirm(\'Bạn có muốn xóa không?\')" href="' . $unset_order . '"><input type="button" value="Hủy đơn hàng"></a>
+                            </td>
+                        </tr>';
                 }
                 ?>
             </thead>
         </table>
+        <input type="hidden" name="id_dh" value="<?=$id_dh; ?>">
     </form>
 </div>
 <?php } ?>

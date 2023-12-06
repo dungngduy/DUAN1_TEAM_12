@@ -29,7 +29,7 @@
             border: 1px solid #343a40;
             color: #fff;
             padding: 5px 12px;
-            border-radius: 5px;
+            border-radius: 20px;
         }
         .exit a button:hover{
             text-decoration: none;
@@ -44,13 +44,55 @@
         .footer__copyright__text p a:hover{
             text-decoration: none;
         }
+        .list_title_tk h3 p button{
+            background-color: #343a40;
+            border: 1px solid #343a40;
+            color: #fff;
+            padding: 2px 12px;
+        }
+        #details {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #details h4 {
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .detail-box {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            color: #495057;
+        }
+
+        .detail-box:hover {
+            background-color: #f1f1f1;
+        }
     </style>
 </head>
 <body>
     <!-- Page Preloder -->
-    <!-- <div id="preloder">
+    <div id="preloder">
         <div class="loader"></div>
-    </div> -->
+    </div>
 
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>

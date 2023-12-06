@@ -1,7 +1,13 @@
 <?php
-if (is_array($tk)) {
-    extract($tk);
-}
+    if (is_array($tk)) {
+        extract($tk);
+    }             
+    $imgpath = "../upload/" . $avatar;
+    if (isset($imgpath)) {
+        $avt = "<img src = '" . $imgpath . "' height = '80'>";
+    } else {
+        $avt = "No photo";
+    }              
 ?>
 <div class="container">
     <h1>Cập nhật Tài khoản</h1>
@@ -17,6 +23,18 @@ if (is_array($tk)) {
         <div class="form-group">
             <label for="mota">Email</label>
             <input type="text" class="form-control" id="mota" name="email" value="<?= $email ?>">
+        </div>
+        <div class="form-group">
+            <label for="mota">Ảnh đại diện</label>
+            <input type="file" class="form-control" id="mota" name="avatar" value="<?= $avt ?>">
+        </div>
+        <div class="form-group">
+            <label for="mota">Số điện thoại</label>
+            <input type="text" class="form-control" id="mota" name="tel" value="<?= $tel ?>">
+        </div>
+        <div class="form-group">
+            <label for="mota">Địa chỉ</label>
+            <input type="text" class="form-control" id="mota" name="address" value="<?= $address ?>">
         </div>
         <div class="mt-3 text-center">
         <input type="hidden" name="id" value="<?php if(isset($id) && ($id > 0)) echo $id; ?>">

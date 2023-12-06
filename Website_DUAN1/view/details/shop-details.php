@@ -100,7 +100,7 @@
                                 foreach($ctsp as $key){
                                     extract($key);
                                     echo "<div class='color'>
-                                            <input type='radio' name='color' value='".$color."'> ".$color."
+                                            <input type='radio' id='".$color."' name='color' value='".$color."'> <label for='".$color."'>".$color."</label>
                                         </div>";
                                 }
                             ?>
@@ -109,7 +109,7 @@
                                 foreach($ctsp as $key){
                                     extract($key);
                                     echo "<div class='size'>
-                                            <input type='radio' name='size' value='".$size."'> ".$size."
+                                            <input type='radio' id='".$size."' name='size' value='".$size."'> <label for='".$size."'>".$size."</label>
                                         </div>";
                                 }
                             ?>

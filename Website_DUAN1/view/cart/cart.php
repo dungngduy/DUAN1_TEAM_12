@@ -119,9 +119,9 @@
                     <div class="shoping__continue">
                         <div class="shoping__discount">
                             <h5>Mã giảm giá</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Tìm kiếm mã giảm giá">
-                                <button type="submit" class="site-btn">ÁP DỤNG</button>
+                            <form action="index.php?act=discount" method="post">
+                                <input type="text" name="coupon" placeholder="Tìm kiếm mã giảm giá">
+                                <button type="submit" name="check_coupon" class="site-btn">ÁP DỤNG</button>
                             </form>
                         </div>
                     </div>
@@ -130,7 +130,15 @@
                     <div class="shoping__checkout">
                         <h5>Tổng số giỏ hàng</h5>
                         <ul>
-                            <?php echo" <li>Tổng cộng <span>".number_format($total_amount, 0, ',', '.')."đ</span></li>" ?>
+                            <?php echo" <li>Tổng tiền hàng <span>".number_format($total_amount, 0, ',', '.')."đ</span></li>" ?>
+                            <?php
+                                if(isset($_POST['check_coupon'])){
+                                    echo" <li>Mã giảm <span>".number_format($cart[8], 0, ',', '.')."đ</span></li>";
+                                    echo" <li>Tổng thanh toán <span>".number_format(($total_amount - $cart[8]), 0, ',', '.')."đ</span></li>";
+                                }else{
+                                    echo" <li>Tổng thanh toán <span>".number_format(($total_amount - 0), 0, ',', '.')."đ</span></li>";
+                                }
+                            ?>  
                         </ul>
                         <a href="index.php?act=checkout" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>
                     </div>

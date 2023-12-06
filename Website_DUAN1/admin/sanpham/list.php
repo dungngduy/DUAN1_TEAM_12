@@ -12,17 +12,15 @@
 <body>
     <div class="container">
         <h2>Sản Phẩm</h2>      
-        <table class="table table-striped">
+        <table class="table table-striped text-center">
         <thead>
             <tr>
                 <th></th>
-                <th>STT</th>
-                <th>TÊN SẢN PHẨM</th>
                 <th>HÌNH</th>
+                <th>TÊN SẢN PHẨM</th>
                 <th>GIÁ</th>
                 <th>MÔ TẢ</th>
                 <th>NGÀY NHẬP</th>
-                <th>LƯỢT XEM</th>
                 <th></th>
             </tr>
         </thead>
@@ -44,19 +42,17 @@
                 $hinhpath = "../upload/" . $row['img'];
 
                 if (isset($hinhpath)) {
-                    $hinh = "<img src = '" . $hinhpath . "' height='80px'>";
+                    $hinh = "<img src = '" . $hinhpath . "' height='70px'>";
                 } else {
                     $hinh = "No photo";
                 }
                 echo '<tr>
                             <td><input type="checkbox" name="" id=""></td>
-                            <td>' . $row['id'] . '</td>
-                            <td>' . $row['name'] . '</td>
                             <td>' . $hinh . '</td>
+                            <td>' . $row['name'] . '</td>
                             <td>' . number_format($row['price'], 0, ',', '.') . 'đ</td>
                             <td>' . $row['mota'] . '</td>
                             <td>' . $row['ngaynhapkhau'] . '</td>
-                            <td>' . $row['luotxem'] . '</td>
                             <td><a href="' . $suasp . '"><input type="button" value="Sửa"></a>
                             <a onclick="return confirm(\'Bạn có muốn xóa không?\')" href="' . $xoasp . '"><input type="button" value="Xóa"></a>
                             <a href="' . $ctsp . '"><input type="button" value="Quản lý biến thể"></a></td>

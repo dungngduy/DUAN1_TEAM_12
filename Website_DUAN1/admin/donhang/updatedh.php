@@ -51,6 +51,11 @@ if (is_array($dh)) {
             
             ?>
         </select>
+        <?php
+            if(isset($thongbao) && $thongbao != ""){
+                echo $thongbao;
+            }
+        ?>
         </div>
         <div class="mt-3 text-center">
             <input type="hidden" name="id" value="<?php if(isset($id_dh) && ($id_dh > 0)) echo $id_dh ?>"> 

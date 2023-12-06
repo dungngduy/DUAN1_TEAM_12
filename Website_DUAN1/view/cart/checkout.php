@@ -27,6 +27,11 @@
             </div>
             <div class="checkout__form">
                 <h4>Thông tin khách hàng</h4>
+                <?php
+                    foreach($info_user as $info){
+                        extract($info);
+                    }
+                ?>
                 <form action="index.php?act=checkout" method="post">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
@@ -46,19 +51,29 @@
                             </div>
                             <div class="checkout__input">
                                 <p>Địa chỉ<span>*</span></p>
-                                <input type="text" placeholder="Địa chỉ" name="address" class="checkout__input__add">
+                                <input type="text" placeholder="Địa chỉ" name="address" class="checkout__input__add" value="<?=$info['address']; ?>">
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Số điện thoại<span>*</span></p>
-                                        <input type="text" name="tel">
+                                        <input type="text" name="tel" value="<?=$info['tel']; ?>">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email<span>*</span></p>
-                                        <input type="text" name="email">
+                                        <input type="text" name="email" value="<?=$info['email']; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="type_checkout">
+                                        <p>Hình thức thanh toán<span>*</span></p>
+                                        <input type="radio" id="tiemnat" name="payment" value="tiemnat"> <label for="tiemnat">Thanh toán khi nhận hàng</label><br>
+                                        <input type="radio" id="vnpay" name="payment" value="vnpay"> <label for="vnpay">Thanh toán bằng <img src="img/VNPAY-Logo-yGapP.png" alt="" height="30px" width="60px"></label><br>
+                                        <input type="radio" id="momo" name="payment" value="momo"> <label for="momo">Thanh toán bằng <img src="img/931b119cf710fb54746d5be0e258ac89-logo-momo.png" alt="" height="40px" width="40px"></label>
                                     </div>
                                 </div>
                             </div>
@@ -99,12 +114,19 @@
                                     <?php } ?>
                                 </ul>
                                 <div class="checkout__order__subtotal">Tổng phụ <span><?=number_format($total_amount, 0, ',', '.'); ?>đ</span></div>
-                                <div class="checkout__order__total">Tổng cộng <span><?=number_format($total_amount, 0, ',', '.'); ?>đ</span></div>
-                                <button name="submit" type="submit" class="site-btn">ĐẶT HÀNG</button>
+                                <?php
+                                    if(isset($cart[9])){
+                                ?>
+                                    <div class="checkout__order__total">Mã giảm <span><?=number_format($cart[8], 0, ',', '.'); ?>đ</span></div>
+                                    <div class="checkout__order__total">Tổng thanh toán <span><?=number_format(($total_amount - $cart[8]), 0, ',', '.'); ?>đ</span></div>
+                                <?php }else{ ?>
+                                    <div class="checkout__order__total">Tổng thanh toán <span><?=number_format(($total_amount - 0), 0, ',', '.'); ?>đ</span></div>
+                                <?php } ?>
+                                <button name="redirect" type="submit" class="site-btn">ĐẶT HÀNG</button>
                                 <?php
                                     if(isset($error) && $error != ""){ 
+                                        echo $error;
                                 ?>
-                                        <?= $error; ?>
                                 <?php }else{ ?>
                                         <input type="hidden" name="id_user" value="<?= $_SESSION['user_id']; ?>">
                                 <?php } ?>

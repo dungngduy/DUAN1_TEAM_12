@@ -15,3 +15,32 @@ img {
   margin-top: 20%;
 }
 </style>
+
+<?php
+  include "../../model/donhang.php";
+  include "../../model/sanpham.php";
+  include "../../model/pdo.php";
+  if(isset($_GET['vnp_Amount'])){
+    $_SESSION['code_cart'] = $_GET['vnp_TxnRef'];
+    $vnp_Amount = $_GET['vnp_Amount'];
+    $vnp_BankCode = $_GET['vnp_BankCode'];
+    $vnp_BankTranNo = $_GET['vnp_BankTranNo'];
+    $vnp_OrderInfo = $_GET['vnp_OrderInfo'];
+    $vnp_PayDate = $_GET['vnp_PayDate'];
+    $vnp_TmnCode = $_GET['vnp_TmnCode'];
+    $vnp_CardType = $_GET['vnp_CardType'];
+    $vnp_TransactionNo = $_GET['vnp_TransactionNo'];
+    $code_cart = $_SESSION['code_cart'];
+    $insert_vnpay = insert_vnpay($vnp_Amount, $vnp_BankCode, $vnp_BankTranNo, $vnp_OrderInfo, $vnp_PayDate, $vnp_TmnCode, $vnp_CardType, $vnp_TransactionNo, $code_cart);
+  }else if(isset($_GET['partnerCode'])){
+    $_SESSION['code_cart'] = $_GET['orderId'];
+    $partnerCode = $_GET['partnerCode'];
+    $orderId = $_SESSION['code_cart'];
+    $amount = $_GET['amount'];
+    $orderInfo = $_GET['orderInfo'];
+    $orderType = $_GET['orderType'];
+    $transId = $_GET['transId'];
+    $payType = $_GET['payType'];
+    $insert_momo = insert_momo($partnerCode, $orderId, $amount, $orderInfo, $orderType, $transId, $payType);
+  }
+?>

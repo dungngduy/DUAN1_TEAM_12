@@ -21,6 +21,12 @@
         return $check;
     }
 
+    function get_info_user($user_id){
+        $sql = "SELECT * FROM tai_khoan WHERE id = '$user_id'";
+        $check = pdo_query($sql);
+        return $check;
+    }
+
     function sendMail($email){
         $sql = "SELECT * FROM tai_khoan WHERE email = '$email'";
         $taikhoan = pdo_query_one($sql);    

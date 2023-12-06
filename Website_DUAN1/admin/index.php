@@ -195,7 +195,17 @@
                         $name = $_POST['name'];
                         $pass = $_POST['pass'];
                         $email = $_POST['email'];
-                        update_taikhoan($id,$name,$pass,$email);
+                        $tel = $_POST['tel'];
+                        $address = $_POST['address'];
+                        $img = $_FILES['avatar']['name'];
+                        $target_dir = "../upload/";
+                        $target_file = $target_dir . basename($_FILES['avatar']['name']);
+                        if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file)) {
+                            //echo 
+                        } else {
+                            //
+                        }
+                        update_taikhoan($id,$name,$pass,$email,$img,$tel,$address);
                         $thongbao = "Cập nhật thành công";
                     }
                     $listtaikhoan = loadall_taikhoan();
@@ -244,7 +254,7 @@
                             update_thongke($donhang, $doanhthu, $soluongban, $now);
                         }
                     }
-                    // header("Location:index.php?act=donhang");
+                    header("Location:index.php?act=donhang");
                     break;
                 case 'donhang':
                     $list_donhang = loadall_donhang();
@@ -271,12 +281,16 @@
                     if (isset($_POST['suadh']) && ($_POST['suadh'])) {
                         $id = $_POST['id'];
                         $id_trangthai = $_POST['id_trangthai'];
-                        $update = update_donhang($id, $id_trangthai);
-                        $thongbao = "Cập nhật thành công";
+                        $update_tt = update_donhang($id, $id_trangthai);
+                        if ($update_tt === "Cập nhật trạng thái thành công") {
+                            echo "<script>alert('Cập nhật trạng thái thành công');</script>";
+                        } else {
+                            echo "<script>alert('Cập nhật không thành công');</script>";
+                        }
                     }
-                        $list_donhang = loadall_donhang();
-                        include "donhang/listdh.php";
-                        break;
+                    $list_donhang = loadall_donhang();
+                    include "donhang/listdh.php";
+                    break;
                     
                 // Thống kê
                 case "thongke":
@@ -284,11 +298,6 @@
                     include "thongke/list.php";
                     break;
                 }
-
-                // Thống kê về danh thu theo khoảng tg
-                // Đơn hàng đã dặt
-                // Sản phẩm bán chạy
-                // Thống kê theo khoảng tg
         }else {
             include "home.php";
         }

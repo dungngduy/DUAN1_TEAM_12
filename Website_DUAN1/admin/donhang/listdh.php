@@ -33,7 +33,7 @@
                             if($cart_status == 1){
                                 echo "<a href='index.php?act=xuly&cart_status=0&code=".$id_dh."'>Đơn hàng mới</a>";
                             }else{
-                                echo "Đợi phê duyệt";
+                                echo "Đã phê duyệt";
                             }
                         ?>
                     </td>
@@ -49,7 +49,6 @@
             <?php } ?>
         </thead>
         </table>
-        <a href="index.php?act=listsp"><button class="btn btn-primary">Quay về</button></a>
     </div>
     <br><br>
 </body>
