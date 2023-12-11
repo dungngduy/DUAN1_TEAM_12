@@ -11,6 +11,16 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
+    <!-- Rating star -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -213,6 +223,29 @@
         .product__details__quantity form .size input[type="radio"]:checked + label {
             border: 1px solid #343a40;
             background-color: #f9f9f9;
+        }
+        .rating-box {
+            padding: 25px 50px;
+            background-color: #f1f1f1;
+            border-radius: 25px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        .rating_box .stars {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+        }
+        .stars i {
+            font-size: 35px;
+            color: #b5b8b1;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .stars i.active {
+            color: #ffb851;
+            transform: scale(1.2);
         }
     </style>
 </head>

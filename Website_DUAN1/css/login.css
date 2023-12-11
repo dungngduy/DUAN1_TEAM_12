@@ -45,8 +45,7 @@
     color: #343a40;
     text-align: center;
 }
-.login_box input[type="text"],
-.login_box input[type="pass"]{
+.login_box input[type="text"]{
     border: none;
     border-bottom: 2px solid #262626;
     outline: none;

@@ -9,6 +9,18 @@
         .forget_and_register a:hover{
             text-decoration: none;
         }
+        .login_box input[type="password"]{
+            border: none;
+            border-bottom: 2px solid #262626;
+            outline: none;
+            width: 300px;
+            height: 40px;
+            color: #262626;
+            background: transparent;
+            font-size: 16px;
+            box-sizing: border-box;
+            margin: 10px 0px;
+        }
     </style>
 </head>
 <body>
@@ -25,12 +37,12 @@
                     <small id="errorUserLogin"></small>
                 </div>
                 <div class="input_box">
-                    <input id="passLogin" type="pass" name="pass" placeholder="Mật khẩu">
+                    <input id="passLogin" type="password" name="pass" placeholder="Mật khẩu">
                     <span></span>
                     <small id="errorPassLogin"></small>
                 </div>
                 <div class="btn_login">
-                    <a href=""><button type="submit" name="submit">Đăng nhập</button></a>
+                    <a href=""><button type="submit" name="submit" onclick="login()">Đăng nhập</button></a>
                 </div>
                 <?php if(isset($error) && $error != ""){
                     echo "<h6 style='color: red;'>".$error."</h6>";

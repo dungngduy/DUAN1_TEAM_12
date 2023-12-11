@@ -1,4 +1,9 @@
 <!-- Breadcrumb Section Begin -->
+<?php
+    if(isset($error) && $error != ""){
+        echo $error;
+    }else{
+?>
 <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
@@ -71,12 +76,17 @@
                                 <div class="col-lg-12">
                                     <div class="type_checkout">
                                         <p>Hình thức thanh toán<span>*</span></p>
-                                        <input type="radio" id="tiemnat" name="payment" value="tiemnat"> <label for="tiemnat">Thanh toán khi nhận hàng</label><br>
-                                        <input type="radio" id="vnpay" name="payment" value="vnpay"> <label for="vnpay">Thanh toán bằng <img src="img/VNPAY-Logo-yGapP.png" alt="" height="30px" width="60px"></label><br>
+                                        <input type="radio" id="tienmat" name="payment" value="tienmat"> <label for="tienmat">Thanh toán khi nhận hàng</label><br>
+                                        <input type="radio" id="vnpay" name="payment" value="vnpay"> <label for="vnpay">Thanh toán bằng <img src="img/VNPAY-Logo-yGapP.png" alt="" height="30px" width="70px"></label><br>
                                         <input type="radio" id="momo" name="payment" value="momo"> <label for="momo">Thanh toán bằng <img src="img/931b119cf710fb54746d5be0e258ac89-logo-momo.png" alt="" height="40px" width="40px"></label>
                                     </div>
                                 </div>
                             </div>
+                            <?php
+                                if(isset($errorPayment) && $errorPayment != ''){
+                                    echo "<p style='color:red;'>".$errorPayment."</p>";
+                                }
+                            ?>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
@@ -138,3 +148,4 @@
         </div>
     </section>
     <!-- Checkout Section End -->
+<?php } ?>

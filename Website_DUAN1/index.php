@@ -130,162 +130,182 @@
                         $address = $_POST['address'];
                         $tel = $_POST['tel'];
                         $email = $_POST['email'];
-                        $payment = $_POST['payment'];
                         $code_cart = rand(1, 10000);
-                        if($payment == 'tienmat'){
-                            $id_order = order($id, $name, $email, $address, $tel, $payment);
-                            if($id_order){
+                        // $payment = $_POST['payment'];
+                        if(!empty($_POST['payment'])){
+                            $payment = $_POST['payment'];
+                            if($payment == 'tienmat'){
+                                $id_order = order($id, $name, $email, $address, $tel, $payment);
+                                if($id_order){
+                                    foreach($cart as $item){
+                                        $id_sp = $item[0];
+                                        $color = $item[5];
+                                        $size = $item[6];
+                                        $soluong = $item[4];
+                                        $thanhtien = ((int)$item[3] * (int)$item[4]) - $item[8];
+                                        order_detail($id_order, $id_sp, $color, $size, $soluong, $thanhtien, $code_cart);
+                                    }
+                                }
+                                unset($_SESSION['mycart']);
+                                header("Location: view/cart/thank.php");
+                            }else if($payment == 'vnpay'){                                                                                                                                
+                                $vnp_TxnRef = $code_cart; //Mã giao dịch thanh toán tham chiếu của merchant
                                 foreach($cart as $item){
-                                    $id_sp = $item[0];
-                                    $color = $item[5];
-                                    $size = $item[6];
-                                    $soluong = $item[4];
                                     $thanhtien = ((int)$item[3] * (int)$item[4]) - $item[8];
-                                    order_detail($id_order, $id_sp, $color, $size, $soluong, $thanhtien, $code_cart);
                                 }
-                            }
-                        }else if($payment == 'vnpay'){                                                                                                                                
-                            $vnp_TxnRef = $code_cart; //Mã giao dịch thanh toán tham chiếu của merchant
-                            foreach($cart as $item){
-                                $thanhtien = ((int)$item[3] * (int)$item[4]) - $item[8];
-                            }
-                            $vnp_Amount = $thanhtien; // Số tiền thanh toán
-                            $vnp_Locale = "vn"; //Ngôn ngữ chuyển hướng thanh toán
-                            $vnp_BankCode = "NCB"; //Mã phương thức thanh toán
-                            $vnp_IpAddr = $_SERVER['REMOTE_ADDR']; //IP Khách hàng thanh toán
-
-                            $inputData = array(
-                                "vnp_Version" => "2.1.0",
-                                "vnp_TmnCode" => $vnp_TmnCode,
-                                "vnp_Amount" => $vnp_Amount * 100,
-                                "vnp_Command" => "pay",
-                                "vnp_CreateDate" => date('YmdHis'),
-                                "vnp_CurrCode" => "VND",
-                                "vnp_IpAddr" => $vnp_IpAddr,
-                                "vnp_Locale" => $vnp_Locale,
-                                "vnp_OrderInfo" => "Thanh toan GD: " . $vnp_TxnRef,
-                                "vnp_OrderType" => "other",
-                                "vnp_ReturnUrl" => $vnp_Returnurl,
-                                "vnp_TxnRef" => $vnp_TxnRef,
-                                "vnp_ExpireDate"=> $expire
-                            );
-
-                            if (isset($vnp_BankCode) && $vnp_BankCode != "") {
-                                $inputData['vnp_BankCode'] = $vnp_BankCode;
-                            }
-
-                            ksort($inputData);
-                            $query = "";
-                            $i = 0;
-                            $hashdata = "";
-                            foreach ($inputData as $key => $value) {
-                                if ($i == 1) {
-                                    $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
-                                } else {
-                                    $hashdata .= urlencode($key) . "=" . urlencode($value);
-                                    $i = 1;
-                                }
-                                $query .= urlencode($key) . "=" . urlencode($value) . '&';
-                            }
-                            $id_order = order($id, $name, $email, $address, $tel, $payment);
-                            if($id_order){
-                                foreach($cart as $item){
-                                    $id_sp = $item[0];
-                                    $color = $item[5];
-                                    $size = $item[6];
-                                    $soluong = $item[4];
-                                    $thanhtien = ((int)$item[3] * (int)$item[4]) - $item[8];
-                                    order_detail($id_order, $id_sp, $color, $size, $soluong, $thanhtien, $code_cart);
-                                }
-                            }
-                            unset($_SESSION['mycart']);
-                            $vnp_Url = $vnp_Url . "?" . $query;
-                            if (isset($vnp_HashSecret)) {
-                                $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//  
-                                $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
-                            }
-                            header('Location: ' . $vnp_Url);
-                            die();
-                        }else if($payment == 'momo'){
-                            header('Content-type: text/html; charset=utf-8');
-
-                            function execPostRequest($url, $data)
-                            {
-                                $ch = curl_init($url);
-                                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                                curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                                curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                                        'Content-Type: application/json',
-                                        'Content-Length: ' . strlen($data))
+                                $vnp_Amount = $thanhtien; // Số tiền thanh toán
+                                $vnp_Locale = "vn"; //Ngôn ngữ chuyển hướng thanh toán
+                                $vnp_BankCode = "NCB"; //Mã phương thức thanh toán
+                                $vnp_IpAddr = $_SERVER['REMOTE_ADDR']; //IP Khách hàng thanh toán
+    
+                                $inputData = array(
+                                    "vnp_Version" => "2.1.0",
+                                    "vnp_TmnCode" => $vnp_TmnCode,
+                                    "vnp_Amount" => $vnp_Amount * 100,
+                                    "vnp_Command" => "pay",
+                                    "vnp_CreateDate" => date('YmdHis'),
+                                    "vnp_CurrCode" => "VND",
+                                    "vnp_IpAddr" => $vnp_IpAddr,
+                                    "vnp_Locale" => $vnp_Locale,
+                                    "vnp_OrderInfo" => "Thanh toan GD: " . $vnp_TxnRef,
+                                    "vnp_OrderType" => "other",
+                                    "vnp_ReturnUrl" => $vnp_Returnurl,
+                                    "vnp_TxnRef" => $vnp_TxnRef,
+                                    "vnp_ExpireDate"=> $expire
                                 );
-                                curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-                                curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-                                //execute post
-                                $result = curl_exec($ch);
-                                //close connection
-                                curl_close($ch);
-                                return $result;
-                            }
-
-
-                            $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
-
-                            foreach($cart as $item){
-                                $thanhtien = ((int)$item[3] * (int)$item[4]) - $item[8];
-                            }
-                            $partnerCode = 'MOMOBKUN20180529';
-                            $accessKey = 'klm05TvNBzhg7h7j';
-                            $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
-                            $orderInfo = "Thanh toán qua MoMo";
-                            $amount = $thanhtien;
-                            $orderId = $code_cart;
-                            $redirectUrl = "http://localhost/PRO1014_WD18324/DUAN1_TEAM_12/Website_DUAN1/view/cart/thank.php";
-                            $ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
-                            $extraData = "";
-
-                            $requestId = time() . "";
-                            $requestType = "payWithATM";
-
-                            //before sign HMAC SHA256 signature
-                            $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
-                            $signature = hash_hmac("sha256", $rawHash, $secretKey);
-                            $data = array('partnerCode' => $partnerCode,
-                                'partnerName' => "Test",
-                                "storeId" => "MomoTestStore",
-                                'requestId' => $requestId,
-                                'amount' => $amount,
-                                'orderId' => $orderId,
-                                'orderInfo' => $orderInfo,
-                                'redirectUrl' => $redirectUrl,
-                                'ipnUrl' => $ipnUrl,
-                                'lang' => 'vi',
-                                'extraData' => $extraData,
-                                'requestType' => $requestType,
-                                'signature' => $signature);
-                            $result = execPostRequest($endpoint, json_encode($data));
-                            $jsonResult = json_decode($result, true);  // decode json
-                            $id_order = order($id, $name, $email, $address, $tel, $payment);
-                            if($id_order){
-                                foreach($cart as $item){
-                                    $id_sp = $item[0];
-                                    $color = $item[5];
-                                    $size = $item[6];
-                                    $soluong = $item[4];
-                                    $thanhtien = ((int)$item[3] * (int)$item[4]) - $item[8];
-                                    order_detail($id_order, $id_sp, $color, $size, $soluong, $thanhtien, $code_cart);
+    
+                                if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+                                    $inputData['vnp_BankCode'] = $vnp_BankCode;
                                 }
+    
+                                ksort($inputData);
+                                $query = "";
+                                $i = 0;
+                                $hashdata = "";
+                                foreach ($inputData as $key => $value) {
+                                    if ($i == 1) {
+                                        $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+                                    } else {
+                                        $hashdata .= urlencode($key) . "=" . urlencode($value);
+                                        $i = 1;
+                                    }
+                                    $query .= urlencode($key) . "=" . urlencode($value) . '&';
+                                }
+                                $id_order = order($id, $name, $email, $address, $tel, $payment);
+                                if($id_order){
+                                    foreach($cart as $item){
+                                        $id_sp = $item[0];
+                                        $color = $item[5];
+                                        $size = $item[6];
+                                        $soluong = $item[4];
+                                        $thanhtien = ((int)$item[3] * (int)$item[4]) - $item[8];
+                                        order_detail($id_order, $id_sp, $color, $size, $soluong, $thanhtien, $code_cart);
+                                    }
+                                }
+                                unset($_SESSION['mycart']);
+                                $vnp_Url = $vnp_Url . "?" . $query;
+                                if (isset($vnp_HashSecret)) {
+                                    $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//  
+                                    $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+                                }
+                                header('Location: ' . $vnp_Url);
+                                die();
+                            }else if($payment == 'momo'){
+                                header('Content-type: text/html; charset=utf-8');
+    
+                                function execPostRequest($url, $data)
+                                {
+                                    $ch = curl_init($url);
+                                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                                            'Content-Type: application/json',
+                                            'Content-Length: ' . strlen($data))
+                                    );
+                                    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+                                    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+                                    //execute post
+                                    $result = curl_exec($ch);
+                                    //close connection
+                                    curl_close($ch);
+                                    return $result;
+                                }
+    
+    
+                                $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+    
+                                foreach($cart as $item){
+                                    $thanhtien = ((int)$item[3] * (int)$item[4]) - $item[8];
+                                }
+                                $partnerCode = 'MOMOBKUN20180529';
+                                $accessKey = 'klm05TvNBzhg7h7j';
+                                $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+                                $orderInfo = "Thanh toán qua MoMo";
+                                $amount = $thanhtien;
+                                $orderId = $code_cart;
+                                $redirectUrl = "http://localhost/PRO1014_WD18324/DUAN1_TEAM_12/Website_DUAN1/view/cart/thank.php";
+                                $ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
+                                $extraData = "";
+    
+                                $requestId = time() . "";
+                                $requestType = "payWithATM";
+    
+                                //before sign HMAC SHA256 signature
+                                $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
+                                $signature = hash_hmac("sha256", $rawHash, $secretKey);
+                                $data = array('partnerCode' => $partnerCode,
+                                    'partnerName' => "Test",
+                                    "storeId" => "MomoTestStore",
+                                    'requestId' => $requestId,
+                                    'amount' => $amount,
+                                    'orderId' => $orderId,
+                                    'orderInfo' => $orderInfo,
+                                    'redirectUrl' => $redirectUrl,
+                                    'ipnUrl' => $ipnUrl,
+                                    'lang' => 'vi',
+                                    'extraData' => $extraData,
+                                    'requestType' => $requestType,
+                                    'signature' => $signature);
+                                $result = execPostRequest($endpoint, json_encode($data));
+                                $jsonResult = json_decode($result, true);  // decode json
+                                $id_order = order($id, $name, $email, $address, $tel, $payment);
+                                if($id_order){
+                                    foreach($cart as $item){
+                                        $id_sp = $item[0];
+                                        $color = $item[5];
+                                        $size = $item[6];
+                                        $soluong = $item[4];
+                                        $thanhtien = ((int)$item[3] * (int)$item[4]) - $item[8];
+                                        order_detail($id_order, $id_sp, $color, $size, $soluong, $thanhtien, $code_cart);
+                                    }
+                                }
+                                unset($_SESSION['mycart']);
+    
+                                //Just a example, please check more in there
+    
+                                header('Location: ' . $jsonResult['payUrl']);
                             }
-                            $_SESSION['code'] = $code_cart;
-
-                            //Just a example, please check more in there
-
-                            header('Location: ' . $jsonResult['payUrl']);
+                        }else{
+                            $errorPayment = "Vui lòng chọn hình thức thanh toán";
                         }
                     }
                 }else{
-                    $error = "<script>alert('Bạn chưa đăng nhập. Vui lòng đăng nhập để thanh toán');</script>";
-                    header("refresh:0;url=index.php?act=login");
+                    $error = "<script>
+                                swal({
+                                    title: 'Bạn chưa đăng nhập',
+                                    text: 'Vui lòng đăng nhập để thanh toán',
+                                    icon: 'error',
+                                    button: {
+                                        text: 'OK',
+                                        className: 'center-button',
+                                    },
+                                }).then((value) => {
+                                    if (value) {
+                                        window.location.href = 'index.php?act=login'; 
+                                    }
+                                });
+                            </script>";
                 }
                 include "view/cart/checkout.php";
                 break;
@@ -303,18 +323,20 @@
                     $user = $_POST['user'];
                     $pass = $_POST['pass'];
                     $result = get_user($user, $pass);
-                    $role = $result[0]['role'];
-                    if(!isset($result[0]['user']) || !isset($result[0]['pass'])){
+                    if($result && isset($result[0]['user']) && isset($result[0]['pass'])){
+                        $role = $result[0]['role'];
+                        if($role == 1){
+                            $_SESSION['role'] = $role;
+                            header("Location: admin/index.php");
+                            exit();
+                        }else{
+                            $_SESSION['role'] = $role;
+                            $_SESSION['user_id'] = $result[0]['id'];
+                            $_SESSION['user'] = $result[0]['user'];
+                            header("Location: index.php");
+                        }
+                    }else{
                         $error = "Tài khoản hoặc mật khẩu không đúng";
-                    }else if($role == 1){
-                        $_SESSION['role'] = $role;
-                        header("Location: admin/index.php");
-                    }
-                    else{
-                        $_SESSION['role'] = $role;
-                        $_SESSION['user_id'] = $result[0]['id'];
-                        $_SESSION['user'] = $result[0]['user'];
-                        header("Location: index.php");
                     }
                 }
                 include "view/login/login.php";
@@ -390,7 +412,6 @@
                 }
                 include "view/cart/cart.php";
                 break;
-                // Làm thêm thanh toán ngân hàng
         }
     }else{
         include "view/home.php";
@@ -398,6 +419,5 @@
         include "view/lastest-product.php";
         include "view/news.php";
     }
-    //Theo doi don hang ben user
     include "view/footer.php";
 ?>

@@ -140,9 +140,53 @@
         <p><strong>Tổng tiền:</strong> <?=number_format($thanhtien, 0, ',', '.'); ?>đ</p>
         <!-- Thêm các thông tin khác về thanh toán, vận chuyển, vv. -->
     </div>
-    <div class="ft">
-        <p>Cảm ơn bạn đã mua hàng!</p>
-    </div>
+    <?php
+        if($id_trangthai == '4'){
+    ?>
+        <div class="ft">
+            <p>Cảm ơn bạn đã mua hàng!</p>
+        </div>
+        <div class="ft">
+            <div class="rating_box">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+    <script>
+        // ---- ---- Const ---- ---- //
+        const stars = document.querySelectorAll('.stars i');
+        const starsNone = document.querySelector('.rating-box');
 
+        // ---- ---- Stars ---- ---- //
+        stars.forEach((star, index1) => {
+            star.addEventListener('click', () => {
+                stars.forEach((star, index2) => {
+                // ---- ---- Active Star ---- ---- //
+                index1 >= index2
+                    ? star.classList.add('active')
+                    : star.classList.remove('active');
+                });
+                swal({
+                    title: "Cảm ơn bạn!",
+                    text: "Rất vui vì bạn đã mua hàng của chúng tôi",
+                    icon: "success",
+                    button: {
+                        text: "OK",
+                        className: "center-button", // Thêm một lớp tùy chỉnh
+                    },
+                }).then((value) => {
+                    if (value) {
+                        window.location.href = 'index.php?act=follow'; 
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

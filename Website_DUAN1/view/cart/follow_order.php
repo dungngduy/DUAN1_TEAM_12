@@ -21,22 +21,29 @@
                     <th></th>
                 </tr>
                 <?php
-                foreach ($ctdh_follow as $list) {
+                foreach ($ctdh_follow as $list){
                     extract($list);
                     $order_detail = "index.php?act=order_detail&ma_dh=" . $id_dh;
                     $unset_order = "index.php?act=unset_order&ma_dh=" . $id_dh;
-                    echo '<tr>
-                            <td>'.$ma_dh.'</td>
-                            <td>'.$created.'</td>
-                            <td>'.$name.'</td>
-                            <td>' . number_format($thanh_tien, 0, ',', '.') . 'đ</td>
-                            <td>
-                                <a href="' . $order_detail . '"><input type="button" value="Chi tiết đơn hàng"></a>
-                                <a onclick="return confirm(\'Bạn có muốn xóa không?\')" href="' . $unset_order . '"><input type="button" value="Hủy đơn hàng"></a>
-                            </td>
-                        </tr>';
-                }
                 ?>
+                    <tr>
+                        <td><?=$ma_dh; ?></td>
+                        <td><?=$created; ?></td>
+                        <td><?=$name; ?></td>
+                        <td><?=number_format($thanh_tien, 0, ',', '.'); ?>đ</td>
+                        <td>
+                            <?php
+                                if($id_trangthai == '4'){
+                            ?>
+                                <p>Hoàn tất giao hàng</p>
+                                <a href="<?=$order_detail; ?>">Đánh giá đơn hàng</a>
+                            <?php }else{ ?>
+                                <a href="<?=$order_detail; ?>"><input type="button" value="Chi tiết đơn hàng"></a>
+                                <a onclick="return confirm(\'Bạn có muốn xóa không?\')" href="<?=$unset_order; ?>"><input type="button" value="Hủy đơn hàng"></a>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                <?php } ?>
             </thead>
         </table>
         <input type="hidden" name="id_dh" value="<?=$id_dh; ?>">
