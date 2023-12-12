@@ -24,7 +24,7 @@ if (isset($imgpath)) {
         </div>
         <div class="form-group">
             <label for="anh">Ảnh sản phẩm:</label>
-            <input type="file" class="form-control-file" id="anh" name="img"><?= $img ?>
+            <input type="file" class="form-control-file" id="anh" name="img" accept="image/*"><?= $img ?>
             <span id="anhError" style="color: red;"></span>
         </div>
         <div class="form-group">
@@ -62,49 +62,58 @@ if (isset($imgpath)) {
 
 <script>
     function validateFormUpdateSP() {
-        var ten = document.getElementById("ten").value;
-        var gia = document.getElementById("gia").value;
-        var anh = document.getElementById("anh").value;
-        var mota = document.getElementById("mota").value;
-        var iddm = document.getElementById("iddm").value;
+    var ten = document.getElementById("ten").value;
+    var gia = document.getElementById("gia").value;
+    var anhInput = document.getElementById("anh");
+    var mota = document.getElementById("mota").value;
+    var iddm = document.getElementById("iddm").value;
 
-        var tenError = document.getElementById("tenError");
-        var giaError = document.getElementById("giaError");
-        var anhError = document.getElementById("anhError");
-        var motaError = document.getElementById("motaError");
-        var iddmError = document.getElementById("iddmError");
+    var tenError = document.getElementById("tenError");
+    var giaError = document.getElementById("giaError");
+    var anhError = document.getElementById("anhError");
+    var motaError = document.getElementById("motaError");
+    var iddmError = document.getElementById("iddmError");
 
-        tenError.innerHTML = "";
-        giaError.innerHTML = "";
-        anhError.innerHTML = "";
-        motaError.innerHTML = "";
-        iddmError.innerHTML = "";
+    tenError.innerHTML = "";
+    giaError.innerHTML = "";
+    anhError.innerHTML = "";
+    motaError.innerHTML = "";
+    iddmError.innerHTML = "";
 
-        if (ten.trim() === "") {
-            tenError.innerHTML = "Vui lòng nhập tên sản phẩm";
-            return false;
-        }
-
-        if (gia.trim() === "") {
-            giaError.innerHTML = "Vui lòng nhập giá sản phẩm";
-            return false;
-        }
-
-        if (anh.trim() === "") {
-            anhError.innerHTML = "Vui lòng chọn ảnh sản phẩm";
-            return false;
-        }
-
-        if (mota.trim() === "") {
-            motaError.innerHTML = "Vui lòng nhập mô tả sản phẩm";
-            return false;
-        }
-
-        if (iddm === "0") {
-            iddmError.innerHTML = "Vui lòng chọn danh mục";
-            return false;
-        }
-
-        return true;
+    if (ten.trim() === "") {
+        tenError.innerHTML = "Vui lòng nhập tên sản phẩm";
+        return false;
     }
+
+    if (gia.trim() === "") {
+        giaError.innerHTML = "Vui lòng nhập giá sản phẩm";
+        return false;
+    }
+
+    // Kiểm tra nếu người dùng chưa chọn ảnh
+    if (anhInput.files.length === 0) {
+        anhError.innerHTML = "Vui lòng chọn ảnh sản phẩm";
+        return false;
+    }
+
+    // Kiểm tra nếu tệp chọn không phải là hình ảnh
+    var allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+    if (allowedTypes.indexOf(anhInput.files[0].type) === -1) {
+        anhError.innerHTML = "Vui lòng chọn một tệp hình ảnh hợp lệ";
+        return false;
+    }
+
+    if (mota.trim() === "") {
+        motaError.innerHTML = "Vui lòng nhập mô tả sản phẩm";
+        return false;
+    }
+
+    if (iddm === "0") {
+        iddmError.innerHTML = "Vui lòng chọn danh mục";
+        return false;
+    }
+
+    return true;
+}
+
 </script>
