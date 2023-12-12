@@ -5,23 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Account Information</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-
-        .container {
+        .info_user {
             text-align: center;
             background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0px;
         }
 
         .avatar {
@@ -36,6 +23,7 @@
         }
 
         button {
+            border: 1px solid #fff;
             padding: 10px 20px;
             margin-top: 20px;
             cursor: pointer;
@@ -43,15 +31,21 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="" alt="User Avatar" class="avatar">
+    <?php
+        foreach($info_user as $info){
+            extract($info);
+        }
+    ?>
+    <div class="info_user">
+        <img src="upload/<?=$avatar; ?>" alt="User Avatar" class="avatar">
         <h1>Tài khoản của tôi</h1>
         <div id="user-info">
-            <h2>Hello John Doe!</h2>
-            <p>Email: john.doe@example.com</p>
-            <!-- Add more user information as needed -->
+            <h2>Hello <?=$user; ?>!</h2>
+            <p>Email: <?=$email; ?></p>
+            <p>Số diện thoại: <?=$tel; ?></p>
+            <p>Địa chỉ: <?=$address; ?></p>
         </div>
-        <button onclick="logout()">Cập nhật tài khoản</button>
+        <button>Cập nhật tài khoản</button>
     </div>
 </body>
 </html>

@@ -91,6 +91,11 @@
                         }
                     ?>
                     <div class='product__details__quantity'>
+                        <?php
+                            if(!empty($error_cart)){
+                                echo "<p style='color:red;'>".$error_cart."</p>";
+                            }else{
+                        ?>
                         <form method="post" action="index.php?act=cart">
                             <input type="hidden" name="id" value="<?=$id;?>">
                             <input type="hidden" name="name" value="<?=$name;?>">
@@ -123,8 +128,9 @@
                             </div>
                             <br><br>
                             <a href='#' class='primary-btn'>Mua ngay</a>
-                            <input id="addToCartBtn" data-id="<?= $id; ?>" type='submit' class='primary-btn' name='cart' value="Thêm vào giỏ hàng"></input>
+                            <input id="addToCartBtn" data-id="<?= $id; ?>" type='submit' class='primary-btn' name='cart' value="Thêm vào giỏ hàng" onclick="addToCart()"></input>
                         </form>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -247,4 +253,21 @@
             input.stepDown();
         });
     });
+
+    function addToCart(event) {
+        var isValid = true; // Thay bằng kiểm tra điều kiện của bạn
+
+        // Kiểm tra xem đã chọn màu và size chưa
+        var selectedColor = document.querySelector('input[name="color"]:checked');
+        var selectedSize = document.querySelector('input[name="size"]:checked');
+
+        if (!selectedColor || !selectedSize) {
+            isValid = false;
+            alert("Vui lòng chọn màu và size trước khi thêm vào giỏ hàng!");
+        }
+
+        if (!isValid) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+        }
+    }
 </script>

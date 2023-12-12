@@ -74,24 +74,37 @@
                 include "view/blog/blog.php";
                 break;
             case "cart":
-                if(isset($_POST['cart'])&& ($_POST['cart'])){
+                $error_cart = '';
+                $can_add_to_cart = true;
+                if(isset($_POST['cart']) && ($_POST['cart'])){
                     $id = isset($_POST['id']) ? $_POST['id'] : null;
                     $name = $_POST['name'];
                     $img = $_POST['img'];
                     $price = $_POST['price'];
                     $soluong = $_POST['qty'];
-                    $color = $_POST['color'];
-                    $size = $_POST['size'];
+                    $color = isset($_POST['color']) ? trim($_POST['color']) : null;
+                    $size = isset($_POST['size']) ? trim($_POST['size']) : null;
                     $ttien = $soluong * $price;
-                    $spadd =[
-                        $id,$name,$img,$price,$soluong,$color,$size,$ttien
-                    ];
-                    if(!increaseProductQuantity($_SESSION['mycart'], $id, $color, $size, $soluong)){
-                        array_push($_SESSION['mycart'],$spadd);
+                    if(empty($color) || empty($size)){
+                        $error_cart = "Bạn vui lòng chọn kích thước và màu sắc";
+                        $can_add_to_cart = false;
+                    }else{
+                        $spadd =[
+                            $id,$name,$img,$price,$soluong,$color,$size,$ttien
+                        ];
+                        if(!increaseProductQuantity($_SESSION['mycart'], $id, $color, $size, $soluong)){
+                            array_push($_SESSION['mycart'],$spadd);
+                        }
                     }
                 }
-                foreach ($_SESSION['mycart'] as $item) {
-                    $ctsp = loadall_ctsp($item[0]);
+                if($can_add_to_cart){
+                    foreach ($_SESSION['mycart'] as $item) {
+                        if(empty($item[5]) || empty($item[6])){
+                            $error_cart = "Bạn vui lòng chọn kích thước và màu sắc";
+                            break;
+                        }
+                        $ctsp = loadall_ctsp($item[0]);
+                    }
                 }
                 include "view/cart/cart.php";
                 break;
@@ -295,7 +308,7 @@
                                 swal({
                                     title: 'Bạn chưa đăng nhập',
                                     text: 'Vui lòng đăng nhập để thanh toán',
-                                    icon: 'error',
+                                    icon: 'warning',
                                     button: {
                                         text: 'OK',
                                         className: 'center-button',
@@ -356,6 +369,10 @@
                     }
                 }
                 include "view/login/register.php";
+                break;
+            case "info_user":
+                $info_user = get_info_user($_SESSION['user_id']);
+                include "view/login/info_user.php";
                 break;
             case "logout":
                 unset($_SESSION['user_id']);
