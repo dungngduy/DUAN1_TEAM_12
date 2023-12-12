@@ -97,7 +97,7 @@
                             }else{
                         ?>
                         <form method="post" action="index.php?act=cart">
-                            <input type="hidden" name="id" value="<?=$id;?>">
+                            <input type="hidden" id="productId" name="id" value="<?=$id;?>">
                             <input type="hidden" name="name" value="<?=$name;?>">
                             <input type="hidden" name="img" value="<?=$img;?>">
                             <input type="hidden" name="price" value="<?=$price;?>">
@@ -264,10 +264,6 @@
         if (!selectedColor || !selectedSize) {
             isValid = false;
             alert("Vui lòng chọn màu và size trước khi thêm vào giỏ hàng!");
-        }
-
-        if (!isValid) {
-            event.preventDefault(); // Ngăn chặn hành vi mặc định của form
         }
     }
 </script>

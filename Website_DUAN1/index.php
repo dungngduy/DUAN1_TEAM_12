@@ -106,7 +106,11 @@
                         $ctsp = loadall_ctsp($item[0]);
                     }
                 }
-                include "view/cart/cart.php";
+                if(!$can_add_to_cart){
+                    header("Location: index.php?act=dmsanpham");
+                }else{
+                    include "view/cart/cart.php";
+                }
                 break;
             case "delcart":
                 if(isset($_GET['idcart'])){
