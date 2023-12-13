@@ -14,7 +14,7 @@
 
         <div class="form-group">
             <label for="anh">Ảnh sản phẩm:</label>
-            <input type="file" class="form-control-file" id="anh" name="img">
+            <input type="file" class="form-control-file" id="anh" name="img" accept="image/*">
             <span id="anhError" style="color: red;"></span>
         </div>
 
@@ -81,10 +81,18 @@
             return false;
         }
 
-        if (anh.trim() === "") {
-            anhError.innerHTML = "Vui lòng chọn ảnh sản phẩm";
-            return false;
-        }
+        // Kiểm tra nếu người dùng chưa chọn ảnh
+    if (anhInput.files.length === 0) {
+        anhError.innerHTML = "Vui lòng chọn ảnh sản phẩm";
+        return false;
+    }
+
+    // Kiểm tra nếu tệp chọn không phải là hình ảnh
+    var allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+    if (allowedTypes.indexOf(anhInput.files[0].type) === -1) {
+        anhError.innerHTML = "Vui lòng chọn một tệp hình ảnh hợp lệ";
+        return false;
+    }
 
         if (mota.trim() === "") {
             motaError.innerHTML = "Vui lòng nhập mô tả sản phẩm";
