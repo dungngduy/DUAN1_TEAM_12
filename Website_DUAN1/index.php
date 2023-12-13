@@ -413,7 +413,8 @@
                         echo "<script>alert('Không thể hủy đơn hàng. Vì đơn hàng đã được xử lý');</script>";
                     }
                 }
-                header("Location: index.php?act=follow");
+                $ctdh_follow = follow_order($_SESSION['user_id']);
+                header("Refresh:0; url=index.php?act=follow");
                 include "view/cart/follow_order.php";
                 break;
             case "discount":

@@ -82,14 +82,6 @@
                             extract($key);
                         }
                     ?>
-                    <?php
-                        include "model/offset.php";
-                        $sql = mysqli_query($conn, "SELECT * FROM chi_tiet_san_pham");
-                        if($result = $sql->num_rows > 0){
-                            $row = $sql->fetch_assoc();
-                            $soLuong = $row['soluong'];
-                        }
-                    ?>
                     <div class='product__details__quantity'>
                         <?php
                             if(!empty($error_cart)){
@@ -119,10 +111,18 @@
                                 }
                             ?>
                             <br>
+                            <?php
+                                include "model/offset.php";
+                                $sql = mysqli_query($conn, "SELECT * FROM chi_tiet_san_pham WHERE color = 'vàng'");
+                                if($result = $sql->num_rows > 0){
+                                    $row = $sql->fetch_assoc();
+                                    $soLuong = $row['soluong'];
+                                }
+                            ?>
                             <div class='product__details__quantity'>
                                 <div class='quantity'>
                                     <div class='stylish-input'>
-                                        <input type="number" pattern="\d*" id="quantityInput" value="1" min="1" max="<?=$soluong; ?>" name="qty" oninput="checkQuantity()">
+                                        <input type="number" pattern="\d*" id="quantityInput" value="1" min="1" max="<?=$soLuong; ?>" name="qty" oninput="checkQuantity()">
                                     </div>
                                 </div>
                             </div>
