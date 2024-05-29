@@ -185,17 +185,15 @@
                             if (isset($minPrice) && isset($maxPrice)) {
                                 $pageUrl .= "&minPrice={$minPrice}&maxPrice={$maxPrice}";
                             }
-
                     ?>
                             <?php
                                 if($num != $current_page){
                             ?>
-                            <?php if($num > $current_page - 3 && $num < $current_page + 3){ 
-                            ?>
-                                <a href="<?=$pageUrl; ?>"><?=$num; ?></a>
-                            <?php } ?>
-                            <?php }else{
-                            ?>
+                                <?php if($num > $current_page - 3 && $num < $current_page + 3){ 
+                                ?>
+                                    <a href="<?=$pageUrl; ?>"><?=$num; ?></a>
+                                <?php } ?>
+                            <?php }else{ ?>
                                 <a style="background-color: #343a40; color: #fff;" href="<?=$pageUrl; ?>"><?=$num; ?></a>
                             <?php } ?>
                     <?php } ?>
